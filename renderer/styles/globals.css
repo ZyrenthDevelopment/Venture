@@ -23,3 +23,7 @@
   left: 0 !important;
   transform: translateX(0) !important;
 }
+
+.cet-titlebar.cet-shadow {
+  box-shadow: none !important;
+}

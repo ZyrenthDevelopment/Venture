@@ -1,0 +1,12 @@
+appId: dev.zyrenth.disclient
+productName: Disclient
+copyright: Copyright © 2023 Zyrenth.dev
+directories:
+  output: dist
+  buildResources: resources
+files:
+  - from: .
+    filter:
+      - package.json
+      - app
+publish: null

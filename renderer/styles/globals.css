@@ -13,3 +13,13 @@
     @apply text-white font-bold px-4 py-2 rounded bg-blue-600 hover:bg-blue-500;
   }
 }
+
+.cet-menubar {
+  display: none !important;
+}
+
+.cet-title-center {
+  position: unset !important;
+  left: 0 !important;
+  transform: translateX(0) !important;
+}

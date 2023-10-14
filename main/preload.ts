@@ -1,5 +1,15 @@
 import { contextBridge, ipcRenderer, IpcRendererEvent } from 'electron'
 
+import { Titlebar, TitlebarColor } from "custom-electron-titlebar";
+
+window.addEventListener('DOMContentLoaded', () => {
+  new Titlebar({
+    backgroundColor: TitlebarColor.fromHex('#00000000'),
+    icon: '/images/logo.png',
+    shadow: true,
+  });
+});
+
 const handler = {
   send(channel: string, value: unknown) {
     ipcRenderer.send(channel, value)

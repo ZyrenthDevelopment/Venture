@@ -14,9 +14,9 @@ This is a free and open-source Discord Client that uses Discord's Gateway and AP
 I'm going to use nextron to merge Electron and NextJS for an easier workflow and setup.
 
 # Roadmap
-- [ ] Electron setup
+- [x] Electron setup
+- [x] NextJS setup
 - [ ] Custom titlebar
-- [ ] NextJS setup
 - [ ] Login page
 - [ ] Websocket
   - [ ] Heartbeats

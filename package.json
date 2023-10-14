@@ -2,7 +2,7 @@
   "private": true,
   "name": "discord-client",
   "description": "Discord Client",
-  "version": "1.0.0",
+  "version": "1.0-alpha.1",
   "author": "Zyrenth <work@zyrenth.dev>",
   "main": "app/background.js",
   "scripts": {
@@ -11,6 +11,7 @@
     "postinstall": "electron-builder install-app-deps"
   },
   "dependencies": {
+    "custom-electron-titlebar": "^4.2.7",
     "electron-serve": "^1.1.0",
     "electron-store": "^8.1.0"
   },

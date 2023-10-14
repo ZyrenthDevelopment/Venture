@@ -3,6 +3,8 @@ import {
   BrowserWindow,
   BrowserWindowConstructorOptions,
   Rectangle,
+  Menu,
+  MenuItem,
 } from 'electron'
 import Store from 'electron-store'
 
@@ -10,6 +12,7 @@ export const createWindow = (
   windowName: string,
   options: BrowserWindowConstructorOptions
 ): BrowserWindow => {
+
   const key = 'window-state'
   const name = `window-state-${windowName}`
   const store = new Store<Rectangle>({ name })
@@ -73,14 +76,26 @@ export const createWindow = (
   const win = new BrowserWindow({
     ...state,
     ...options,
+    titleBarStyle: 'hidden',
+    titleBarOverlay: true,
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
       ...options.webPreferences,
+      sandbox: false
     },
-  })
+  });
+
+  Menu.setApplicationMenu(null);
+  Menu.setApplicationMenu(Menu.buildFromTemplate([
+    new MenuItem({
+      id: '1',
+      label: 'test item',
+      visible: true
+    })
+  ]));
 
   win.on('close', saveState)
 
-  return win
+  return win;
 }

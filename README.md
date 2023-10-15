@@ -1,7 +1,8 @@
-# DiscordClient
+# Disclient
 This is a free and open-source Discord Client that uses Discord's Gateway and API to communicate with Discord.
 
-> This is a side-project made by @Zyrenth
+> This is a side-project made by [@Zyrenth](https://github.com/Zyrenth).
+> Designed by [@Pukima](https://github.com/Pukimaa).
 
 # Resources
 - Electron & NodeJS 20.x

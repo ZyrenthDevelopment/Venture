@@ -2,9 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter.ttf') format('truetype');
+}
+
 @layer base {
   body {
-    @apply bg-gray-900 text-white;
+    @apply bg-[#1f2235] text-white flex flex-col;
+    font-family: 'Inter', sans-serif;
   }
 }
 
@@ -14,8 +20,66 @@
   }
 }
 
+.container {
+  @apply flex flex-col justify-center m-0 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 py-2 w-1/2;
+}
+
+.login {
+  @apply bg-gray-600 rounded-lg shadow-lg p-8 flex flex-row gap-[10px];
+}
+
+.text-input {
+  @apply bg-gray-900 text-white py-2 px-4 rounded outline-none focus:outline-blue-500 focus:outline-offset-0;
+}
+
+.button-primary {
+  @apply bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-500 outline-none focus:outline-blue-500 focus:outline-offset-0;
+}
+
+.plain-login {
+  @apply flex flex-col gap-[10px] w-full;
+}
+
+.plain-login > h1 {
+  @apply text-2xl font-bold;
+}
+
+.qr-login {
+  @apply flex flex-col gap-[10px] w-full;
+}
+
+.qr-login > h1 {
+  @apply text-2xl font-bold;
+}
+
+@media (max-width: 1100px) {
+  .qr-login {
+      @apply hidden;
+  }
+}
+
+* {
+  animation-duration: 0.25s;
+  animation-fill-mode: both;
+}
+
+@keyframes anim {
+  0% {
+    transform: translate(-50%, -80%) scale(1.1);
+  }
+  100% {}
+}
+
+.login {
+  animation-name: anim;
+}
+
 .cet-menubar {
   display: none !important;
+}
+
+.cet-title {
+  font-size: 13px !important;
 }
 
 .cet-title-center {

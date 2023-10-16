@@ -1,7 +1,7 @@
 {
   "private": true,
-  "name": "discord-client",
-  "description": "Discord Client",
+  "name": "venture-client",
+  "description": "Venture Client",
   "version": "1.0.0-alpha",
   "author": "Zyrenth <work@zyrenth.dev>",
   "main": "app/background.js",

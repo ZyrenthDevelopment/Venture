@@ -29,7 +29,7 @@ export default function HomePage() {
   return (
     <React.Fragment>
       <Head>
-        <title>Disclient</title>
+        <title>Venture</title>
         <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
       </Head>
       <div className='container login'>

@@ -20,15 +20,15 @@ const filter = {
     const tray = new Tray(icon);
 
     const contextMenu = Menu.buildFromTemplate([
-        { label: 'Disclient', type: 'normal', enabled: false },
+        { label: 'Venture', type: 'normal', enabled: false },
         { label: 'Zyrenth.dev :3', type: 'normal', click: () => shell.openExternal('https://zyrenth.dev') },
         { type: 'separator' },
         { label: 'About', type: 'normal' },
-        { label: 'GitHub', type: 'normal', click: () => shell.openExternal('https://github.com/ZyrenthDev/DiscordClient') },
-        { label: 'Contributors <3', type: 'normal', click: () => shell.openExternal('https://github.com/ZyrenthDev/DiscordClient/graphs/contributors') },
+        { label: 'GitHub', type: 'normal', click: () => shell.openExternal('https://github.com/ZyrenthDev/Venture') },
+        { label: 'Contributors <3', type: 'normal', click: () => shell.openExternal('https://github.com/ZyrenthDev/Venture/graphs/contributors') },
     ]);
 
-    tray.setToolTip('Disclient');
+    tray.setToolTip('Venture');
     tray.setContextMenu(contextMenu);
 
     app.setUserTasks([]);

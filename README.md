@@ -1,5 +1,5 @@
-# Disclient
-This is a free and open-source Discord Client that uses Discord's Gateway and API to communicate with Discord.
+# Venture
+Venture is an open-source Discord client focused on speed and convenience through performance optimizations and feature streamlining. 
 
 > This is a side-project made by [@Zyrenth](https://github.com/Zyrenth).
 > Designed by [@Pukima](https://github.com/Pukimaa).
@@ -23,3 +23,7 @@ I'm going to use nextron to merge Electron and NextJS for an easier workflow and
   - [ ] Heartbeats
   - [ ] ...
 - [ ] ...
+
+# Credits
+> [@Zyrenth](https://github.com/Zyrenth): Coding, designing, branding.
+> [@Pukima](https://github.com/Pukimaa): Designing.

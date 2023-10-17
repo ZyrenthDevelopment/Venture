@@ -1,0 +1,23 @@
+{
+    "appId": "dev.zyrenth.venture",
+    "productName": "Venture",
+    "artifactName": "${productName}-Setup-${version}-${os}-${arch}.${ext}",
+    "copyright": "Copyright © 2023 Zyrenth.dev",
+    "directories": {
+      "output": "dist",
+      "buildResources": "resources"
+    },
+    "files": [
+      {
+        "from": ".",
+        "filter": [
+          "package.json",
+          "app"
+        ]
+      }
+    ],
+    "publish": null,
+    "win": {
+      "icon": "resources/icon.ico"
+    }
+}

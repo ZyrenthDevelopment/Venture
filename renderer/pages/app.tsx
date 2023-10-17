@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -14,8 +14,15 @@ const apiConfig = {
   templateBaseUrl: 'https://discord.new/'
 };
 
+type User = {
+  global_name?: string;
+  username?: string;
+  discriminator?: string;
+};
+
 export default function NextPage() {
   const router = useRouter();
+  const [user, setUser] = useState<User>({});
 
   useEffect(() => {
     const token = window.localStorage.getItem('token');
@@ -28,7 +35,6 @@ export default function NextPage() {
     axios.get(`${apiConfig.baseUrl}v${apiConfig.version}/users/${atob(token.split('.')[0])}/profile`, {
       headers: {
         'Content-Type': 'application/json',
-        'Origin': 'https://discord.com/app',
         Authorization: token
       },
       validateStatus: (status) => true
@@ -40,7 +46,7 @@ export default function NextPage() {
       };
       
       // @ts-ignore
-      document.getElementById('welcome').innerHTML = `Welcome ${user.user.global_name}#${user.user.discriminator}!`;
+      setUser(user);
     }).catch(error => {
       const user = {
         global_name: 'Unknown user',
@@ -49,7 +55,7 @@ export default function NextPage() {
       };
 
       // @ts-ignore
-      document.getElementById('welcome').innerHTML = `Welcome ${user.user.global_name}#${user.user.discriminator}!`;
+      setUser(user);
     });
 
     return;
@@ -61,7 +67,7 @@ export default function NextPage() {
         <title>App</title>
       </Head>
       <div className="grid grid-col-1 text-2xl w-full text-center">
-        <span id='welcome'>Welcome .</span>
+        <span id='welcome'>Welcome {user.global_name}.</span>
         <button className='button-primary' onClick={() => logout(window.localStorage.getItem('token'), router)}>Logout</button>
       </div>
     </React.Fragment>

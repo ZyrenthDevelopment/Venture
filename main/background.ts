@@ -4,6 +4,8 @@ import { setupTitlebar, attachTitlebarToWindow } from 'custom-electron-titlebar/
 import path from 'path';
 import { createWindow } from './helpers';
 import Store from './utilities/Store';
+import UpsertKeyValue from './utilities/UpsertKeyValue';
+import { URL } from 'url';
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -11,11 +13,13 @@ if (isProd) serve({ directory: 'app' });
 else app.setPath('userData', `${app.getPath('userData')}-development`);
 
 const filter = {
-    urls: ['*://*.discord.com/*', '*://*.discordapp.com/*']
+    urls: ['*://*.discord.com/*', '*://*.discordapp.com/*', '*://*.hcaptcha.com/*']
 };
 
 (async () => {
     await app.whenReady();
+
+    // app.commandLine.appendSwitch('disable-features', 'OutOfBlinkCors');
 
     if (process.platform === 'win32') {
         app.setAppUserModelId('Venture Client');
@@ -35,7 +39,7 @@ const filter = {
 
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
-            webSecurity: false // TODO: remove this
+            //webSecurity: false // TODO: finish proper web-security
         }
     });
 
@@ -63,7 +67,7 @@ const filter = {
     const tray = new Tray(icon);
 
     const contextMenu = Menu.buildFromTemplate([
-        { label: 'Venture', type: 'normal', enabled: false, icon: icon.resize({ width: 16, height: 16 }) },
+        { label: `Venture${isProd ? '' : ' (Development)'}`, type: 'normal', enabled: false, icon: icon.resize({ width: 16, height: 16 }) },
         { label: 'Zyrenth.dev :3', type: 'normal', click: () => shell.openExternal('https://zyrenth.dev') },
         { type: 'separator' },
         { label: 'About', type: 'normal' },
@@ -72,7 +76,7 @@ const filter = {
         { label: 'Quit', type: 'normal', click: () => app.exit() },
     ]);
 
-    tray.setToolTip('Venture');
+    tray.setToolTip(`Venture${isProd ? '' : ' (Development)'}`);
     tray.setContextMenu(contextMenu);
 
     tray.on('click', () => {
@@ -82,27 +86,39 @@ const filter = {
     /*      Web-security      */
 
     session.defaultSession.webRequest.onBeforeSendHeaders(filter, (details, callback) => {
-        //details.requestHeaders['Origin'] = 'https://discord.com/';
-        details.requestHeaders['Host'] = 'discord.com';
-        details.requestHeaders['Referer'] = 'https://discord.com/';
-        details.requestHeaders['Origin'] = null;
+        const { requestHeaders } = details;
+
+        UpsertKeyValue(requestHeaders, 'Host', 'discord.com');
+        UpsertKeyValue(requestHeaders, 'Referer', 'https://discord.com/');
+        UpsertKeyValue(requestHeaders, 'Origin', null);
+
         delete details.requestHeaders['Origin'];
 
-        callback({ requestHeaders: details.requestHeaders });
+        callback({ requestHeaders });
     });
 
-    /* session.defaultSession.webRequest.onHeadersReceived((details, callback) => {
-        details.responseHeaders['Access-Control-Allow-Origin'] = ['app://.'];
+    session.defaultSession.webRequest.onHeadersReceived((details, callback) => {
+        const { responseHeaders } = details;
 
-        callback({ responseHeaders: details.responseHeaders });
-    }); */
+        const domain = new URL(details.url).hostname.split('.').slice(-2).join('.');
+        const isHcaptcha = domain === 'hcaptcha.com';
+        
+        delete details.responseHeaders['Access-Control-Allow-Origin'];
+        delete details.responseHeaders['Access-Control-Allow-Headers'];
+
+        UpsertKeyValue(responseHeaders, 'Access-Control-Allow-Origin', isHcaptcha ? ['https://newassets.hcaptcha.com'] : isProd ? ['app://.'] : ['http://localhost:8888']);
+        UpsertKeyValue(responseHeaders, 'Access-Control-Allow-Headers', ['*']);
+        UpsertKeyValue(responseHeaders, 'Access-Control-Allow-Credentials', ['true']);
+
+        callback({ responseHeaders });
+    });
 
     /*      Devtools and url loading      */
 
     if (isProd) await mainWindow.loadURL('app://./');
     else await mainWindow.loadURL(`http://localhost:${process.argv[2]}/`);
 
-    if (!isProd) mainWindow.webContents.openDevTools({
+    /* if (!isProd)  */mainWindow.webContents.openDevTools({
         mode: 'detach'
     });
 })();

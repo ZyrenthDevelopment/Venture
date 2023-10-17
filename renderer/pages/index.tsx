@@ -30,14 +30,16 @@ export default function HomePage() {
     <React.Fragment>
       <Head>
         <title>Venture</title>
-        <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+        <script src="/hcaptcha.js" async defer></script>
       </Head>
       <div className='container login'>
         <div className='plain-login'>
           <h1>Login</h1>
-          <i>email censored for privacy reasons</i>
-          <input type="password" name="Email" id="email" placeholder='Email' className='text-input' />
+          <i>Log in with your Discord account.</i>
+          <input type="email" name="Email" id="email" placeholder='Email' className='text-input' />
+          <p className="error hidden"></p>
           <input type="password" name="Password" id="password" placeholder='Password' className='text-input' />
+          <p className="error hidden"></p>
           <button className='button-primary' onClick={() => {
             const email = document.getElementById('email') as HTMLInputElement;
             const password = document.getElementById('password') as HTMLInputElement;
@@ -68,8 +70,7 @@ async function login(email: string, password: string, router: NextRouter) {
     headers: {
       'Content-Type': 'application/json',
       // @ts-ignore
-      'X-Captcha-Key': document.querySelector('[name=h-captcha-response]')?.value,
-      'Origin': 'https://discord.com/app'
+      'X-Captcha-Key': document.querySelector('[name=h-captcha-response]')?.value
     },
     validateStatus: (status) => true
   });
@@ -92,7 +93,11 @@ async function login(email: string, password: string, router: NextRouter) {
     });
   }
 
-  if (response.data.token) localStorage.setItem('token', response.data.token);
+  if (response.data.token) {
+    localStorage.setItem('token', response.data.token);
 
-  return router.push('/app');
+    return router.push('/app');
+  };
+
+  return;
 }

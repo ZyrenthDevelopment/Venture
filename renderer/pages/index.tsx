@@ -4,15 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import axios from 'axios';
 import { NextRouter, Router, useRouter } from 'next/router';
-
-const apiConfig = {
-  version: 9,
-  baseUrl: 'https://discord.com/api/',
-  cdnUrl: 'https://cdn.discordapp.com/',
-  inviteUrl: 'https://discord.gg/',
-  giftUrl: 'https://discord.gift/',
-  templateBaseUrl: 'https://discord.new/'
-};
+import apiConfig from '../utilities/config/apiConfig';
 
 export default function HomePage() {
   const router = useRouter();

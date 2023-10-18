@@ -24,7 +24,7 @@ export default function HomePage() {
         <title>Venture</title>
         <script src="/hcaptcha.js" async defer></script>
       </Head>
-      <div className='container login'>
+      <div className='_app login'>
         <div className='plain-login'>
           <h1>Login</h1>
           <i>Log in with your Discord account.</i>

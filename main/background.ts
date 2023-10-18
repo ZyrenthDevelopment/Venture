@@ -4,7 +4,7 @@ import { setupTitlebar, attachTitlebarToWindow } from 'custom-electron-titlebar/
 import path from 'path';
 import { createWindow } from './helpers';
 import Store from './utilities/Store';
-import UpsertKeyValue from './utilities/UpsertKeyValue';
+import ModifyHeader from './utilities/ModifyHeader';
 import { URL } from 'url';
 
 const isProd = process.env.NODE_ENV === 'production';
@@ -88,9 +88,9 @@ const filter = {
     session.defaultSession.webRequest.onBeforeSendHeaders(filter, (details, callback) => {
         const { requestHeaders } = details;
 
-        UpsertKeyValue(requestHeaders, 'Host', 'discord.com');
-        UpsertKeyValue(requestHeaders, 'Referer', 'https://discord.com/');
-        UpsertKeyValue(requestHeaders, 'Origin', null);
+        ModifyHeader(requestHeaders, 'Host', 'discord.com');
+        ModifyHeader(requestHeaders, 'Referer', 'https://discord.com/');
+        ModifyHeader(requestHeaders, 'Origin', null);
 
         delete details.requestHeaders['Origin'];
 
@@ -106,9 +106,9 @@ const filter = {
         delete details.responseHeaders['Access-Control-Allow-Origin'];
         delete details.responseHeaders['Access-Control-Allow-Headers'];
 
-        UpsertKeyValue(responseHeaders, 'Access-Control-Allow-Origin', isHcaptcha ? ['https://newassets.hcaptcha.com'] : isProd ? ['app://.'] : ['http://localhost:8888']);
-        UpsertKeyValue(responseHeaders, 'Access-Control-Allow-Headers', ['*']);
-        UpsertKeyValue(responseHeaders, 'Access-Control-Allow-Credentials', ['true']);
+        ModifyHeader(responseHeaders, 'Access-Control-Allow-Origin', isHcaptcha ? ['https://newassets.hcaptcha.com'] : isProd ? ['app://.'] : ['http://localhost:8888']);
+        ModifyHeader(responseHeaders, 'Access-Control-Allow-Headers', ['*']);
+        ModifyHeader(responseHeaders, 'Access-Control-Allow-Credentials', ['true']);
 
         callback({ responseHeaders });
     });

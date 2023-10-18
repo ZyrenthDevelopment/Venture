@@ -8,6 +8,7 @@ import fetchUserNext from '../utilities/fetchUserNext';
 import User from '../utilities/types/User';
 import defaultUser from '../utilities/config/defaultUser';
 import apiConfig from '../utilities/config/apiConfig';
+import ServerListItem from '../components/ServerListItem';
 
 export default function NextPage() {
     const router = useRouter();
@@ -35,9 +36,25 @@ export default function NextPage() {
             <Head>
                 <title>App</title>
             </Head>
-            <div className="grid grid-col-1 text-2xl w-full text-center">
-                <span id='welcome'>Welcome {publicUser.global_name} your id is {publicUser.id} and your username is {publicUser.discriminator === '0' ? 'migrated' : 'not migrated'}.</span>
-                <button className='button-primary' onClick={() => logout(window.localStorage.getItem('token'), router)}>Logout</button>
+            <div className="_app app">
+                <div className="server-list">
+                    <div className="app-home">
+                        <div className={'absolute' ?? "indicator full"}></div>
+                        <img src="/images/VentureIcon.svg" alt="Venture Logo" className='app-home-icon' />
+                    </div>
+                    <div className="separator"></div>
+                    <ServerListItem iconUrl='/images/Icon.png' isSelected={false} hasNewMessages={true} />
+                    <ServerListItem iconUrl='/images/Icon.png' isSelected={false} hasNewMessages={false} />
+                    <ServerListItem iconUrl='/images/Icon.png' isSelected={false} hasNewMessages={true} />
+                    <ServerListItem iconUrl='/images/Icon.png' isSelected={false} hasNewMessages={false} />
+                    <ServerListItem iconUrl='/images/Icon.png' isSelected={true} hasNewMessages={true} />
+                    <ServerListItem iconUrl='/images/Icon.png' isSelected={false} hasNewMessages={false} />
+                    <ServerListItem iconUrl='/images/Icon.png' isSelected={false} hasNewMessages={false} />
+                    <div className="separator"></div>
+                    <div className="extra-item">
+                        <img src="/images/Plus.svg" alt="Plus" className='extra-icon' />
+                    </div>
+                </div>
             </div>
         </React.Fragment>
     )

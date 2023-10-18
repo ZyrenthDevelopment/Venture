@@ -3,7 +3,7 @@ import { Titlebar, TitlebarColor } from 'custom-electron-titlebar';
 
 window.addEventListener('DOMContentLoaded', () => new Titlebar({
     backgroundColor: TitlebarColor.fromHex('#00000000'),
-    icon: '/images/logo.png',
+    icon: '/images/LogoText.svg',
     shadow: true,
 }));
 

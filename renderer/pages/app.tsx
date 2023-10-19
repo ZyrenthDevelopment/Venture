@@ -10,16 +10,19 @@ import defaultUser from '../utilities/config/defaultUser';
 import apiConfig from '../utilities/config/apiConfig';
 import ServerListItem from '../components/ServerListItem';
 import Icon from '../components/Icons/icon';
+import VenturePack from '../utilities/pack/venturePack';
 
 export default function NextPage() {
     const router = useRouter();
-    const [publicUser, setUser] = useState<User>({});
+    const [publicUser, setUser] = useState<User>(defaultUser);
 
     function _su(user: User) {
         setUser(user);
     }
 
     useEffect(() => {
+        const _vp = new VenturePack(window);
+        
         const token = window.localStorage.getItem('token');
 
         if (!token) {
@@ -28,6 +31,8 @@ export default function NextPage() {
         };
 
         fetchUserNext(apiConfig, token, _su, defaultUser);
+
+        _vp.createPackItem('currentUser', publicUser);
 
         return;
     }, []);

@@ -1,20 +1,22 @@
 export default class VenturePack {
     private _window: Window;
+    customName: string;
 
-    constructor(window: Window) {
+    constructor(window: Window, customName?: string) {
         if (typeof window === 'undefined') throw new Error('VenturePack is only supported in the browser.');
 
         this._window = window;
+        if (this.customName) this.customName = customName;
 
-        if (!this._window['venturePack']) {
-            this._window['venturePack'] = [];
+        if (!this._window[this.customName ?? 'venturePack']) {
+            this._window[this.customName ?? 'venturePack'] = [];
 
             this.createPackItem('_init', [true, Date.now()]);
         }
     }
 
     getWindowPack(): Array<[number, string, string, Object]> {
-        return this._window['venturePack'] as Array<[number, string, string, Object]>;
+        return this._window[this.customName ?? 'venturePack'] as Array<[number, string, string, Object]>;
     }
 
     searchPack(pack: string): Object {
@@ -26,7 +28,9 @@ export default class VenturePack {
     }
 
     createPackItem(pack: string, data: Object): void {
-        this.getWindowPack().push([this.getWindowPack().length, btoa(Math.floor(Date.now() / 1000).toString() + this.getWindowPack().length), pack, data]);
+        if (this.searchPack(pack)) this.deletePackItemByName(pack);
+
+        this.getWindowPack().push([this.getWindowPack().length, btoa(Math.floor(Date.now() / 1000).toString() + this.getWindowPack().length.toString()), pack, data]);
     }
 
     deletePackItemByName(pack: string): void {

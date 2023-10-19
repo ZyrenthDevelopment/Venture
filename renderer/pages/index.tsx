@@ -5,11 +5,14 @@ import Image from 'next/image';
 import axios from 'axios';
 import { NextRouter, Router, useRouter } from 'next/router';
 import apiConfig from '../utilities/config/apiConfig';
+import VenturePack from '../utilities/pack/venturePack';
 
 export default function HomePage() {
   const router = useRouter();
 
   useEffect(() => {
+    const _vp = new VenturePack(window);
+
     const token = window.localStorage.getItem('token');
 
     if (token) {

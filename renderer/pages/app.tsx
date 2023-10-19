@@ -9,6 +9,7 @@ import User from '../utilities/types/User';
 import defaultUser from '../utilities/config/defaultUser';
 import apiConfig from '../utilities/config/apiConfig';
 import ServerListItem from '../components/ServerListItem';
+import Icon from '../components/Icons/icon';
 
 export default function NextPage() {
     const router = useRouter();
@@ -38,8 +39,8 @@ export default function NextPage() {
             </Head>
             <div className="_app app">
                 <div className="server-list">
-                    <div className="app-home">
-                        <div className={'absolute' ?? "indicator full"}></div>
+                    <div className="app-home selected">
+                        <div className="indicator full"></div>
                         <img src="/images/VentureIcon.svg" alt="Venture Logo" className='app-home-icon' />
                     </div>
                     <div className="separator"></div>
@@ -47,12 +48,87 @@ export default function NextPage() {
                     <ServerListItem iconUrl='/images/Icon.png' isSelected={false} hasNewMessages={false} />
                     <ServerListItem iconUrl='/images/Icon.png' isSelected={false} hasNewMessages={true} />
                     <ServerListItem iconUrl='/images/Icon.png' isSelected={false} hasNewMessages={false} />
-                    <ServerListItem iconUrl='/images/Icon.png' isSelected={true} hasNewMessages={true} />
+                    <ServerListItem iconUrl='/images/Icon.png' isSelected={false} hasNewMessages={true} />
                     <ServerListItem iconUrl='/images/Icon.png' isSelected={false} hasNewMessages={false} />
                     <ServerListItem iconUrl='/images/Icon.png' isSelected={false} hasNewMessages={false} />
                     <div className="separator"></div>
                     <div className="extra-item">
-                        <img src="/images/Plus.svg" alt="Plus" className='extra-icon' />
+                        <Icon name='add' filled size={28} weight={300} className='extra-icon' />
+                    </div>
+                </div>
+                <div className="content">
+                    <div className="navbar">
+                        <div className="sidebar">
+                            <div className="content">
+                                <span>Search for users, servers, DMs...</span>
+                            </div>
+                            <div className="shadow">
+                                <div className="separator"></div>
+                                <div className="dropshadow"></div>
+                            </div>
+                        </div>
+                        <div className="body">
+                            <div className="content">
+                                <div className="nav-left">
+                                    <div className="heading">
+                                        <Icon name='groups' filled />
+                                        <span>Friends</span>
+                                    </div>
+                                    <div className="separator"></div>
+                                    <div className="tabs">
+                                        <a href="#" className="button selected">Online</a>
+                                        <a href="#" className="button">All</a>
+                                        <a href="#" className="button">Pending</a>
+                                        <a href="#" className="button">Blocked</a>
+                                        <a href="#" className="button filled">Add Friend</a>
+                                    </div>
+                                </div>
+                                <div className="nav-right">
+                                    <div className="new-dm">
+                                        <Icon name='add_circle' filled />
+                                    </div>
+                                    <div className="separator"></div>
+                                    <div className="icons">
+                                        <Icon name='inbox' filled />
+                                        <Icon name='code' filled />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="shadow">
+                                <div className="separator"></div>
+                                <div className="dropshadow"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="body">
+                        <div className="sidebar">
+                            <div className="dm-list">
+
+                            </div>
+                            <div className="profile">
+                                <div className="user">
+                                    <img src="/images/Icon.png" alt="Profile Picture" />
+                                    <div className="info">
+                                        <span className="username">Venture</span>
+                                        <span className="status">Status example</span>
+                                    </div>
+                                </div>
+                                <div className="buttons">
+                                    <a href="#" className='button'>
+                                        <Icon name='mic' filled size={22} weight={300} />
+                                    </a>
+                                    <a href="#" className='button'>
+                                        <Icon name='headphones' filled size={22} weight={300} />
+                                    </a>
+                                    <a href="#" className='button'>
+                                        <Icon name='settings' filled size={22} weight={300} />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="content">
+
+                        </div>
                     </div>
                 </div>
             </div>

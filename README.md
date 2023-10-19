@@ -3,8 +3,6 @@ Venture is an open-source Discord client focused on speed and convenience throug
 
 > This is a side-project made by [@Zyrenth](https://github.com/Zyrenth).
 
-> Designed by [@Pukima](https://github.com/Pukimaa).
-
 # Resources
 - Electron & NodeJS 20.x
 - Websocket for Gateway
@@ -18,7 +16,7 @@ I'm going to use nextron to merge Electron and NextJS for an easier workflow and
 # Roadmap
 - [x] Electron setup
 - [x] NextJS setup
-- [ ] Custom titlebar
+- [x] Custom titlebar
 - [ ] Login page
 - [ ] Websocket
   - [ ] Heartbeats
@@ -28,4 +26,4 @@ I'm going to use nextron to merge Electron and NextJS for an easier workflow and
 # Credits
 > [@Zyrenth](https://github.com/Zyrenth): Coding, designing, branding.
 
-> [@Pukima](https://github.com/Pukimaa): Designing.
+> [@Pukima](https://github.com/Pukimaa): Figma designer.

@@ -67,7 +67,7 @@ const filter = {
     const tray = new Tray(icon);
 
     const contextMenu = Menu.buildFromTemplate([
-        { label: `Venture${isProd ? '' : ' (Development)'}`, type: 'normal', enabled: false, icon: icon.resize({ width: 16, height: 16 }) },
+        { label: `Venture${isProd ? '' : ' (Development)'}`, type: 'normal', enabled: !isProd, icon: icon.resize({ width: 16, height: 16 }), click: () => !isProd ? mainWindow.webContents.openDevTools({ mode: 'detach' }) : null },
         { label: 'Zyrenth.dev :3', type: 'normal', click: () => shell.openExternal('https://zyrenth.dev') },
         { type: 'separator' },
         { label: 'About', type: 'normal' },

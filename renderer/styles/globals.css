@@ -7,6 +7,82 @@
     src: url('/fonts/Inter.ttf') format('truetype');
 }
 
+@font-face {
+    font-family: 'Material Symbols Rounded';
+    font-style: normal;
+    src: url('/fonts/MaterialSymbolsRounded.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Lato';
+    src: url('/fonts/Lato/Lato-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Lato';
+    src: url('/fonts/Lato/Lato-BlackItalic.ttf') format('truetype');
+    font-weight: 900;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Lato';
+    src: url('/fonts/Lato/Lato-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Lato';
+    src: url('/fonts/Lato/Lato-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Lato';
+    src: url('/fonts/Lato/Lato-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Lato';
+    src: url('/fonts/Lato/Lato-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Lato';
+    src: url('/fonts/Lato/Lato-LightItalic.ttf') format('truetype');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Lato';
+    src: url('/fonts/Lato/Lato-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Lato';
+    src: url('/fonts/Lato/Lato-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Lato';
+    src: url('/fonts/Lato/Lato-ThinItalic.ttf') format('truetype');
+    font-weight: 100;
+    font-style: italic;
+}
+
 @layer base {
     body {
         @apply bg-[#1B1D2A] text-white flex flex-col;
@@ -24,7 +100,7 @@
     }
 
     ._app {
-        @apply flex flex-col justify-center m-0;
+        @apply flex flex-row m-0;
     }
 
     .app {
@@ -34,7 +110,7 @@
     /* Base End */
 
     .login {
-        @apply bg-gray-600 rounded-lg shadow-lg p-8 flex flex-row gap-[10px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 py-2 w-1/2;
+        @apply bg-gray-600 rounded-lg shadow-lg p-8 flex flex-row gap-3 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 py-2 w-1/2;
     }
 
     .text-input {
@@ -46,7 +122,7 @@
     }
 
     .plain-login {
-        @apply flex flex-col gap-[10px] w-full;
+        @apply flex flex-col gap-3 w-full;
     }
 
     .plain-login>h1 {
@@ -54,7 +130,7 @@
     }
 
     .qr-login {
-        @apply flex flex-col gap-[10px] w-full items-center justify-center;
+        @apply flex flex-col gap-3 w-full items-center justify-center;
     }
 
     .qr-login > h1 {
@@ -63,52 +139,226 @@
 
     /* template end */
 
+    /* Server list */
+
     .server-list {
         @apply flex flex-col items-center gap-[8px] self-stretch w-[72px] h-full /*overflow-y-scroll*/; /* TODO: Fix server item overflow + indicators dont move on scroll */
     }
 
-    .server-list .app-home {
-        @apply flex w-[48px] h-[48px] p-[10px] justify-center items-center gap-[10px] cursor-pointer hover:rounded-xl rounded-3xl hover:bg-opacity-100 bg-opacity-10 hover:bg-[#2A3FAE] bg-white transition-all duration-[150ms] ease-linear;
+    .server-list > .app-home {
+        @apply flex w-12 h-12 p-3 justify-center items-center gap-3 cursor-pointer hover:rounded-xl rounded-3xl hover:bg-opacity-70 bg-opacity-10 hover:bg-[#2A3FAE] bg-white transition-all duration-[150ms] ease-linear;
     }
 
-    .server-list .server-item.selected {
+    .server-list > .app-home.selected {
+        @apply rounded-xl bg-opacity-70 bg-[#2A3FAE];
+    }
+
+    .server-list > .server-item.selected {
         @apply bg-[#2A3FAE] bg-opacity-100 rounded-xl;
     }
 
-    .server-list .app-home .indicator {
-        @apply absolute w-[8px] h-[8px] rounded-full bg-white bg-opacity-50 left-[-3px];
+    .server-list > .app-home > .indicator {
+        @apply absolute w-2 h-2 rounded-full bg-white bg-opacity-50 left-[-3px];
     }
 
-    .server-list .app-home .indicator.full {
-        @apply h-[32px];
+    .server-list > .app-home > .indicator.full {
+        @apply h-8;
     }
 
-    .server-list .server-item {
-        @apply flex w-[48px] h-[48px] p-[10px] flex-shrink-0 justify-center items-center gap-[10px] cursor-pointer hover:rounded-xl rounded-3xl overflow-hidden transition-all duration-[150ms] ease-linear;
+    .server-list > .server-item {
+        @apply flex w-12 h-12 p-3 flex-shrink-0 justify-center items-center gap-3 cursor-pointer hover:rounded-xl rounded-3xl overflow-hidden transition-all duration-[150ms] ease-linear;
     }
 
-    .server-list .server-item.selected {
+    .server-list > .server-item.selected {
         @apply rounded-xl;
     }
 
-    .server-list .server-item .server-icon {
-        @apply w-[48px] h-[48px] max-w-none;
+    .server-list > .server-item > .server-icon {
+        @apply w-12 h-12 max-w-none;
     }
 
-    .server-list .server-item .indicator {
-        @apply absolute w-[8px] h-[8px] rounded-full bg-white bg-opacity-50 left-[-3px];
+    .server-list > .server-item > .indicator {
+        @apply absolute w-2 h-2 rounded-full bg-white bg-opacity-50 left-[-3px];
     }
 
-    .server-list .server-item .indicator.full {
-        @apply h-[32px];
+    .server-list > .server-item > .indicator.full {
+        @apply h-8;
     }
 
-    .server-list .separator {
-        @apply w-[32px] h-[2px] rounded-[1px] bg-opacity-10 bg-white;
+    .server-list > .separator {
+        @apply w-8 h-0.5 rounded-[1px] bg-opacity-10 bg-white;
     }
 
-    .server-list .extra-item {
-        @apply flex w-[48px] h-[48px] p-[10px] justify-center items-center gap-[10px] cursor-pointer hover:rounded-xl rounded-3xl hover:bg-opacity-30 bg-opacity-10 hover:bg-[#000] bg-white transition-all duration-[150ms] ease-linear;
+    .server-list > .extra-item {
+        @apply flex w-12 h-12 p-3 justify-center items-center gap-3 cursor-pointer hover:rounded-xl rounded-3xl hover:bg-opacity-30 bg-opacity-10 hover:bg-[#000] bg-white transition-all duration-[150ms] ease-linear;
+    }
+
+    .app > .content {
+        @apply flex flex-col flex-grow w-full h-full rounded-tl-xl overflow-hidden;
+    }
+
+    /* App navbar container */
+
+    .app > .content > .navbar {
+        @apply flex items-start self-stretch;
+    }
+    
+    .app > .content > .navbar > .sidebar {
+        @apply flex flex-col items-center gap-3 bg-opacity-30 bg-[#000] pt-3;
+    }
+
+    .app > .content > .navbar > .sidebar > .shadow {
+        @apply flex flex-col items-center;
+    }
+
+    .app > .content > .navbar > .sidebar > .content {
+        @apply flex gap-3 w-[220px] h-[28px] p-[4px_6px] rounded-md bg-[#000] bg-opacity-30 cursor-pointer;
+    }
+
+    .app > .content > .navbar > .sidebar > .content > span {
+        @apply text-white opacity-30 font-['Lato'] font-medium text-sm tracking-[0.21px];
+    }
+
+    .app > .content > .navbar > .sidebar > .shadow > .separator {
+        @apply w-[240px] h-[1px] bg-[#000] bg-opacity-40;
+    }
+
+    .app > .content > .navbar > .sidebar > .shadow > .dropshadow {
+        @apply w-[240px] h-[1px] bg-[#000] bg-opacity-20;
+    }
+    
+    /* App navbar */
+
+    .app > .content > .navbar > .body {
+        @apply flex flex-col items-start gap-3 self-stretch justify-center bg-opacity-20 bg-[#000] w-full max-h-[54px];
+    }
+
+    .app > .content > .navbar > .body > .content {
+        @apply flex flex-row px-3 items-start self-stretch justify-start;
+    }
+
+    .app > .content > .navbar > .body > .content > .nav-left {
+        @apply flex items-center gap-4 w-full;
+    }
+
+    .app > .content > .navbar > .body > .content > .nav-left {
+        @apply flex gap-4;
+    }
+
+    .app > .content > .navbar > .body > .content > .nav-left > .heading {
+        @apply flex justify-center items-center gap-2;
+    }
+
+    .app > .content > .navbar > .body > .content > .nav-left > .heading > icon {
+        @apply opacity-50;
+    }
+
+    .app > .content > .navbar > .body > .content > .nav-left > .heading > span {
+        @apply text-white text-[16px] not-italic font-semibold leading-[108.5%] tracking-[-0.401px];
+    }
+
+    .app > .content > .navbar > .body > .shadow {
+        @apply flex flex-col items-center self-stretch absolute top-[52px] w-[-webkit-fill-available] w-[-moz-available];
+    }
+
+    .app > .content > .navbar > .body > .shadow > .separator {
+        @apply w-full h-[1px] bg-[#000] bg-opacity-20;
+    }
+
+    .app > .content > .navbar > .body > .shadow > .dropshadow {
+        @apply w-full h-[1px] bg-[#000] bg-opacity-10;
+    }
+
+    .app > .content > .navbar > .body .separator {
+        @apply w-0.5 h-[30px] rounded-[1px] bg-white bg-opacity-10;
+    }
+
+    .app > .content > .navbar > .body > .content > .nav-left > .tabs {
+        @apply flex justify-center items-center gap-3;
+    }
+
+    .app > .content > .navbar > .body > .content > .nav-left > .tabs > .button {
+        @apply flex justify-center items-center gap-2.5 px-2 py-0.5 rounded-md hover:bg-white hover:bg-opacity-10 transition-all duration-[100ms] ease-linear;
+    }
+
+    .app > .content > .navbar > .body > .content > .nav-left > .tabs > .button.selected {
+        @apply bg-white bg-opacity-20;
+    }
+
+    .app > .content > .navbar > .body > .content > .nav-left > .tabs > .button.filled {
+        @apply bg-[#000] bg-opacity-40;
+    }
+
+
+    .app > .content > .navbar > .body > .content > .nav-right {
+        @apply flex items-center gap-3 flex-shrink-0 h-full;
+    }
+
+    .app > .content > .navbar > .body > .content > .nav-right > .new-dm {
+        @apply flex items-center gap-2.5 self-stretch;
+    }
+
+    .app > .content > .navbar > .body > .content > .nav-right > .icons {
+        @apply flex flex-row justify-center items-center gap-3 self-stretch;
+    }
+
+    .app > .content > .navbar > .body > .content > .nav-right > .new-dm > icon,
+    .app > .content > .navbar > .body > .content > .nav-right > .icons > icon {
+        @apply h-6 hover:opacity-100 opacity-50 transition-all duration-[100ms] ease-linear cursor-pointer;
+    }
+
+    /* App body */
+
+    .app > .content > .body {
+        @apply w-full h-full flex flex-row;
+    }
+
+    .app > .content > .body > .sidebar {
+        @apply flex w-60 h-full flex-col items-center flex-shrink-0;
+    }
+
+    .app > .content > .body > .sidebar > .dm-list {
+        @apply flex items-start h-full gap-2.5 self-stretch px-0 py-2.5 bg-[#000] bg-opacity-30;
+    }
+
+    .app > .content > .body > .sidebar > .profile {
+        @apply flex items-center self-stretch px-2 py-2.5 bg-[#000] bg-opacity-50;
+    }
+
+    .app > .content > .body > .sidebar > .profile > .user {
+        @apply flex items-center gap-[5px] w-full p-1.5 cursor-pointer rounded hover:bg-white hover:bg-opacity-10 transition-all duration-[100ms] ease-linear;
+    }
+
+    .app > .content > .body > .sidebar > .profile > .user > img {
+        @apply w-8 h-8 rounded-3xl;
+    }
+
+    .app > .content > .body > .sidebar > .profile > .user > .info {
+        @apply flex flex-col items-start gap-[-2.5px];
+    }
+
+    .app > .content > .body > .sidebar > .profile > .user > .info > .username {
+        @apply text-white text-sm not-italic font-semibold leading-[normal];
+    }
+
+    .app > .content > .body > .sidebar > .profile > .user > .info > .status {
+        @apply text-white text-xs not-italic font-normal leading-[normal] truncate overflow-ellipsis;
+    }
+
+    .app > .content > .body > .sidebar > .profile > .buttons {
+        @apply flex flex-shrink-0 justify-center items-center;
+    }
+
+    .app > .content > .body > .sidebar > .profile > .buttons > a.button {
+        @apply flex justify-center items-center p-1 rounded hover:bg-white hover:bg-opacity-10 transition-all duration-[100ms] ease-linear;
+    }
+
+    .app > .content > .body > .sidebar > .profile > .buttons > a.button > icon {
+        @apply opacity-50;
+    }
+
+    .app > .content > .body > .content {
+        @apply flex flex-col w-full h-full bg-[#000] bg-opacity-20;
     }
 }
 
@@ -117,6 +367,22 @@
         @apply hidden;
     }
 }
+
+icon {
+    font-family: 'Material Symbols Rounded';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+
+    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24
+}  
 
 * {
     animation-duration: 0.25s;
@@ -138,11 +404,11 @@
 
 .cet-icon {
     width: unset !important;
-    padding-left: 10px !important;
+    padding-left: 12px !important;
 }
 
 .cet-icon > img {
-    height: 12px !important;
+    height: 11px !important;
 }
 
 .cet-menubar {

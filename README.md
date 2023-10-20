@@ -17,6 +17,21 @@ I'm going to use nextron to merge Electron and NextJS for an easier workflow and
 - [x] Electron setup
 - [x] NextJS setup
 - [x] Custom titlebar
+- [ ] Custom components
+  - [ ] Tooltips
+  - [ ] Modals
+  - [ ] Popout/tooltip modals
+  - [ ] Context menus
+- [ ] Friends page
+- [ ] Home page
+- [ ] Marketplace page
+- [ ] Discovery page
+- [ ] Message requests page
+- [ ] DM page
+- [ ] Settings full-screen modal
+
+
+# Roadmap for later
 - [ ] Login page
 - [ ] Websocket
   - [ ] Heartbeats

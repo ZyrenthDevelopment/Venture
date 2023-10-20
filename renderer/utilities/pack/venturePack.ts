@@ -7,16 +7,17 @@ export default class VenturePack {
 
         this._window = window;
         if (this.customName) this.customName = customName;
+        else this.customName = '__webpack_venturePack';
 
-        if (!this._window[this.customName ?? 'venturePack']) {
-            this._window[this.customName ?? 'venturePack'] = [];
+        if (!this._window[this.customName]) {
+            this._window[this.customName] = [];
 
             this.createPackItem('_init', [true, Date.now()]);
         }
     }
 
     getWindowPack(): Array<[number, string, string, Object]> {
-        return this._window[this.customName ?? 'venturePack'] as Array<[number, string, string, Object]>;
+        return this._window[this.customName] as Array<[number, string, string, Object]>;
     }
 
     searchPack(pack: string): Object {

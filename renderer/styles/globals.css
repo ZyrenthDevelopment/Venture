@@ -318,7 +318,122 @@
     }
 
     .app > .content > .body > .sidebar > .dm-list {
-        @apply flex items-start h-full gap-2.5 self-stretch px-0 py-2.5 bg-[#000] bg-opacity-30;
+        @apply flex items-start h-full gap-2.5 self-stretch px-0.5 py-2.5 bg-[#000] bg-opacity-30;
+    }
+
+    .app > .content > .body > .sidebar > .dm-list > .content {
+        @apply flex flex-col w-full justify-center items-center gap-5;
+    }
+
+    .app > .content > .body > .sidebar > .dm-list > .content > .tabs {
+        @apply flex flex-col items-start gap-0.5 self-stretch px-2 py-0;
+    }
+
+    .app > .content > .body > .sidebar > .dm-list > .content > .dms > .message-requests > .tab,
+    .app > .content > .body > .sidebar > .dm-list > .content > .tabs > .tab {
+        @apply flex items-center gap-4 self-stretch px-4 py-2.5 rounded-md hover:bg-white hover:bg-opacity-10 transition-all duration-[100ms] ease-linear cursor-pointer;
+    }
+
+    .app > .content > .body > .sidebar > .dm-list > .content > .dms > .message-requests > .tab {
+        @apply w-full;
+    }
+
+    .app > .content > .body > .sidebar > .dm-list > .content > .dms > .message-requests > .tab.selected,
+    .app > .content > .body > .sidebar > .dm-list > .content > .tabs > .tab.selected {
+        @apply bg-white bg-opacity-10;
+    }
+
+    .app > .content > .body > .sidebar > .dm-list > .content > .dms > .message-requests > .tab > icon,
+    .app > .content > .body > .sidebar > .dm-list > .content > .tabs > .tab > icon {
+        @apply opacity-50 transition-all duration-[100ms] ease-linear;
+    }
+
+    .app > .content > .body > .sidebar > .dm-list > .content > .dms > .message-requests > .tab:hover > icon,
+    .app > .content > .body > .sidebar > .dm-list > .content > .dms > .message-requests > .tab.selected > icon,
+    .app > .content > .body > .sidebar > .dm-list > .content > .tabs > .tab:hover > icon,
+    .app > .content > .body > .sidebar > .dm-list > .content > .tabs > .tab.selected > icon {
+        @apply opacity-100;
+    }
+
+    .app > .content > .body > .sidebar > .dm-list > .content > .dms > .message-requests > .tab > span,
+    .app > .content > .body > .sidebar > .dm-list > .content > .tabs > .tab > span {
+        @apply text-white text-base not-italic font-normal tracking-[0.08px] opacity-50 transition-all duration-[100ms] ease-linear;
+    }
+
+    .app > .content > .body > .sidebar > .dm-list > .content > .dms > .message-requests > .tab:hover > span,
+    .app > .content > .body > .sidebar > .dm-list > .content > .dms > .message-requests > .tab.selected > span,
+    .app > .content > .body > .sidebar > .dm-list > .content > .tabs > .tab:hover > span,
+    .app > .content > .body > .sidebar > .dm-list > .content > .tabs > .tab.selected > span {
+        @apply opacity-100;
+    }
+
+    .app > .content > .body > .sidebar > .dm-list > .content > .dms {
+        @apply flex flex-col justify-center items-center gap-2 self-stretch px-2 py-0;
+    }
+
+    .app > .content > .body > .sidebar > .dm-list > .content > .dms > .heading {
+        @apply flex justify-center items-center gap-2.5 self-stretch px-2 py-px;
+    }
+
+    .app > .content > .body > .sidebar > .dm-list > .content > .dms > .heading > span {
+        @apply w-full text-white opacity-50 text-sm not-italic tracking-[-0.455px];
+    }
+
+    .app > .content > .body > .sidebar > .dm-list > .content > .dms > .heading:hover > span {
+        @apply opacity-100;
+    }
+
+    .app > .content > .body > .sidebar > .dm-list > .content > .dms > .heading > icon {
+        @apply opacity-50 hover:opacity-100 cursor-pointer;
+    }
+
+    .app > .content > .body > .sidebar > .dm-list > .content > .dms > .message-requests {
+        @apply flex items-center gap-5 self-stretch rounded-md;
+    }
+
+    .app > .content > .body > .sidebar > .dm-list > .content > .dms > .users {
+        @apply flex flex-col items-start gap-0.5 self-stretch;
+    }
+
+    .app > .content > .body > .sidebar > .dm-list > .content > .dms > .users > .user {
+        @apply flex flex-shrink-0 items-center gap-3 self-stretch px-2 py-1 rounded-md min-h-[43px] cursor-pointer;
+    }
+
+    .app > .content > .body > .sidebar > .dm-list > .content > .dms > .users > .user:hover,
+    .app > .content > .body > .sidebar > .dm-list > .content > .dms > .users > .user.selected {
+        @apply bg-white bg-opacity-10 transition-all duration-[100ms] ease-linear;
+    }
+
+    .app > .content > .body > .sidebar > .dm-list > .content > .dms > .users > .user > img {
+        @apply w-8 h-8 shrink-0;
+    }
+
+    .app > .content > .body > .sidebar > .dm-list > .content > .dms > .users > .user > .info {
+        @apply flex flex-col items-start;
+    }
+
+    .app > .content > .body > .sidebar > .dm-list > .content > .dms > .users > .user > .info > .username {
+        @apply self-stretch text-white opacity-50 text-base not-italic font-medium leading-[normal];
+    }
+
+    .app > .content > .body > .sidebar > .dm-list > .content > .dms > .users > .user > .info > .status {
+        @apply text-white opacity-50 text-xs not-italic leading-[normal] tracking-[-0.36px];
+    }
+
+    .app > .content > .body > .sidebar > .dm-list > .content > .dms > .users > .user > .info > .rpc {
+        @apply flex justify-center items-end gap-0.5 self-stretch;
+    }
+
+    .app > .content > .body > .sidebar > .dm-list > .content > .dms > .users > .user > .info > .rpc > span {
+        @apply text-white opacity-50 text-xs not-italic leading-[normal] tracking-[-0.36px]
+    }
+
+    .app > .content > .body > .sidebar > .dm-list > .content > .dms > .users > .user > .info > .rpc > .name {
+        @apply font-semibold;
+    }
+
+    .app > .content > .body > .sidebar > .dm-list > .content > .dms > .users > .user > .info > .rpc > icon {
+        @apply opacity-50;
     }
 
     .app > .content > .body > .sidebar > .profile {

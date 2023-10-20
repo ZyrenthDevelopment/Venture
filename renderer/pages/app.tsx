@@ -11,6 +11,8 @@ import apiConfig from '../utilities/config/apiConfig';
 import ServerListItem from '../components/ServerListItem';
 import Icon from '../components/Icons/icon';
 import VenturePack from '../utilities/pack/venturePack';
+import Tab from '../components/Home/DMList/Tab';
+import DMListUser from '../components/Home/DMList/User';
 
 export default function NextPage() {
     const router = useRouter();
@@ -40,7 +42,7 @@ export default function NextPage() {
     return (
         <React.Fragment>
             <Head>
-                <title>App</title>
+                <title>Venture Client</title>
             </Head>
             <div className="_app app">
                 <div className="server-list">
@@ -90,7 +92,7 @@ export default function NextPage() {
                                 </div>
                                 <div className="nav-right">
                                     <div className="new-dm">
-                                        <Icon name='add_circle' filled />
+                                        <Icon name='maps_ugc' filled />
                                     </div>
                                     <div className="separator"></div>
                                     <div className="icons">
@@ -108,7 +110,76 @@ export default function NextPage() {
                     <div className="body">
                         <div className="sidebar">
                             <div className="dm-list">
+                                <div className="content">
+                                    <div className="tabs">
+                                        <Tab name='Home' icon='home' />
+                                        <Tab name='Friends' icon='groups' isSelected />
+                                        <Tab name='Marketplace' icon='store' />
+                                        <Tab name='Discovery' icon='explore' />
+                                    </div>
+                                    <div className="dms">
+                                        <div className="heading">
+                                            <span>Direct messages</span>
+                                            <Icon name='add' filled size={20} />
+                                        </div>
+                                        <div className="message-requests">
+                                            <Tab name='Message requests' icon='contact_support' />
+                                        </div>
+                                        <div className="users">
 
+                                            <DMListUser user={{
+                                                username: 'Venture',
+                                                avatarUrl: '/images/logo.png'
+                                            }} isSelected />
+
+                                            <DMListUser user={{
+                                                username: 'Venture',
+                                                avatarUrl: '/images/logo.png'
+                                            }} status='real' />
+
+                                            <DMListUser user={{
+                                                username: 'Venture',
+                                                avatarUrl: '/images/logo.png'
+                                            }} rpc={{
+                                                name: 'with your mom',
+                                                type: 'PLAYING'
+                                            }} />
+
+                                            <DMListUser user={{
+                                                username: 'Venture',
+                                                avatarUrl: '/images/logo.png'
+                                            }} rpc={{
+                                                name: 'you',
+                                                type: 'WATCHING'
+                                            }} />
+
+                                            <DMListUser user={{
+                                                username: 'Venture',
+                                                avatarUrl: '/images/logo.png'
+                                            }} rpc={{
+                                                name: 'you',
+                                                type: 'LISTENING'
+                                            }} />
+
+                                            <DMListUser user={{
+                                                username: 'Venture',
+                                                avatarUrl: '/images/logo.png'
+                                            }} rpc={{
+                                                name: 'your mom',
+                                                type: 'STREAMING'
+                                            }} />
+
+                                            <DMListUser user={{
+                                                username: 'Venture',
+                                                avatarUrl: '/images/logo.png'
+                                            }} rpc={{
+                                                name: '(un)real fight',
+                                                type: 'COMPETING'
+                                            }} />
+
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div className="profile">
                                 <div className="user">

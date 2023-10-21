@@ -7,6 +7,8 @@
 @import url(./global/Titlebar.css);
 
 @import url(./global/ServerList.css);
+@import url(./global/DMSidebar.css);
+/* @import url(./global/ServerSidebar.css); */
 
 @layer components {
     .btn-blue {
@@ -45,280 +47,276 @@
 
     /* Server list */
 
-    .app > .content {
-        @apply flex flex-col flex-grow w-full h-full rounded-tl-xl overflow-hidden;
-    }
-
-    .app > .content > .navbar {
+    .App__VentureApp > .App__BodyContainer > .navbar {
         @apply flex items-start self-stretch;
     }
     
-    .app > .content > .navbar > .sidebar {
+    .App__VentureApp > .App__BodyContainer > .navbar > .sidebar {
         @apply flex flex-col items-center gap-3 bg-opacity-30 bg-[#000] pt-3;
     }
 
-    .app > .content > .navbar > .sidebar > .shadow {
+    .App__VentureApp > .App__BodyContainer > .navbar > .sidebar > .shadow {
         @apply flex flex-col items-center;
     }
 
-    .app > .content > .navbar > .sidebar > .content {
+    .App__VentureApp > .App__BodyContainer > .navbar > .sidebar > .content {
         @apply flex gap-3 w-[220px] h-[28px] p-[4px_6px] rounded-md bg-[#000] bg-opacity-30 cursor-pointer;
     }
 
-    .app > .content > .navbar > .sidebar > .content > span {
+    .App__VentureApp > .App__BodyContainer > .navbar > .sidebar > .content > span {
         @apply text-white opacity-30 font-['Lato'] font-medium text-sm tracking-[0.21px];
     }
 
-    .app > .content > .navbar > .sidebar > .shadow > .separator {
+    .App__VentureApp > .App__BodyContainer > .navbar > .sidebar > .shadow > .separator {
         @apply w-[240px] h-[1px] bg-[#000] bg-opacity-40;
     }
 
-    .app > .content > .navbar > .sidebar > .shadow > .dropshadow {
+    .App__VentureApp > .App__BodyContainer > .navbar > .sidebar > .shadow > .dropshadow {
         @apply w-[240px] h-[1px] bg-[#000] bg-opacity-20;
     }
     
     /* App navbar */
 
-    .app > .content > .navbar > .body {
+    .App__VentureApp > .App__BodyContainer > .navbar > .body {
         @apply flex flex-col items-start gap-3 self-stretch justify-center bg-opacity-20 bg-[#000] w-full max-h-[54px];
     }
 
-    .app > .content > .navbar > .body > .content {
+    .App__VentureApp > .App__BodyContainer > .navbar > .body > .content {
         @apply flex flex-row px-3 items-start self-stretch justify-start;
     }
 
-    .app > .content > .navbar > .body > .content > .nav-left {
+    .App__VentureApp > .App__BodyContainer > .navbar > .body > .content > .nav-left {
         @apply flex items-center gap-4 w-full;
     }
 
-    .app > .content > .navbar > .body > .content > .nav-left {
+    .App__VentureApp > .App__BodyContainer > .navbar > .body > .content > .nav-left {
         @apply flex gap-4;
     }
 
-    .app > .content > .navbar > .body > .content > .nav-left > .heading {
+    .App__VentureApp > .App__BodyContainer > .navbar > .body > .content > .nav-left > .heading {
         @apply flex justify-center items-center gap-2;
     }
 
-    .app > .content > .navbar > .body > .content > .nav-left > .heading > icon {
+    .App__VentureApp > .App__BodyContainer > .navbar > .body > .content > .nav-left > .heading > icon {
         @apply opacity-50;
     }
 
-    .app > .content > .navbar > .body > .content > .nav-left > .heading > span {
+    .App__VentureApp > .App__BodyContainer > .navbar > .body > .content > .nav-left > .heading > span {
         @apply text-white text-[16px] not-italic font-semibold leading-[108.5%] tracking-[-0.401px];
     }
 
-    .app > .content > .navbar > .body > .shadow {
+    .App__VentureApp > .App__BodyContainer > .navbar > .body > .shadow {
         @apply flex flex-col items-center self-stretch absolute top-[52px] w-[-webkit-fill-available] w-[-moz-available];
     }
 
-    .app > .content > .navbar > .body > .shadow > .separator {
+    .App__VentureApp > .App__BodyContainer > .navbar > .body > .shadow > .separator {
         @apply w-full h-[1px] bg-[#000] bg-opacity-20;
     }
 
-    .app > .content > .navbar > .body > .shadow > .dropshadow {
+    .App__VentureApp > .App__BodyContainer > .navbar > .body > .shadow > .dropshadow {
         @apply w-full h-[1px] bg-[#000] bg-opacity-10;
     }
 
-    .app > .content > .navbar > .body .separator {
+    .App__VentureApp > .App__BodyContainer > .navbar > .body .separator {
         @apply w-0.5 h-[30px] rounded-[1px] bg-white bg-opacity-10;
     }
 
-    .app > .content > .navbar > .body > .content > .nav-left > .tabs {
+    .App__VentureApp > .App__BodyContainer > .navbar > .body > .content > .nav-left > .tabs {
         @apply flex justify-center items-center gap-3;
     }
 
-    .app > .content > .navbar > .body > .content > .nav-left > .tabs > .button {
+    .App__VentureApp > .App__BodyContainer > .navbar > .body > .content > .nav-left > .tabs > .button {
         @apply flex justify-center items-center gap-2.5 px-2 py-0.5 rounded-md hover:bg-white hover:bg-opacity-10 transition-all duration-[100ms] ease-linear;
     }
 
-    .app > .content > .navbar > .body > .content > .nav-left > .tabs > .button.selected {
+    .App__VentureApp > .App__BodyContainer > .navbar > .body > .content > .nav-left > .tabs > .button.selected {
         @apply bg-white bg-opacity-20;
     }
 
-    .app > .content > .navbar > .body > .content > .nav-left > .tabs > .button.filled {
+    .App__VentureApp > .App__BodyContainer > .navbar > .body > .content > .nav-left > .tabs > .button.filled {
         @apply bg-[#000] bg-opacity-40;
     }
 
 
-    .app > .content > .navbar > .body > .content > .nav-right {
+    .App__VentureApp > .App__BodyContainer > .navbar > .body > .content > .nav-right {
         @apply flex items-center gap-3 flex-shrink-0 h-full;
     }
 
-    .app > .content > .navbar > .body > .content > .nav-right > .new-dm {
+    .App__VentureApp > .App__BodyContainer > .navbar > .body > .content > .nav-right > .new-dm {
         @apply flex items-center gap-2.5 self-stretch;
     }
 
-    .app > .content > .navbar > .body > .content > .nav-right > .icons {
+    .App__VentureApp > .App__BodyContainer > .navbar > .body > .content > .nav-right > .icons {
         @apply flex flex-row justify-center items-center gap-3 self-stretch;
     }
 
-    .app > .content > .navbar > .body > .content > .nav-right > .new-dm > icon,
-    .app > .content > .navbar > .body > .content > .nav-right > .icons > icon {
+    .App__VentureApp > .App__BodyContainer > .navbar > .body > .content > .nav-right > .new-dm > icon,
+    .App__VentureApp > .App__BodyContainer > .navbar > .body > .content > .nav-right > .icons > icon {
         @apply h-6 hover:opacity-100 opacity-50 transition-all duration-[100ms] ease-linear cursor-pointer;
     }
 
     /* App body */
 
-    .app > .content > .body {
+    .App__VentureApp > .App__BodyContainer > .body {
         @apply w-full h-full flex flex-row;
     }
 
-    .app > .content > .body > .sidebar {
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar {
         @apply flex w-60 h-full flex-col items-center flex-shrink-0;
     }
 
-    .app > .content > .body > .sidebar > .dm-list {
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .dm-list {
         @apply flex flex-col items-start h-full w-full gap-5 self-stretch px-0.5 py-2.5 bg-[#000] bg-opacity-30;
     }
 
-    .app > .content > .body > .sidebar > .dm-list > .tabs {
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .dm-list > .tabs {
         @apply flex flex-col items-start gap-0.5 self-stretch px-2 py-0;
     }
 
-    .app > .content > .body > .sidebar > .dm-list > .dms > .message-requests > .tab,
-    .app > .content > .body > .sidebar > .dm-list > .tabs > .tab {
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .dm-list > .dms > .message-requests > .tab,
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .dm-list > .tabs > .tab {
         @apply flex items-center gap-4 self-stretch px-4 py-2.5 rounded-md hover:bg-white hover:bg-opacity-10 transition-all duration-[100ms] ease-linear cursor-pointer;
     }
 
-    .app > .content > .body > .sidebar > .dm-list > .dms > .message-requests > .tab {
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .dm-list > .dms > .message-requests > .tab {
         @apply w-full;
     }
 
-    .app > .content > .body > .sidebar > .dm-list > .dms > .message-requests > .tab.selected,
-    .app > .content > .body > .sidebar > .dm-list > .tabs > .tab.selected {
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .dm-list > .dms > .message-requests > .tab.selected,
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .dm-list > .tabs > .tab.selected {
         @apply bg-white bg-opacity-10;
     }
 
-    .app > .content > .body > .sidebar > .dm-list > .dms > .message-requests > .tab > icon,
-    .app > .content > .body > .sidebar > .dm-list > .tabs > .tab > icon {
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .dm-list > .dms > .message-requests > .tab > icon,
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .dm-list > .tabs > .tab > icon {
         @apply opacity-50 transition-all duration-[100ms] ease-linear;
     }
 
-    .app > .content > .body > .sidebar > .dm-list > .dms > .message-requests > .tab:hover > icon,
-    .app > .content > .body > .sidebar > .dm-list > .dms > .message-requests > .tab.selected > icon,
-    .app > .content > .body > .sidebar > .dm-list > .tabs > .tab:hover > icon,
-    .app > .content > .body > .sidebar > .dm-list > .tabs > .tab.selected > icon {
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .dm-list > .dms > .message-requests > .tab:hover > icon,
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .dm-list > .dms > .message-requests > .tab.selected > icon,
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .dm-list > .tabs > .tab:hover > icon,
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .dm-list > .tabs > .tab.selected > icon {
         @apply opacity-100;
     }
 
-    .app > .content > .body > .sidebar > .dm-list > .dms > .message-requests > .tab > span,
-    .app > .content > .body > .sidebar > .dm-list > .tabs > .tab > span {
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .dm-list > .dms > .message-requests > .tab > span,
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .dm-list > .tabs > .tab > span {
         @apply text-white text-base not-italic font-normal tracking-[0.08px] opacity-50 transition-all duration-[100ms] ease-linear;
     }
 
-    .app > .content > .body > .sidebar > .dm-list > .dms > .message-requests > .tab:hover > span,
-    .app > .content > .body > .sidebar > .dm-list > .dms > .message-requests > .tab.selected > span,
-    .app > .content > .body > .sidebar > .dm-list > .tabs > .tab:hover > span,
-    .app > .content > .body > .sidebar > .dm-list > .tabs > .tab.selected > span {
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .dm-list > .dms > .message-requests > .tab:hover > span,
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .dm-list > .dms > .message-requests > .tab.selected > span,
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .dm-list > .tabs > .tab:hover > span,
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .dm-list > .tabs > .tab.selected > span {
         @apply opacity-100;
     }
 
-    .app > .content > .body > .sidebar > .dm-list > .dms {
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .dm-list > .dms {
         @apply flex flex-col justify-center items-center gap-2 self-stretch px-2 py-0;
     }
 
-    .app > .content > .body > .sidebar > .dm-list > .dms > .heading {
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .dm-list > .dms > .heading {
         @apply flex justify-center items-center gap-2.5 self-stretch px-2 py-px;
     }
 
-    .app > .content > .body > .sidebar > .dm-list > .dms > .heading > span {
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .dm-list > .dms > .heading > span {
         @apply w-full text-white opacity-50 text-sm not-italic tracking-[-0.455px];
     }
 
-    .app > .content > .body > .sidebar > .dm-list > .dms > .heading:hover > span {
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .dm-list > .dms > .heading:hover > span {
         @apply opacity-100;
     }
 
-    .app > .content > .body > .sidebar > .dm-list > .dms > .heading > icon {
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .dm-list > .dms > .heading > icon {
         @apply opacity-50 hover:opacity-100 cursor-pointer;
     }
 
-    .app > .content > .body > .sidebar > .dm-list > .dms > .message-requests {
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .dm-list > .dms > .message-requests {
         @apply flex items-center gap-5 self-stretch rounded-md;
     }
 
-    .app > .content > .body > .sidebar > .dm-list > .dms > .users {
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .dm-list > .dms > .users {
         @apply flex flex-col items-start gap-0.5 self-stretch;
     }
 
-    .app > .content > .body > .sidebar > .dm-list > .dms > .users > .user {
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .dm-list > .dms > .users > .user {
         @apply flex flex-shrink-0 items-center gap-3 self-stretch px-2 py-1 rounded-md min-h-[43px] cursor-pointer;
     }
 
-    .app > .content > .body > .sidebar > .dm-list > .dms > .users > .user:hover,
-    .app > .content > .body > .sidebar > .dm-list > .dms > .users > .user.selected {
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .dm-list > .dms > .users > .user:hover,
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .dm-list > .dms > .users > .user.selected {
         @apply bg-white bg-opacity-10 transition-all duration-[100ms] ease-linear;
     }
 
-    .app > .content > .body > .sidebar > .dm-list > .dms > .users > .user > img {
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .dm-list > .dms > .users > .user > img {
         @apply w-8 h-8 shrink-0;
     }
 
-    .app > .content > .body > .sidebar > .dm-list > .dms > .users > .user > .info {
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .dm-list > .dms > .users > .user > .info {
         @apply flex flex-col items-start;
     }
 
-    .app > .content > .body > .sidebar > .dm-list > .dms > .users > .user > .info > .username {
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .dm-list > .dms > .users > .user > .info > .username {
         @apply self-stretch text-white opacity-50 text-base not-italic font-medium leading-[normal];
     }
 
-    .app > .content > .body > .sidebar > .dm-list > .dms > .users > .user > .info > .status {
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .dm-list > .dms > .users > .user > .info > .status {
         @apply text-white opacity-50 text-xs not-italic leading-[normal] tracking-[-0.36px];
     }
 
-    .app > .content > .body > .sidebar > .dm-list > .dms > .users > .user > .info > .rpc {
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .dm-list > .dms > .users > .user > .info > .rpc {
         @apply flex justify-center items-end gap-0.5 self-stretch;
     }
 
-    .app > .content > .body > .sidebar > .dm-list > .dms > .users > .user > .info > .rpc > span {
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .dm-list > .dms > .users > .user > .info > .rpc > span {
         @apply text-white opacity-50 text-xs not-italic leading-[normal] tracking-[-0.36px]
     }
 
-    .app > .content > .body > .sidebar > .dm-list > .dms > .users > .user > .info > .rpc > .name {
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .dm-list > .dms > .users > .user > .info > .rpc > .name {
         @apply font-semibold;
     }
 
-    .app > .content > .body > .sidebar > .dm-list > .dms > .users > .user > .info > .rpc > icon {
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .dm-list > .dms > .users > .user > .info > .rpc > icon {
         @apply opacity-50;
     }
 
-    .app > .content > .body > .sidebar > .profile {
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .profile {
         @apply flex items-center self-stretch px-2 py-2.5 bg-[#000] bg-opacity-50;
     }
 
-    .app > .content > .body > .sidebar > .profile > .user {
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .profile > .user {
         @apply flex items-center gap-[5px] w-full p-1.5 cursor-pointer rounded hover:bg-white hover:bg-opacity-10 transition-all duration-[100ms] ease-linear;
     }
 
-    .app > .content > .body > .sidebar > .profile > .user > img {
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .profile > .user > img {
         @apply w-8 h-8 rounded-3xl;
     }
 
-    .app > .content > .body > .sidebar > .profile > .user > .info {
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .profile > .user > .info {
         @apply flex flex-col items-start gap-[-2.5px];
     }
 
-    .app > .content > .body > .sidebar > .profile > .user > .info > .username {
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .profile > .user > .info > .username {
         @apply text-white text-sm not-italic font-semibold leading-[normal];
     }
 
-    .app > .content > .body > .sidebar > .profile > .user > .info > .status {
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .profile > .user > .info > .status {
         @apply text-white opacity-70 text-xs not-italic font-normal leading-[normal] truncate overflow-ellipsis;
     }
 
-    .app > .content > .body > .sidebar > .profile > .buttons {
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .profile > .buttons {
         @apply flex flex-shrink-0 justify-center items-center;
     }
 
-    .app > .content > .body > .sidebar > .profile > .buttons > a.button {
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .profile > .buttons > a.button {
         @apply flex justify-center items-center p-1 rounded hover:bg-white hover:bg-opacity-10 transition-all duration-[100ms] ease-linear;
     }
 
-    .app > .content > .body > .sidebar > .profile > .buttons > a.button > icon {
+    .App__VentureApp > .App__BodyContainer > .body > .sidebar > .profile > .buttons > a.button > icon {
         @apply opacity-50;
     }
 
-    .app > .content > .body > .content {
+    .App__VentureApp > .App__BodyContainer > .body > .content {
         @apply flex flex-col w-full h-full bg-[#000] bg-opacity-20;
     }
 }

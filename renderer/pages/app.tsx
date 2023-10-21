@@ -8,7 +8,7 @@ import fetchUserNext from '../utilities/fetchUserNext';
 import User from '../utilities/types/User';
 import defaultUser from '../utilities/config/defaultUser';
 import apiConfig from '../utilities/config/apiConfig';
-import ServerListItem from '../components/ServerListItem';
+import ServerListItem from '../components/Serverlist/LisItem';
 import Icon from '../components/Icons/icon';
 import VenturePack from '../utilities/pack/venturePack';
 import Tab from '../components/Home/DMList/Tab';
@@ -18,6 +18,8 @@ import Sidebar from '../components/Home/DMList/Sidebar';
 import ServerList from '../components/Serverlist/list';
 import mergeObjects from '../utilities/objectMerger';
 import Api from '../utilities/api';
+import DMTab from '../components/Home/DMList/DMTab';
+import DMUser from '../components/Home/DMList/User';
 
 export default function NextPage({}) {
     const router = useRouter();
@@ -72,7 +74,7 @@ export default function NextPage({}) {
             <Head>
                 <title>Venture Client</title>
             </Head>
-            <div id="app" className="_app app">
+            <div id="app" className="_app App__VentureApp">
 
                 <ServerList isHomeSelected>
                     <ServerListItem iconUrl='/images/Icon.png' isSelected={false} hasNewMessages={true} />
@@ -84,102 +86,105 @@ export default function NextPage({}) {
                     <ServerListItem iconUrl='/images/Icon.png' isSelected={false} hasNewMessages={false} />
                 </ServerList>
 
-                <div className="content">
+                <div className="App__BodyContainer">
 
-                    <Nav name='Friends' icon='groups' >
-                        <a href="#" className="button selected">Online</a>
-                        <a href="#" className="button">All</a>
-                        <a href="#" className="button">Pending</a>
-                        <a href="#" className="button">Blocked</a>
-                        <a href="#" className="button filled">Add Friend</a>
-                    </Nav>
+                    <Sidebar user={{
+                        username: user.username,
+                        avatarUrl: user.avatar ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png` : '/images/logo.png',
+                        status: 'really, its unreal real'
+                    }} tabs={
+                        <>
+                            <DMTab name='Home' icon='home' />
+                            <DMTab name='Friends' icon='groups' notificationCount={6} isSelected />
+                            <DMTab name='Marketplace' icon='store' />
+                            <DMTab name='Discover' icon='explore' />
+                        </>
+                    }
+                    
+                    pinnedDMs={[
+                        <DMUser user={{
+                            username: 'Venture Music',
+                            avatarUrl: '/images/logo.png'
+                        }}
 
-                    <div className="body">
+                        rpc={{
+                            name: 'Spotify',
+                            type: 'LISTENING'
+                        }} />,
+                        <DMUser user={{
+                            username: 'Pinned DM',
+                            avatarUrl: '/images/logo.png'
+                        }}
 
-                        <Sidebar
-                        tabs={<>
-                            <Tab name='Home' icon='home' />
-                            <Tab name='Friends' icon='groups' isSelected />
-                            <Tab name='Marketplace' icon='store' />
-                            <Tab name='Discovery' icon='explore' />
-                        </>}
+                        status='its really pinned' />
+                    ]}>
+                        <></>
+                        <DMUser user={{
+                            username: 'Venture',
+                            avatarUrl: '/images/logo.png'
+                        }}
 
-                        user={{
-                            username: user.global_name,
-                            avatarUrl: user.avatar ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png` : '/images/logo.png',
-                            status: 'Online'
-                        }}>
-                            <DMListUser user={{
-                                username: 'Venture',
-                                avatarUrl: '/images/logo.png'
-                            }} isSelected />
+                        rpc={{
+                            name: 'Venture Client',
+                            type: 'PLAYING'
+                        }} />
 
-                            <DMListUser user={{
-                                username: 'Venture',
-                                avatarUrl: '/images/logo.png'
-                            }} status='real' />
+                        <DMUser user={{
+                            username: 'Venture',
+                            avatarUrl: '/images/logo.png'
+                        }}
 
-                            <DMListUser
-                            user={{
-                                username: 'Venture',
-                                avatarUrl: '/images/logo.png'
-                            }}
-                            
-                            rpc={{
-                                name: 'with your mom',
-                                type: 'PLAYING'
-                            }} />
+                        status='unreal' />
 
-                            <DMListUser
-                            user={{
-                                username: 'Venture',
-                                avatarUrl: '/images/logo.png'
-                            }}
-                            
-                            rpc={{
-                                name: 'you',
-                                type: 'WATCHING'
-                            }} />
+                        <DMUser user={{
+                            username: 'Venture',
+                            avatarUrl: '/images/logo.png'
+                        }}
 
-                            <DMListUser
-                            user={{
-                                username: 'Venture',
-                                avatarUrl: '/images/logo.png'
-                            }}
-                            
-                            rpc={{
-                                name: 'you',
-                                type: 'LISTENING'
-                            }} />
+                        status='unreal' />
+                        
+                        <DMUser user={{
+                            username: 'Venture',
+                            avatarUrl: '/images/logo.png'
+                        }}
 
-                            <DMListUser
-                            user={{
-                                username: 'Venture',
-                                avatarUrl: '/images/logo.png'
-                            }}
-                            
-                            rpc={{
-                                name: 'your mom',
-                                type: 'STREAMING'
-                            }} />
+                        status='unreal' />
 
-                            <DMListUser
-                            user={{
-                                username: 'Venture',
-                                avatarUrl: '/images/logo.png'
-                            }}
+                        <DMUser user={{
+                            username: 'Venture',
+                            avatarUrl: '/images/logo.png'
+                        }}
 
-                            rpc={{
-                                name: '(un)real fight',
-                                type: 'COMPETING'
-                            }} />
-                        </Sidebar>
+                        status='unreal' />
+                        
+                        <DMUser user={{
+                            username: 'Venture',
+                            avatarUrl: '/images/logo.png'
+                        }}
 
-                        <div className="content">
-                            user: {user['username']}
-                        </div>
+                        status='unreal' />
 
-                    </div>
+                        <DMUser user={{
+                            username: 'Venture',
+                            avatarUrl: '/images/logo.png'
+                        }}
+
+                        status='unreal' />
+                        
+                        <DMUser user={{
+                            username: 'Venture',
+                            avatarUrl: '/images/logo.png'
+                        }}
+
+                        status='unreal' />
+
+                        <DMUser user={{
+                            username: 'Venture',
+                            avatarUrl: '/images/logo.png'
+                        }}
+
+                        status='unreal' />
+                    </Sidebar>
 
                 </div>
 

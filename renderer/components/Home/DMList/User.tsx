@@ -1,6 +1,6 @@
 import Icon from "../../Icons/icon";
 
-export default function User({ user, status, rpc, isSelected }: { user: {
+export default function DMUser({ user, status, rpc, isSelected }: { user: {
     username: string,
     avatarUrl: string
 }, status?: string, rpc?: {
@@ -8,15 +8,15 @@ export default function User({ user, status, rpc, isSelected }: { user: {
     name: string
 }, isSelected?: boolean }) {
     return (
-        <div className={`user${isSelected ? ' selected' : ''}`}>
-            <img src={user.avatarUrl} alt="Profile Picture" />
-            <div className="info">
-                <span className="username">{user.username}</span>
-                {status ? <span className={`status`}>{status}</span> : null}
-                {rpc ? <div className={`rpc`}>
-                    <span className="type">{statuses[rpc.type]}</span>
-                    <span className="name">{rpc.name}</span>
-                    <Icon name={icons[rpc.type] ?? 'reorder'} filled size={13} />
+        <div className={`DMUsers__DMUser${isSelected ? ' DMUser__Selected' : ''}`}>
+            <img src={user.avatarUrl} alt="Profile Picture" className="DMUser__Avatar" />
+            <div className="DMUser__DMUserInfo">
+                <span className="DMUserInfo__Username">{user.username}</span>
+                {status ? <span className="DMUserInfo__DMUI_Status">{status}</span> : null}
+                {rpc ? <div className="DMUserInfo__DMUI_RPC">
+                    <span className="DMUI_RPC__Type">{statuses[rpc.type]}</span>
+                    <span className="DMUI_RPC__Name">{rpc.name}</span>
+                    <Icon name={icons[rpc.type] ?? 'reorder'} filled size={13} className="DMUI_RPC__Icon" />
                 </div> : null}
             </div>
         </div>

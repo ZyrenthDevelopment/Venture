@@ -11,15 +11,16 @@ import apiConfig from '../utilities/config/apiConfig';
 import ServerListItem from '../components/Serverlist/LisItem';
 import Icon from '../components/Icons/icon';
 import VenturePack from '../utilities/pack/venturePack';
-import Tab from '../components/Home/DMList/Tab';
-import DMListUser from '../components/Home/DMList/User';
+import DMListUser from '../components/Home/User';
 import Nav from '../components/Home/Navbar/Nav';
-import Sidebar from '../components/Home/DMList/Sidebar';
+import Sidebar from '../components/Home/Sidebar';
 import ServerList from '../components/Serverlist/list';
 import mergeObjects from '../utilities/objectMerger';
 import Api from '../utilities/api';
-import DMTab from '../components/Home/DMList/DMTab';
-import DMUser from '../components/Home/DMList/User';
+import DMTab from '../components/Home/DMTab';
+import DMUser from '../components/Home/User';
+import Page from '../components/Home/Page';
+import NavTab from '../components/Home/NavTab';
 
 export default function NextPage({}) {
     const router = useRouter();
@@ -185,6 +186,16 @@ export default function NextPage({}) {
 
                         status='unreal' />
                     </Sidebar>
+
+                    <Page name='Friends' icon='groups' tabs={[
+                        <NavTab name='Online' active />,
+                        <NavTab name='All' />,
+                        <NavTab name='Pending' notificationCount={6} />,
+                        <NavTab name='Blocked' />,
+                        <NavTab name='Add Friend' filled />,
+                    ]}>
+                        <></>
+                    </Page>
 
                 </div>
 

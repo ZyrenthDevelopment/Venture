@@ -2,20 +2,20 @@
 
 @layer components {
     .App__DM_Sidebar {
-        @apply flex flex-col gap-2 w-60 h-full overflow-hidden
-               bg-[#000] bg-opacity-30;
+        @apply flex flex-col flex-shrink-0 gap-2 w-60 h-full overflow-hidden
+               bg-[#000] bg-opacity-40;
     }
 
     /* Header */
 
     .DM_Sidebar__Header {
-        @apply flex flex-row items-center justify-between w-full h-8 pt-2 my-0.5 px-2 cursor-pointer;
+        @apply flex flex-row items-center justify-between w-full h-8 pt-2 my-0.5 px-2;
     }
 
     .Header__TextInput {
-        @apply w-full py-1 px-1.5 rounded-md
+        @apply w-full py-1 px-1.5 rounded-md cursor-pointer
                text-white text-opacity-30 text-sm
-               bg-[#000] bg-opacity-20;
+               bg-[#000] bg-opacity-30;
     }
 
     .DM_Sidebar__Separator {
@@ -25,14 +25,15 @@
     /* Bottom Shadow */
 
     .Separator__Border {
-        @apply w-full h-[1px]
+        @apply w-full h-0.5
                bg-[#000] bg-opacity-20;
     }
 
     .Separator__Dropshadow {
-        @apply w-full h-[1px]
+        @apply w-full h-0.5
                bg-[#000] bg-opacity-10;
     }
+
     /* Scrollable */
 
     .DM_Sidebar__Scrollable {
@@ -46,7 +47,7 @@
     }
 
     .DMTabs__Tab {
-        @apply flex flex-row gap-3 items-center justify-start w-full h-11 px-3
+        @apply flex flex-row flex-shrink-0 gap-3 items-center justify-start w-full h-11 px-3
                rounded-md hover:bg-white hover:bg-opacity-10
                transition-all duration-150 ease-linear;
     }
@@ -110,7 +111,7 @@
     }
 
     .DMUsers__DMUser {
-        @apply flex flex-row gap-2 items-center justify-start w-full h-11 px-2 cursor-pointer
+        @apply flex flex-row flex-shrink-0 gap-2 items-center justify-start w-full h-11 px-2 cursor-pointer
                rounded-md hover:bg-white hover:bg-opacity-10
                transition-all duration-150 ease-linear;
     }
@@ -177,7 +178,7 @@
 
     .DM_Sidebar__ProfilePanel {
         @apply flex flex-row flex-shrink-0 items-center justify-between w-full h-14 px-2.5
-               bg-[#000] bg-opacity-50;
+               bg-[#000] bg-opacity-30;
     }
 
     .ProfilePanel__UserSection {
@@ -210,10 +211,7 @@
 
     .UActionButtons__UAIconButton {
         @apply flex flex-shrink-0 w-8 h-8 rounded-md items-center justify-center cursor-pointer
+               opacity-50 hover:opacity-100 hover:bg-white hover:bg-opacity-10
                transition-all duration-150 ease-linear;
-    }
-
-    .UActionButtons__UAIconButton:hover {
-        @apply bg-white bg-opacity-10;
     }
 }

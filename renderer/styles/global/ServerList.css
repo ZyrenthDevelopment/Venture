@@ -2,7 +2,7 @@
 
 @layer components {
     .App__ServerList {
-        @apply flex flex-col items-center gap-[8px] self-stretch w-[72px] h-full /*overflow-y-scroll*/; /* TODO: Fix server item overflow + indicators dont move on scroll */
+        @apply flex flex-col items-center gap-[8px] self-stretch w-[72px] h-full overflow-y-auto; /* TODO: Fix server item overflow + indicators dont move on scroll */
     }
 
     .App__ServerList > .ServerList__Home {
@@ -42,7 +42,7 @@
     }
 
     .App__ServerList > .ServerList__Separator {
-        @apply w-8 h-0.5 rounded-[1px] bg-opacity-10 bg-white;
+        @apply flex-shrink-0 w-8 h-0.5 rounded-[1px] bg-opacity-10 bg-white;
     }
 
     .App__ServerList > .ServerList__ExtraItem {

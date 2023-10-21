@@ -7,7 +7,8 @@
 @import url(./global/Titlebar.css);
 
 @import url(./global/ServerList.css);
-@import url(./global/DMSidebar.css);
+@import url(./global/HomeSidebar.css);
+@import url(./global/HomePage.css);
 /* @import url(./global/ServerSidebar.css); */
 
 @layer components {

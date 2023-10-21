@@ -1,4 +1,4 @@
-import Icon from "../../Icons/icon";
+import Icon from "../Icons/icon";
 
 export default function DMHeading({ name, icon }: { name: string, icon: string }) {
     return (

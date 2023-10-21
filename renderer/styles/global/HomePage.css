@@ -1,0 +1,106 @@
+@tailwind components;
+
+@layer components {
+    .App__Home_Page {
+        @apply flex flex-col flex-shrink-0 gap-2 w-full h-full overflow-hidden
+               bg-[#000] bg-opacity-20;
+    }
+
+    /* Navbar */
+
+    .Home_Page__Navbar {
+        @apply flex flex-row items-center w-full h-8 pt-2 my-0.5 px-2;
+    }
+    
+    /* Navbar - Navbar title */
+
+    .Navbar__NavTitle {
+        @apply flex flex-row flex-shrink-0 items-center gap-2 h-full w-full;
+    }
+
+    .NavTitle__Icon {
+        @apply opacity-50;
+    }
+
+    .NavTitle__Name {
+        @apply text-white font-semibold;
+    }
+
+    /* Navbar - Navbar separator */
+
+    .NavTitle__Separator {
+        @apply flex-shrink-0 h-full w-[1px] rounded-sm
+               bg-white bg-opacity-10;
+    }
+
+    /* Navbar - Navbar buttons */
+
+    .NavTitle__NavTabs {
+        @apply flex flex-row items-center gap-2 h-full;
+    }
+
+    .NavTabs__NavTab {
+        @apply flex flex-row items-center justify-center h-6 px-2 rounded-md cursor-pointer
+               hover:bg-white hover:bg-opacity-10
+               transition-all duration-150 ease-linear;
+    }
+
+    .NavTab__Filled {
+        @apply bg-[#000] bg-opacity-30;
+    }
+
+    .NavTab__Active {
+        @apply bg-white bg-opacity-10;
+    }
+
+    .NavTab__Name {
+        @apply text-white text-opacity-50
+        transition-all duration-150 ease-linear;
+    }
+
+    .NavTab__Active .NavTab__Name,
+    .NavTab__Filled:hover .NavTab__Name,
+    .NavTabs__NavTab:hover .NavTab__Name {
+        @apply text-white text-opacity-100;
+    }
+
+    .NavTab__Filled .NavTab__Name {
+        @apply text-white text-opacity-70;
+    }
+
+    .NavTab__NotificationCount {
+        @apply flex flex-row items-center justify-center ml-2 px-2 py-2 w-4 h-4 rounded-full
+               text-center text-xs text-white font-bold
+               bg-[#EB4245];
+    }
+
+    /* Navbar - Navbar buttons */
+
+    .Navbar__NavButtons {
+        @apply flex flex-row items-center gap-2 h-full;
+    }
+
+    .NavButtons__NavButton {
+        @apply flex flex-row items-center justify-center h-6 px-2 rounded-md cursor-pointer
+               hover:bg-white hover:bg-opacity-10
+               transition-all duration-150 ease-linear;
+    }
+
+    /* Separator */
+
+    .Home_Page__Separator {
+        @apply w-full;
+    }
+
+    /* Bottom Shadow */
+
+    .Separator__Border {
+        @apply w-full h-0.5
+               bg-[#000] bg-opacity-20;
+    }
+
+    .Separator__Dropshadow {
+        @apply w-full h-0.5
+               bg-[#000] bg-opacity-10;
+    }
+}

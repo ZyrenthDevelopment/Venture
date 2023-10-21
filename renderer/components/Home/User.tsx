@@ -1,4 +1,4 @@
-import Icon from "../../Icons/icon";
+import Icon from "../Icons/icon";
 
 export default function DMUser({ user, status, rpc, isSelected }: { user: {
     username: string,

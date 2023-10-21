@@ -1,4 +1,4 @@
-import Icon from "../../Icons/icon";
+import Icon from "../Icons/icon";
 
 export default function DMTab({ name, icon, notificationCount, isSelected }: { name: string, icon: string, notificationCount?: number, isSelected?: boolean }) {
     return (

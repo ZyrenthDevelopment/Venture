@@ -1,6 +1,6 @@
-import Icon from "../../Icons/icon";
+import Icon from "../Icons/icon";
+import DMTab from "./DMTab";
 import DMHeading from "./Heading";
-import Tab from "./Tab";
 
 export default function Sidebar({ children, pinnedDMs, tabs, user }: { children: JSX.Element[], pinnedDMs: JSX.Element[], tabs: JSX.Element, user: {
     username: string,
@@ -24,6 +24,7 @@ export default function Sidebar({ children, pinnedDMs, tabs, user }: { children:
                     <DMHeading name="Pinned DMs" icon="add" />
                     {pinnedDMs}
                     <DMHeading name="Direct messages" icon="add" />
+                    <DMTab name='Message requests' icon='contact_support' />
                     {children}
                 </div>
             </div>

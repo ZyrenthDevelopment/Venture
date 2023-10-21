@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+
+@layer base {
+    :root {
+        --background: #1B1D2A;
+    }
+    
+    body {
+        @apply bg-[var(--background)] text-white flex flex-col;
+        font-family: 'Inter', sans-serif;
+    }
+}
+
+@layer components {
+    #__next {
+        height: 100%;
+    }
+
+    ._app {
+        @apply flex flex-row m-0;
+    }
+
+    .app {
+        @apply w-full h-full;
+    }
+}

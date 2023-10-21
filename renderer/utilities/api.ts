@@ -18,11 +18,12 @@ export default class Api {
         this.baseUrl = `${apiConfig.baseUrl}v${apiConfig.version}/`;
     }
 
-    async request (method: 'GET' | 'POST' | 'PATCH' | 'PUT' | 'OPTIONS' | 'DELETE', endpoint: string[], headers: AxiosHeaders = new AxiosHeaders(), body?: Object) {
-        const url = `${this.baseUrl}${endpoint.join('/')}`;
+    private async request (method: 'GET' | 'POST' | 'PATCH' | 'PUT' | 'OPTIONS' | 'DELETE', endpoint: string[], headers: AxiosHeaders = new AxiosHeaders(), body?: Object) {
+        const url = `${this.baseUrl}${endpoint.filter(x => x.replaceAll(' ', '') !== '').join('/')}`;
 
         headers.set('Content-Type', 'application/json');
         if (this.token) headers.set('Authorization', this.token);
+        else throw new Error('No token provided');
 
         const response = await axios({
             method: method.toLowerCase(),
@@ -33,4 +34,28 @@ export default class Api {
 
         return response;
     };
+
+    async get (endpoint: string, headers?: AxiosHeaders) {
+        return await this.request('GET', endpoint.split('/'), headers);
+    }
+
+    async post (endpoint: string, body?: Object, headers?: AxiosHeaders) {
+        return await this.request('POST', endpoint.split('/'), headers, body);
+    }
+
+    async patch (endpoint: string, body?: Object, headers?: AxiosHeaders) {
+        return await this.request('PATCH', endpoint.split('/'), headers, body);
+    }
+
+    async put (endpoint: string, body?: Object, headers?: AxiosHeaders) {
+        return await this.request('PUT', endpoint.split('/'), headers, body);
+    }
+
+    async options (endpoint: string, headers?: AxiosHeaders) {
+        return await this.request('OPTIONS', endpoint.split('/'), headers);
+    }
+
+    async delete (endpoint: string, headers?: AxiosHeaders) {
+        return await this.request('DELETE', endpoint.split('/'), headers);
+    }
 }

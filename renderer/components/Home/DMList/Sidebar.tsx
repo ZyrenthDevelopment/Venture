@@ -9,21 +9,19 @@ export default function Sidebar({ children, tabs, user }: { children: JSX.Elemen
     return (
         <div className="sidebar">
             <div className="dm-list">
-                <div className="content">
-                    <div className="tabs">
-                        {tabs}
+                <div className="tabs">
+                    {tabs}
+                </div>
+                <div className="dms">
+                    <div className="heading">
+                        <span>Direct messages</span>
+                        <Icon name='add' filled size={20} />
                     </div>
-                    <div className="dms">
-                        <div className="heading">
-                            <span>Direct messages</span>
-                            <Icon name='add' filled size={20} />
-                        </div>
-                        <div className="message-requests">
-                            <Tab name='Message requests' icon='contact_support' />
-                        </div>
-                        <div className="users">
-                            {children}
-                        </div>
+                    <div className="message-requests">
+                        <Tab name='Message requests' icon='contact_support' />
+                    </div>
+                    <div className="users">
+                        {children}
                     </div>
                 </div>
             </div>

@@ -22,6 +22,7 @@ I'm going to use nextron to merge Electron and NextJS for an easier workflow and
   - [ ] Modals
   - [ ] Popout/tooltip modals
   - [ ] Context menus
+- [ ] Fix paddings, font colors
 - [ ] Friends page
 - [ ] Home page
 - [ ] Marketplace page

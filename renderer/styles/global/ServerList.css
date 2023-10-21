@@ -1,0 +1,55 @@
+@tailwind components;
+
+@layer components {
+    .server-list {
+        @apply flex flex-col items-center gap-[8px] self-stretch w-[72px] h-full /*overflow-y-scroll*/; /* TODO: Fix server item overflow + indicators dont move on scroll */
+    }
+
+    .server-list > .app-home {
+        @apply flex w-12 h-12 p-3 justify-center items-center gap-3 cursor-pointer hover:rounded-xl rounded-3xl hover:bg-opacity-70 bg-opacity-10 hover:bg-[#2A3FAE] bg-white transition-all duration-[150ms] ease-linear;
+    }
+
+    .server-list > .app-home.selected {
+        @apply rounded-xl bg-opacity-70 bg-[#2A3FAE];
+    }
+
+    .server-list > .server-item.selected {
+        @apply bg-[#2A3FAE] bg-opacity-100 rounded-xl;
+    }
+
+    .server-list > .app-home > .indicator {
+        @apply absolute w-2 h-2 rounded-full bg-white bg-opacity-50 left-[-3px];
+    }
+
+    .server-list > .app-home > .indicator.full {
+        @apply h-8;
+    }
+
+    .server-list > .server-item {
+        @apply flex w-12 h-12 p-3 flex-shrink-0 justify-center items-center gap-3 cursor-pointer hover:rounded-xl rounded-3xl overflow-hidden transition-all duration-[150ms] ease-linear;
+    }
+
+    .server-list > .server-item.selected {
+        @apply rounded-xl;
+    }
+
+    .server-list > .server-item > .server-icon {
+        @apply w-12 h-12 max-w-none;
+    }
+
+    .server-list > .server-item > .indicator {
+        @apply absolute w-2 h-2 rounded-full bg-white bg-opacity-50 left-[-3px];
+    }
+
+    .server-list > .server-item > .indicator.full {
+        @apply h-8;
+    }
+
+    .server-list > .separator {
+        @apply w-8 h-0.5 rounded-[1px] bg-opacity-10 bg-white;
+    }
+
+    .server-list > .extra-item {
+        @apply flex w-12 h-12 p-3 justify-center items-center gap-3 cursor-pointer hover:rounded-xl rounded-3xl hover:bg-opacity-30 bg-opacity-10 hover:bg-[#000] bg-white transition-all duration-[150ms] ease-linear;
+    }
+}

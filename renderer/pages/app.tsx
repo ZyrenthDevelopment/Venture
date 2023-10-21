@@ -26,15 +26,16 @@ export default function NextPage({}) {
     const [user, setUser] = useState<User>(defaultUser);
 
     const init = async (window) => {
-        const _vp = new VenturePack(window);
         const token = window.localStorage.getItem('token');
-
+        setToken(token);
+        
         if (!token) {
             router.push('/');
             return;
         };
 
-        setToken(token);
+        const _vp = new VenturePack(window);
+
         setVP(_vp);
     };
 
@@ -46,12 +47,9 @@ export default function NextPage({}) {
 
     const fetchData = async () => {
         if (user.id !== '-1') return;
+        if (!api.token) return;
 
-        const res = await axios.get(`${apiConfig.baseUrl}v${apiConfig.version}/users/${atob(localStorage.getItem('token').split('.')[0])}/profile`, {
-            headers: {
-              Authorization: `${localStorage.getItem('token')}`,
-            },
-        });
+        const res = await api.get(`/users/${atob(localStorage.getItem('token').split('.')[0])}/profile`);
 
         const response = res.data;
 

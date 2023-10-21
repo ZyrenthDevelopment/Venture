@@ -2,86 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-    font-family: 'Inter';
-    src: url('/fonts/Inter.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'Material Symbols Rounded';
-    font-style: normal;
-    src: url('/fonts/MaterialSymbolsRounded.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'Lato';
-    src: url('/fonts/Lato/Lato-Black.ttf') format('truetype');
-    font-weight: 900;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Lato';
-    src: url('/fonts/Lato/Lato-BlackItalic.ttf') format('truetype');
-    font-weight: 900;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: 'Lato';
-    src: url('/fonts/Lato/Lato-Bold.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Lato';
-    src: url('/fonts/Lato/Lato-BoldItalic.ttf') format('truetype');
-    font-weight: bold;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: 'Lato';
-    src: url('/fonts/Lato/Lato-Italic.ttf') format('truetype');
-    font-weight: normal;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: 'Lato';
-    src: url('/fonts/Lato/Lato-Light.ttf') format('truetype');
-    font-weight: 300;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Lato';
-    src: url('/fonts/Lato/Lato-LightItalic.ttf') format('truetype');
-    font-weight: 300;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: 'Lato';
-    src: url('/fonts/Lato/Lato-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Lato';
-    src: url('/fonts/Lato/Lato-Thin.ttf') format('truetype');
-    font-weight: 100;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Lato';
-    src: url('/fonts/Lato/Lato-ThinItalic.ttf') format('truetype');
-    font-weight: 100;
-    font-style: italic;
-}
+@import url(./global/Titlebar.css);
+@import url(./global/Imports.css);
 
 @layer base {
     body {
@@ -457,7 +379,7 @@
     }
 
     .app > .content > .body > .sidebar > .profile > .user > .info > .status {
-        @apply text-white text-xs not-italic font-normal leading-[normal] truncate overflow-ellipsis;
+        @apply text-white opacity-70 text-xs not-italic font-normal leading-[normal] truncate overflow-ellipsis;
     }
 
     .app > .content > .body > .sidebar > .profile > .buttons {
@@ -515,32 +437,4 @@ icon {
 
 .login {
     animation-name: anim;
-}
-
-.cet-icon {
-    width: unset !important;
-    padding-left: 12px !important;
-}
-
-.cet-icon > img {
-    height: 11px !important;
-}
-
-.cet-menubar {
-    display: none !important;
-}
-
-.cet-title {
-    font-size: 13px !important;
-    display: none !important;
-}
-
-.cet-title-center {
-    position: unset !important;
-    left: 0 !important;
-    transform: translateX(0) !important;
-}
-
-.cet-titlebar.cet-shadow {
-    box-shadow: none !important;
 }

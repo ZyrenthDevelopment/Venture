@@ -18,11 +18,11 @@ export default class Api {
         this.baseUrl = `${apiConfig.baseUrl}v${apiConfig.version}/`;
     }
 
-    private async request (method: 'GET' | 'POST' | 'PATCH' | 'PUT' | 'OPTIONS' | 'DELETE', endpoint: string[], headers: AxiosHeaders = new AxiosHeaders(), body?: Object) {
+    async request (method: 'GET' | 'POST' | 'PATCH' | 'PUT' | 'OPTIONS' | 'DELETE', endpoint: string[], headers: AxiosHeaders = new AxiosHeaders(), body?: Object) {
         const url = `${this.baseUrl}${endpoint.join('/')}`;
 
         headers.set('Content-Type', 'application/json');
-        if (this.token) headers.set('Authorization', `Bearer ${this.token}`);
+        if (this.token) headers.set('Authorization', this.token);
 
         const response = await axios({
             method: method.toLowerCase(),

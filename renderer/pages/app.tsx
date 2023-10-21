@@ -13,18 +13,20 @@ import Icon from '../components/Icons/icon';
 import VenturePack from '../utilities/pack/venturePack';
 import Tab from '../components/Home/DMList/Tab';
 import DMListUser from '../components/Home/DMList/User';
+import Nav from '../components/Home/Navbar/Nav';
+import Sidebar from '../components/Home/DMList/Sidebar';
+import ServerList from '../components/Serverlist/list';
+import mergeObjects from '../utilities/objectMerger';
+import Api from '../utilities/api';
 
-export default function NextPage() {
+export default function NextPage({}) {
     const router = useRouter();
-    const [publicUser, setUser] = useState<User>(defaultUser);
+    const [token, setToken] = useState<string>(null);
+    const [venturePack, setVP] = useState<VenturePack>(null);
+    const [user, setUser] = useState<User>(defaultUser);
 
-    function _su(user: User) {
-        setUser(user);
-    }
-
-    useEffect(() => {
+    const init = async (window) => {
         const _vp = new VenturePack(window);
-        
         const token = window.localStorage.getItem('token');
 
         if (!token) {
@@ -32,25 +34,49 @@ export default function NextPage() {
             return;
         };
 
-        fetchUserNext(apiConfig, token, _su, defaultUser);
+        setToken(token);
+        setVP(_vp);
+    };
 
-        _vp.createPackItem('currentUser', publicUser);
-
-        return;
+    useEffect(() => {
+        init(window);
     }, []);
+
+    const api = new Api(apiConfig, token);
+
+    const fetchData = async () => {
+        if (user.id !== '-1') return;
+
+        const res = await axios.get(`${apiConfig.baseUrl}v${apiConfig.version}/users/${atob(localStorage.getItem('token').split('.')[0])}/profile`, {
+            headers: {
+              Authorization: `${localStorage.getItem('token')}`,
+            },
+        });
+
+        const response = res.data;
+
+        const usrdata = mergeObjects(response?.user, response?.user_profile, {
+            premium_since: response?.premium_since,
+            premium: response?.premium,
+            premium_type: response?.premium_type
+        });
+
+        setUser(usrdata);
+        venturePack.createPackItem('currentUser', user);
+    }
+
+    useEffect(() => {
+        fetchData();
+    });
 
     return (
         <React.Fragment>
             <Head>
                 <title>Venture Client</title>
             </Head>
-            <div className="_app app">
-                <div className="server-list">
-                    <div className="app-home selected">
-                        <div className="indicator full"></div>
-                        <img src="/images/VentureIcon.svg" alt="Venture Logo" className='app-home-icon' />
-                    </div>
-                    <div className="separator"></div>
+            <div id="app" className="_app app">
+
+                <ServerList isHomeSelected>
                     <ServerListItem iconUrl='/images/Icon.png' isSelected={false} hasNewMessages={true} />
                     <ServerListItem iconUrl='/images/Icon.png' isSelected={false} hasNewMessages={false} />
                     <ServerListItem iconUrl='/images/Icon.png' isSelected={false} hasNewMessages={true} />
@@ -58,155 +84,107 @@ export default function NextPage() {
                     <ServerListItem iconUrl='/images/Icon.png' isSelected={false} hasNewMessages={true} />
                     <ServerListItem iconUrl='/images/Icon.png' isSelected={false} hasNewMessages={false} />
                     <ServerListItem iconUrl='/images/Icon.png' isSelected={false} hasNewMessages={false} />
-                    <div className="separator"></div>
-                    <div className="extra-item">
-                        <Icon name='add' filled size={28} weight={300} className='extra-icon' />
-                    </div>
-                </div>
+                </ServerList>
+
                 <div className="content">
-                    <div className="navbar">
-                        <div className="sidebar">
-                            <div className="content">
-                                <span>Search for users, servers, DMs...</span>
-                            </div>
-                            <div className="shadow">
-                                <div className="separator"></div>
-                                <div className="dropshadow"></div>
-                            </div>
-                        </div>
-                        <div className="body">
-                            <div className="content">
-                                <div className="nav-left">
-                                    <div className="heading">
-                                        <Icon name='groups' filled />
-                                        <span>Friends</span>
-                                    </div>
-                                    <div className="separator"></div>
-                                    <div className="tabs">
-                                        <a href="#" className="button selected">Online</a>
-                                        <a href="#" className="button">All</a>
-                                        <a href="#" className="button">Pending</a>
-                                        <a href="#" className="button">Blocked</a>
-                                        <a href="#" className="button filled">Add Friend</a>
-                                    </div>
-                                </div>
-                                <div className="nav-right">
-                                    <div className="new-dm">
-                                        <Icon name='maps_ugc' filled />
-                                    </div>
-                                    <div className="separator"></div>
-                                    <div className="icons">
-                                        <Icon name='inbox' filled />
-                                        <Icon name='code' filled />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="shadow">
-                                <div className="separator"></div>
-                                <div className="dropshadow"></div>
-                            </div>
-                        </div>
-                    </div>
+
+                    <Nav name='Friends' icon='groups' >
+                        <a href="#" className="button selected">Online</a>
+                        <a href="#" className="button">All</a>
+                        <a href="#" className="button">Pending</a>
+                        <a href="#" className="button">Blocked</a>
+                        <a href="#" className="button filled">Add Friend</a>
+                    </Nav>
+
                     <div className="body">
-                        <div className="sidebar">
-                            <div className="dm-list">
-                                <div className="content">
-                                    <div className="tabs">
-                                        <Tab name='Home' icon='home' />
-                                        <Tab name='Friends' icon='groups' isSelected />
-                                        <Tab name='Marketplace' icon='store' />
-                                        <Tab name='Discovery' icon='explore' />
-                                    </div>
-                                    <div className="dms">
-                                        <div className="heading">
-                                            <span>Direct messages</span>
-                                            <Icon name='add' filled size={20} />
-                                        </div>
-                                        <div className="message-requests">
-                                            <Tab name='Message requests' icon='contact_support' />
-                                        </div>
-                                        <div className="users">
 
-                                            <DMListUser user={{
-                                                username: 'Venture',
-                                                avatarUrl: '/images/logo.png'
-                                            }} isSelected />
+                        <Sidebar
+                        tabs={<>
+                            <Tab name='Home' icon='home' />
+                            <Tab name='Friends' icon='groups' isSelected />
+                            <Tab name='Marketplace' icon='store' />
+                            <Tab name='Discovery' icon='explore' />
+                        </>}
 
-                                            <DMListUser user={{
-                                                username: 'Venture',
-                                                avatarUrl: '/images/logo.png'
-                                            }} status='real' />
+                        user={{
+                            username: user.global_name,
+                            avatarUrl: user.avatar ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png` : '/images/logo.png',
+                            status: 'Online'
+                        }}>
+                            <DMListUser user={{
+                                username: 'Venture',
+                                avatarUrl: '/images/logo.png'
+                            }} isSelected />
 
-                                            <DMListUser user={{
-                                                username: 'Venture',
-                                                avatarUrl: '/images/logo.png'
-                                            }} rpc={{
-                                                name: 'with your mom',
-                                                type: 'PLAYING'
-                                            }} />
+                            <DMListUser user={{
+                                username: 'Venture',
+                                avatarUrl: '/images/logo.png'
+                            }} status='real' />
 
-                                            <DMListUser user={{
-                                                username: 'Venture',
-                                                avatarUrl: '/images/logo.png'
-                                            }} rpc={{
-                                                name: 'you',
-                                                type: 'WATCHING'
-                                            }} />
+                            <DMListUser
+                            user={{
+                                username: 'Venture',
+                                avatarUrl: '/images/logo.png'
+                            }}
+                            
+                            rpc={{
+                                name: 'with your mom',
+                                type: 'PLAYING'
+                            }} />
 
-                                            <DMListUser user={{
-                                                username: 'Venture',
-                                                avatarUrl: '/images/logo.png'
-                                            }} rpc={{
-                                                name: 'you',
-                                                type: 'LISTENING'
-                                            }} />
+                            <DMListUser
+                            user={{
+                                username: 'Venture',
+                                avatarUrl: '/images/logo.png'
+                            }}
+                            
+                            rpc={{
+                                name: 'you',
+                                type: 'WATCHING'
+                            }} />
 
-                                            <DMListUser user={{
-                                                username: 'Venture',
-                                                avatarUrl: '/images/logo.png'
-                                            }} rpc={{
-                                                name: 'your mom',
-                                                type: 'STREAMING'
-                                            }} />
+                            <DMListUser
+                            user={{
+                                username: 'Venture',
+                                avatarUrl: '/images/logo.png'
+                            }}
+                            
+                            rpc={{
+                                name: 'you',
+                                type: 'LISTENING'
+                            }} />
 
-                                            <DMListUser user={{
-                                                username: 'Venture',
-                                                avatarUrl: '/images/logo.png'
-                                            }} rpc={{
-                                                name: '(un)real fight',
-                                                type: 'COMPETING'
-                                            }} />
+                            <DMListUser
+                            user={{
+                                username: 'Venture',
+                                avatarUrl: '/images/logo.png'
+                            }}
+                            
+                            rpc={{
+                                name: 'your mom',
+                                type: 'STREAMING'
+                            }} />
 
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="profile">
-                                <div className="user">
-                                    <img src="/images/Icon.png" alt="Profile Picture" />
-                                    <div className="info">
-                                        <span className="username">Venture</span>
-                                        <span className="status">Status example</span>
-                                    </div>
-                                </div>
-                                <div className="buttons">
-                                    <a href="#" className='button'>
-                                        <Icon name='mic' filled size={22} weight={300} />
-                                    </a>
-                                    <a href="#" className='button'>
-                                        <Icon name='headphones' filled size={22} weight={300} />
-                                    </a>
-                                    <a href="#" className='button'>
-                                        <Icon name='settings' filled size={22} weight={300} />
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                            <DMListUser
+                            user={{
+                                username: 'Venture',
+                                avatarUrl: '/images/logo.png'
+                            }}
+
+                            rpc={{
+                                name: '(un)real fight',
+                                type: 'COMPETING'
+                            }} />
+                        </Sidebar>
+
                         <div className="content">
-
+                            user: {user['username']}
                         </div>
+
                     </div>
+
                 </div>
+
             </div>
         </React.Fragment>
     )

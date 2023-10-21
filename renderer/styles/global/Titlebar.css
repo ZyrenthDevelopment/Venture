@@ -1,0 +1,27 @@
+.cet-icon {
+    width: unset !important;
+    padding-left: 12px !important;
+}
+
+.cet-icon > img {
+    height: 11px !important;
+}
+
+.cet-menubar {
+    display: none !important;
+}
+
+.cet-title {
+    font-size: 13px !important;
+    display: none !important;
+}
+
+.cet-title-center {
+    position: unset !important;
+    left: 0 !important;
+    transform: translateX(0) !important;
+}
+
+.cet-titlebar.cet-shadow {
+    box-shadow: none !important;
+}

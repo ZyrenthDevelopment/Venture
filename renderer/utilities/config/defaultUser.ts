@@ -11,7 +11,7 @@ export default {
     banner_color: null,
     bio: null,
     flags: 0,
-    id: '0',
+    id: '-1',
     premium: undefined,
     premium_since: null,
     premium_type: null,

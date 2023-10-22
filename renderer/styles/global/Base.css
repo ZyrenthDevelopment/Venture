@@ -10,7 +10,7 @@
     
     body {
         @apply bg-[var(--background)] text-white flex flex-col;
-        font-family: 'Inter', sans-serif;
+        font-family: 'Lato', sans-serif;
     }
 
     /* Custom scrollbar */

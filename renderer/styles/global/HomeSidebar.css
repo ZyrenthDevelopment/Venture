@@ -25,19 +25,19 @@
     /* Bottom Shadow */
 
     .Separator__Border {
-        @apply w-full h-0.5
+        @apply w-full h-[1px]
                bg-[#000] bg-opacity-20;
     }
 
     .Separator__Dropshadow {
-        @apply w-full h-0.5
+        @apply w-full h-[1px]
                bg-[#000] bg-opacity-10;
     }
 
     /* Scrollable */
 
     .DM_Sidebar__Scrollable {
-        @apply flex flex-col flex-grow w-full h-full overflow-y-auto;
+        @apply flex flex-col flex-grow gap-2 w-full h-full overflow-y-auto;
     }
 
     /* DM Tabs */
@@ -74,14 +74,9 @@
     }
 
     .Tab__NotificationCount {
-        @apply flex flex-row items-center justify-end
-               text-right;
-    }
-
-    .NotificationCount__Text {
-        @apply flex box-border items-center justify-center px-2 py-2 w-4 h-4
-               text-center text-white text-xs font-bold
-               bg-[#EB4245] rounded-full;
+        @apply flex flex-row items-center justify-center ml-2 px-2 py-2 w-4 h-4 rounded-full
+               text-center text-xs text-white font-bold
+               bg-[#EB4245];
     }
 
     /* DM Heading */
@@ -197,7 +192,7 @@
     }
 
     .USI_Info__Username {
-        @apply text-white text-sm leading-none;
+        @apply text-white text-sm font-semibold leading-none;
     }
 
     .USI_Info__Status {

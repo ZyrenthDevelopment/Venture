@@ -1,7 +1,7 @@
 import Icon from "../Icons/icon";
 import NavTab from "./NavTab";
 
-export default function Page({ name, icon, tabs, children }: { name: string, icon: string, tabs: JSX.Element[], children: React.ReactNode }) {
+export default function Page({ name, icon, tabs, children }: { name: string, icon: string, tabs?: JSX.Element[], children: React.ReactNode }) {
     return (
         <div className="App__Home_Page">
             <div className="Home_Page__Navbar">
@@ -10,14 +10,23 @@ export default function Page({ name, icon, tabs, children }: { name: string, ico
                     <div className="NavTitle__Name">
                         <span>{name}</span>
                     </div>
-                    <div className="NavTitle__Separator"></div>
-                    <div className="NavTitle__NavTabs">
-                        {tabs}
-                    </div>
+                    {tabs ? <>
+                        <div className="NavTitle__Separator"></div>
+                        <div className="NavTitle__NavTabs">
+                            {tabs}
+                        </div>
+                    </> : null}
                 </div>
                 <div className="Navbar__NavButtons">
                     <div className="NavButtons__NavButton">
-                        <Icon name="settings" filled size={24} />
+                        <Icon name="maps_ugc" filled size={24} />
+                    </div>
+                    <div className="NavButtons__Separator"></div>
+                    <div className="NavButtons__NavButton">
+                        <Icon name="inbox" filled size={24} />
+                    </div>
+                    <div className="NavButtons__NavButton">
+                        <Icon name="code" filled size={24} />
                     </div>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Head from 'next/head'
+import Head from 'next/head';
 import { NextRouter, Router, useRouter } from 'next/router';
 import axios from 'axios';
 import User from '../utilities/types/User';
@@ -14,7 +14,6 @@ import Api from '../utilities/api';
 import DMTab from '../components/Home/DMTab';
 import DMUser from '../components/Home/User';
 import Page from '../components/Home/Page';
-import NavTab from '../components/Home/NavTab';
 
 export default function NextPage({}) {
     const router = useRouter();
@@ -91,8 +90,8 @@ export default function NextPage({}) {
                         status: 'really, its unreal real'
                     }} tabs={
                         <>
-                            <DMTab name='Home' icon='home' href='/home' />
-                            <DMTab name='Friends' icon='groups' notificationCount={6} isSelected />
+                            <DMTab name='Home' icon='home' isSelected />
+                            <DMTab name='Friends' icon='groups' notificationCount={6} href='/app' />
                             <DMTab name='Marketplace' icon='store' />
                             <DMTab name='Discover' icon='explore' />
                         </>
@@ -183,12 +182,8 @@ export default function NextPage({}) {
                         status='unreal' />
                     </Sidebar>
 
-                    <Page name='Friends' icon='groups' tabs={[
-                        <NavTab name='Online' active />,
-                        <NavTab name='All' />,
-                        <NavTab name='Pending' notificationCount={6} />,
-                        <NavTab name='Blocked' />,
-                        <NavTab name='Add Friend' filled />,
+                    <Page name='Home' icon='home' tabs={[
+                        <>Catch up on the things that happened recently.</>
                     ]}>
                         <></>
                     </Page>

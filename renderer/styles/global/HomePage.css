@@ -2,20 +2,20 @@
 
 @layer components {
     .App__Home_Page {
-        @apply flex flex-col flex-shrink-0 gap-2 w-full h-full overflow-hidden
+        @apply flex flex-col gap-2 w-full h-full overflow-hidden
                bg-[#000] bg-opacity-20;
     }
 
     /* Navbar */
 
     .Home_Page__Navbar {
-        @apply flex flex-row items-center w-full h-8 pt-2 my-0.5 px-2;
+        @apply flex flex-row items-center w-full h-8 pt-2 my-0.5 px-4;
     }
     
     /* Navbar - Navbar title */
 
     .Navbar__NavTitle {
-        @apply flex flex-row flex-shrink-0 items-center gap-2 h-full w-full;
+        @apply flex flex-row items-center gap-2 h-full w-full;
     }
 
     .NavTitle__Icon {
@@ -29,14 +29,15 @@
     /* Navbar - Navbar separator */
 
     .NavTitle__Separator {
-        @apply flex-shrink-0 h-full w-[1px] rounded-sm
+        @apply flex-shrink-0 h-full w-[1.5px] rounded-sm
                bg-white bg-opacity-10;
     }
 
     /* Navbar - Navbar buttons */
 
     .NavTitle__NavTabs {
-        @apply flex flex-row items-center gap-2 h-full;
+        @apply flex flex-row items-center gap-2 h-full
+               text-white text-opacity-50;
     }
 
     .NavTabs__NavTab {
@@ -77,13 +78,18 @@
     /* Navbar - Navbar buttons */
 
     .Navbar__NavButtons {
-        @apply flex flex-row items-center gap-2 h-full;
+        @apply flex flex-row items-center gap-1 h-full;
     }
 
     .NavButtons__NavButton {
-        @apply flex flex-row items-center justify-center h-6 px-2 rounded-md cursor-pointer
-               hover:bg-white hover:bg-opacity-10
+        @apply flex flex-row items-center justify-center h-6 px-1 rounded-md cursor-pointer
+               hover:opacity-100 opacity-50
                transition-all duration-150 ease-linear;
+    }
+
+    .NavButtons__Separator {
+        @apply flex-shrink-0 h-full w-[1.5px] rounded-sm
+               bg-white bg-opacity-10;
     }
 
     /* Separator */
@@ -95,12 +101,12 @@
     /* Bottom Shadow */
 
     .Separator__Border {
-        @apply w-full h-0.5
+        @apply w-full h-[1px]
                bg-[#000] bg-opacity-20;
     }
 
     .Separator__Dropshadow {
-        @apply w-full h-0.5
+        @apply w-full h-[1px]
                bg-[#000] bg-opacity-10;
     }
 }

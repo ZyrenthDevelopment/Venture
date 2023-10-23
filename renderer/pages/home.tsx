@@ -15,7 +15,9 @@ import DMTab from '../components/Home/DMTab';
 import DMUser from '../components/Home/User';
 import Page from '../components/Home/Page';
 
-export default function NextPage({}) {
+function NextPage({}) { return (<></>); };
+
+NextPage.getLayout = function getLayout(page) {
     const router = useRouter();
     const [token, setToken] = useState<string>(null);
     const [venturePack, setVP] = useState<VenturePack>(null);
@@ -185,7 +187,7 @@ export default function NextPage({}) {
                     <Page name='Home' icon='home' tabs={[
                         <>Catch up on the things that happened recently.</>
                     ]}>
-                        <></>
+                        <>real</>
                     </Page>
 
                 </div>
@@ -210,3 +212,5 @@ async function logout(token: string, router: NextRouter) {
 
     router.push('/');
 }
+
+export default NextPage;

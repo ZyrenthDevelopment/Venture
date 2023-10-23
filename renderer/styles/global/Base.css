@@ -2,11 +2,21 @@
 @tailwind components;
 
 @layer base {
+    /* Variables */
+
     :root {
         --background: #1B1D2A;
         --background-scrollbar: rgba(87, 94, 137, 0.7);
         --background-scrollbar-hover: rgba(118, 127, 185, 0.7);
     }
+
+    /* Focus border */
+
+    * {
+        @apply outline-none focus:outline-[#4e5fd4] focus:outline-offset-0 rounded;
+    }
+
+    /* Body background and fonts */
     
     body {
         @apply bg-[var(--background)] text-white flex flex-col;
@@ -14,6 +24,7 @@
     }
 
     /* Custom scrollbar */
+
     ::-webkit-scrollbar {
         width: 8px;
     }

@@ -34,6 +34,7 @@ export default function Page({ name, icon, tabs, children }: { name: string, ico
                 <div className="Separator__Border"></div>
                 <div className="Separator__Dropshadow"></div>
             </div>
+            {children}
         </div>
     );
 }

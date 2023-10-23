@@ -16,7 +16,9 @@ import DMUser from '../components/Home/User';
 import Page from '../components/Home/Page';
 import NavTab from '../components/Home/NavTab';
 
-export default function NextPage({}) {
+function NextPage({}) { return (<></>); };
+
+NextPage.getLayout = function getLayout(page) {
     const router = useRouter();
     const [token, setToken] = useState<string>(null);
     const [venturePack, setVP] = useState<VenturePack>(null);
@@ -190,7 +192,7 @@ export default function NextPage({}) {
                         <NavTab name='Blocked' />,
                         <NavTab name='Add Friend' filled />,
                     ]}>
-                        <></>
+                        <>unreal</>
                     </Page>
 
                 </div>
@@ -215,3 +217,5 @@ async function logout(token: string, router: NextRouter) {
 
     router.push('/');
 }
+
+export default NextPage;

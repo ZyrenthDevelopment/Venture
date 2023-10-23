@@ -1,0 +1,83 @@
+@tailwind components;
+
+@layer components {
+    .App__Authentication {
+        @apply bg-[#000] bg-opacity-30 rounded-lg rounded-b-none sm:rounded-b-lg shadow-lg p-8 flex flex-row gap-3 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 sm:w-1/2 sm:h-fit w-full h-full;
+    }
+
+    /* Text Login container */
+
+    .Authentication__TextLogin {
+        @apply flex flex-col w-full h-full justify-center;
+    }
+
+    /* QR Login container */
+
+    .Authentication__QRLogin {
+        @apply xl:flex flex-col w-full items-center justify-center hidden;
+    }
+
+    /* Text & QR Login props */
+
+    .QRLogin__QRCode {
+        @apply w-40 mb-3 rounded-lg blur-sm;
+    }
+
+    .TextLogin__Title,
+    .QRLogin__Title {
+        @apply text-2xl font-bold;
+    }
+
+    .TextLogin__SubTitle,
+    .QRLogin__SubTitle {
+        @apply text-lg font-light italic opacity-70;
+    }
+
+    /* Text Login props */
+
+    .TextLogin__TL_Inputs {
+        @apply flex flex-col gap-1 w-full mt-3;
+    }
+
+    .TL_Inputs__Input {
+        @apply bg-[#000] bg-opacity-50 text-white py-2 px-4 rounded-md outline-none focus:outline-[#4e5fd4] focus:outline-offset-0 transition-all duration-150 ease-in-out;
+    }
+
+    .TL_Inputs__Button {
+        @apply text-white font-bold px-4 py-2 rounded-md bg-[#374ace] hover:bg-[#606fd8] outline-none focus:outline-[#4e5fd4] focus:outline-offset-0 transition-all duration-150 ease-in-out;
+    }
+
+    .TL_Inputs__Error {
+        @apply text-[#EB4245] text-sm font-bold;
+    }
+
+    .TextLogin__TL_Footer {
+        @apply flex flex-row gap-1 items-center mt-3;
+    }
+
+    .TL_Footer__Text {
+        @apply text-sm font-light opacity-70;
+    }
+
+    .TL_Footer__Link {
+        @apply text-sm font-bold text-[#4e5fd4] hover:text-[#606fd8];
+    }
+}
+
+/* Auth container animation */
+
+@keyframes Authentication__DropAnimation {
+    0% {
+        transform: translate(-50%, -80%) scale(1.1);
+        opacity: 0;
+    }
+
+    100% {}
+}
+
+.App__Authentication {
+    animation-duration: 0.25s;
+    animation-fill-mode: both;
+
+    animation-name: Authentication__DropAnimation;
+}

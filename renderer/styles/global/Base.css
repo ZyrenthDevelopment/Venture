@@ -13,7 +13,7 @@
     /* Focus border */
 
     * {
-        @apply outline-none focus:outline-[#4e5fd4] focus:outline-offset-0 rounded;
+        @apply outline-none focus:outline-[#4e5fd4] focus:outline-offset-0 focus:rounded;
     }
 
     /* Body background and fonts */
@@ -42,6 +42,24 @@
     ::-webkit-scrollbar-thumb:hover {
         background-color: var(--background-scrollbar-hover);
     }
+
+    /* Icons */
+
+    icon {
+        font-family: 'Material Symbols Rounded';
+        font-weight: normal;
+        font-style: normal;
+        font-size: 24px;
+        display: inline-block;
+        line-height: 1;
+        text-transform: none;
+        letter-spacing: normal;
+        word-wrap: normal;
+        white-space: nowrap;
+        direction: ltr;
+
+        font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24
+    }
 }
 
 @layer components {
@@ -60,4 +78,58 @@
     .App__VentureApp > .App__BodyContainer {
         @apply flex flex-row flex-grow w-full h-full rounded-tl-xl overflow-hidden;
     }
+
+    /* Loading screen */
+
+    .VentureApp__LoadingScreen {
+        @apply flex flex-col items-center justify-center absolute gap-1 w-full h-full bg-[var(--background)] z-[9999] transition-all duration-150 ease-in-out;
+
+        animation-duration: 0.25s;
+        animation-fill-mode: both;
+
+        animation-name: LoadingScreen__OpacityAnimation;
+    }
+
+    .LoadingScreen__VSVGVector {
+        @apply w-[56.71] h-[50px];
+    }
+
+    .LoadingScreen__LoadingDYK {
+        @apply font-semibold opacity-75;
+    }
+
+    .LoadingScreen__LSLoadingIssues {
+        @apply absolute flex flex-col gap-1 items-center bottom-0 p-6;
+
+        animation-duration: 0.25s;
+        animation-fill-mode: both;
+
+        animation-name: LoadingDescription__PopInAnimation;
+    }
+
+    .LSLoadingIssues__LoadingQ {
+        @apply opacity-75 text-sm;
+    }
+
+    .LSLoadingIssues__LoadingDescription > a {
+        @apply text-blue-500 hover:underline;
+    }
+}
+
+@keyframes LoadingDescription__PopInAnimation {
+    0% {
+        transform: translateY(-10%) scale(1.1);
+        opacity: 0;
+    }
+
+    100% {}
+}
+
+@keyframes LoadingScreen__OpacityAnimation {
+    0% {
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    100% {}
 }

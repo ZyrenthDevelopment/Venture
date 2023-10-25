@@ -7,7 +7,7 @@ export default class VenturePack {
 
         this._window = window;
         if (this.customName) this.customName = customName;
-        else this.customName = '__webpack_venturePack';
+        else this.customName = '__vp_venturePack';
 
         if (!this._window[this.customName]) {
             this._window[this.customName] = [];

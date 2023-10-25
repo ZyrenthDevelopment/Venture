@@ -1,0 +1,20 @@
+<svg width="86" height="75" viewBox="0 0 86 75" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<style>
+.__svg_VentureLoading__Path {
+	animation: 2s linear 0s infinite normal forwards running __svg_VentureLoading__ANKF;
+	opacity: 1;
+}
+@keyframes __svg_VentureLoading__ANKF {
+	0% {
+		opacity: 0.1;
+	}
+	35%, 65% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0.1;
+	}
+}
+</style>
+<path d="M42.489 75C36.1488 75 30.4201 71.2175 27.9296 65.3869L0 0V0C13.8826 0 26.4019 8.35253 31.7324 21.171L43.258 48.8874L55.8453 19.3218C60.8336 7.60512 72.3371 0 85.0714 0V0L57.0409 65.4045C54.5461 71.2257 48.8223 75 42.489 75V75Z" fill="white" class="__svg_VentureLoading__Path"/>
+</svg>

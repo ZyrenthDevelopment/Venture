@@ -17,6 +17,7 @@
     "electron-store": "^8.1.0",
     "erlpack": "^0.1.4",
     "events": "^3.3.0",
+    "use-async-effect": "^2.2.7",
     "zlib": "^1.0.5"
   },
   "devDependencies": {
@@ -25,7 +26,7 @@
     "autoprefixer": "^10.4.16",
     "electron": "^26.2.2",
     "electron-builder": "^24.6.4",
-    "next": "^12.3.4",
+    "next": "^14.0.0",
     "nextron": "^8.12.0",
     "postcss": "^8.4.30",
     "react": "^18.2.0",

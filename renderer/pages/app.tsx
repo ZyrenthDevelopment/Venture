@@ -17,6 +17,7 @@ import Page from '../components/Home/Page';
 import NavTab from '../components/Home/NavTab';
 import LoadingScreen from '../components/Base/Loading/Screen';
 import DiscoSocket from '../utilities/pack/ws';
+import useAsyncEffect from 'use-async-effect';
 
 function NextPage({}) {
     return <></>;
@@ -29,7 +30,7 @@ NextPage.getLayout = function getLayout(page) {
     const [websocket, setWS] = useState<DiscoSocket>(null);
     const [user, setUser] = useState<User>(defaultUser);
 
-    const init = async (window) => {
+    useAsyncEffect(async () => {
         const token = window.localStorage.getItem('token');
         setToken(token);
 
@@ -42,18 +43,20 @@ NextPage.getLayout = function getLayout(page) {
 
         setVP(_vp);
 
-        //const ws = new DiscoSocket(_vp, token, window.navigator.userAgent);
+        const api = new Api(apiConfig, token);
 
-        //setWS(ws);
-    };
+        const _t = Date.now();
 
-    useEffect(() => {
-        init(window);
+        await fetchData(api, _vp);
+
+        console.log('data fetched, took:', Date.now() - _t, 'ms');
+
+        const ws = new DiscoSocket(_vp, token, window.navigator.userAgent);
+
+        setWS(ws);
     }, []);
 
-    const api = new Api(apiConfig, token);
-
-    const fetchData = async () => {
+    const fetchData = async (api, venturePack) => {
         if (user.id !== '-1') return;
         if (!api.token) return;
 
@@ -72,10 +75,6 @@ NextPage.getLayout = function getLayout(page) {
         setUser(usrdata);
         venturePack.createPackItem('currentUser', usrdata);
     };
-
-    useEffect(() => {
-        fetchData();
-    });
 
     return (
         <React.Fragment>

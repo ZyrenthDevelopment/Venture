@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import VenturePack from '../../../utilities/pack/venturePack';
+import DiscoSocket from '../../../utilities/pack/ws';
+import useAsyncEffect from 'use-async-effect';
 
 export default function LoadingScreen({}) {
     const [hasConnectionIssues, setConnectionIssues] = useState<boolean>(false);
@@ -10,6 +12,24 @@ export default function LoadingScreen({}) {
     setInterval(() => {
         setConnectionIssues(true);
     }, 10000);
+
+    useAsyncEffect(async () => {
+        await new Promise<void>((resolve) => {
+            const interval = setInterval(() => {
+                const pack = new VenturePack(window);
+                if (pack.searchPack('_dispatch')) {
+                    clearInterval(interval);
+                    resolve();
+                }
+            }, 100);
+        });
+
+        const pack = new VenturePack(window);
+
+        pack.searchPack('_dispatch')[3].on('READY', () => {
+            setLoading(false);
+        });
+    }, []);
 
     return (
         <>

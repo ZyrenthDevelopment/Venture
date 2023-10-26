@@ -16,7 +16,7 @@ import DMUser from '../components/Home/User';
 import Page from '../components/Home/Page';
 import NavTab from '../components/Home/NavTab';
 import LoadingScreen from '../components/Base/Loading/Screen';
-import EventEmitter from 'events';
+import DiscoSocket from '../utilities/pack/ws';
 
 function NextPage({}) {
     return <></>;
@@ -26,6 +26,7 @@ NextPage.getLayout = function getLayout(page) {
     const router = useRouter();
     const [token, setToken] = useState<string>(null);
     const [venturePack, setVP] = useState<VenturePack>(null);
+    const [websocket, setWS] = useState<DiscoSocket>(null);
     const [user, setUser] = useState<User>(defaultUser);
 
     const init = async (window) => {
@@ -40,6 +41,10 @@ NextPage.getLayout = function getLayout(page) {
         const _vp = new VenturePack(window);
 
         setVP(_vp);
+
+        //const ws = new DiscoSocket(_vp, token, window.navigator.userAgent);
+
+        //setWS(ws);
     };
 
     useEffect(() => {
@@ -66,8 +71,6 @@ NextPage.getLayout = function getLayout(page) {
 
         setUser(usrdata);
         venturePack.createPackItem('currentUser', usrdata);
-
-        venturePack.createPackItem('_dispatch', new EventEmitter());
     };
 
     useEffect(() => {
@@ -80,7 +83,7 @@ NextPage.getLayout = function getLayout(page) {
                 <title>Venture Client</title>
             </Head>
             <div id="app" className="_app App__VentureApp">
-                {/* <LoadingScreen /> */}
+                <LoadingScreen />
 
                 <ServerList isHomeSelected>
                     <ServerListItem iconUrl="/images/Icon.png" isSelected={false} hasNewMessages={true} />

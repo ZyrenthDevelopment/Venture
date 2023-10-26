@@ -24,8 +24,12 @@ export default class VenturePack {
         return this.getWindowPack().find((p: [number, string, string, Object]) => p[2] === pack);
     }
 
-    searchPackChunkId(packChunkId: number): Object {
-        return this.getWindowPack().find((p: [number, string, string, Object]) => p[0] === packChunkId);
+    searchPackChunkId(packChunkId: string): Object {
+        return this.getWindowPack().find((p: [number, string, string, Object]) => p[1] === packChunkId);
+    }
+
+    searchPackkId(packId: number): Object {
+        return this.getWindowPack().find((p: [number, string, string, Object]) => p[0] === packId);
     }
 
     createPackItem(pack: string, data: Object): void {

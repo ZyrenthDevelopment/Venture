@@ -15,7 +15,9 @@
     "custom-electron-titlebar": "^4.2.7",
     "electron-serve": "^1.1.0",
     "electron-store": "^8.1.0",
-    "events": "^3.3.0"
+    "erlpack": "^0.1.4",
+    "events": "^3.3.0",
+    "zlib": "^1.0.5"
   },
   "devDependencies": {
     "@types/node": "^18.11.18",

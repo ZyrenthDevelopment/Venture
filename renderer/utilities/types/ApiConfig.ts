@@ -1,6 +1,7 @@
 type ApiConfig = {
     version: number;
     baseUrl: string;
+    gatewayUrl: string;
     cdnUrl: string;
     inviteUrl: string;
     giftUrl: string;

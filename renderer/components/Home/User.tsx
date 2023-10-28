@@ -39,7 +39,7 @@ export default function DMUser({
 }) {
     return (
         <div className={`DMUsers__DMUser${isSelected ? ' DMUser__Selected' : ''}`}>
-            <Image src={user.avatarUrl} alt="Profile Picture" className="DMUser__Avatar" />
+            <Image src={user.avatarUrl} alt="Profile Picture" className="DMUser__Avatar" width={32} height={32} />
             <div className="DMUser__DMUserInfo">
                 <span className="DMUserInfo__Username">{user.username}</span>
                 {status ? <span className="DMUserInfo__DMUI_Status">{status}</span> : null}

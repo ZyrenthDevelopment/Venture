@@ -18,9 +18,9 @@
 
 import axios from 'axios';
 
-import mergeObjects from './objectMerger';
-import ApiConfig from './types/ApiConfig';
-import User from './types/User';
+import mergeObjects from '../objectMerger';
+import ApiConfig from '../types/ApiConfig';
+import User from '../types/User';
 
 export default async function fetchUserNext(apiConfig: ApiConfig, token: string, setUser: Function, defaultUser: User, async?: boolean) {
     let req;

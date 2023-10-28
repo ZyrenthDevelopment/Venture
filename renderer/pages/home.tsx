@@ -26,7 +26,7 @@ import Sidebar from '../components/Home/Sidebar';
 import DMUser from '../components/Home/User';
 import ServerListItem from '../components/Serverlist/LisItem';
 import ServerList from '../components/Serverlist/list';
-import Api from '../utilities/api';
+import Api from '../utilities/api/api';
 import apiConfig from '../utilities/config/apiConfig';
 import defaultUser from '../utilities/config/defaultUser';
 import mergeObjects from '../utilities/objectMerger';

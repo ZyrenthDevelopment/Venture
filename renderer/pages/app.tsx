@@ -29,9 +29,10 @@ import Sidebar from '../components/Home/Sidebar';
 import DMUser from '../components/Home/User';
 import ServerListItem from '../components/Serverlist/LisItem';
 import ServerList from '../components/Serverlist/list';
-import Api from '../utilities/api';
+import Api from '../utilities/api/api';
 import apiConfig from '../utilities/config/apiConfig';
 import defaultUser from '../utilities/config/defaultUser';
+import Logger from '../utilities/logs/logger';
 import mergeObjects from '../utilities/objectMerger';
 import VenturePack from '../utilities/pack/venturePack';
 import DiscoSocket from '../utilities/pack/ws';
@@ -67,6 +68,9 @@ NextPage.getLayout = function getLayout() {
 
         await fetchData(api, _vp);
 
+        Logger.log('Browser', 'rendering app');
+        Logger.warn('Browser', 'rendering app but warn');
+        Logger.error('Browser', 'rendering app but error');
         console.log('data fetched, took:', Date.now() - _t, 'ms');
 
         const ws = new DiscoSocket(_vp, token);

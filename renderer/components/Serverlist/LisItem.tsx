@@ -37,6 +37,8 @@ export default function ListItem({
                     src={iconUrl}
                     alt="Icon" // @ts-ignore
                     onError={(e) => (e.target.style.display = 'none')}
+                    width={48}
+                    height={48}
                 />
                 <div
                     className={

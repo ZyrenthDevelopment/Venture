@@ -28,7 +28,7 @@ export default function List({ isHomeSelected, children }: { isHomeSelected?: bo
                 <div
                     className={isHomeSelected ? 'Home__UnreadIndicator UnreadIndicator__SelectedItem' : 'absolute'}
                 ></div>
-                <Image src="/images/VentureIcon.svg" alt="Venture Logo" />
+                <Image src="/images/VentureIcon.svg" alt="Venture Logo" width={48} height={48} />
             </div>
             <div className="ServerList__Separator"></div>
             {children}

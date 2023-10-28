@@ -18,7 +18,7 @@
 
 import axios, { AxiosHeaders } from 'axios';
 
-import ApiConfig from './types/ApiConfig';
+import ApiConfig from '../types/ApiConfig';
 
 export default class Api {
     apiConfig: ApiConfig;

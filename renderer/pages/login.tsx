@@ -132,7 +132,7 @@ export default function HomePage() {
                 </div>
 
                 <div className="Authentication__QRLogin">
-                    <Image src="/images/qrcode.png" alt="QRCode" className="QRLogin__QRCode" />
+                    <Image src="/images/qrcode.png" alt="QRCode" className="QRLogin__QRCode" width={160} />
                     <span className="QRLogin__Title">QRCode login</span>
                     <span className="QRLogin__SubTitle">QR Login is currently not supported.</span>
                 </div>

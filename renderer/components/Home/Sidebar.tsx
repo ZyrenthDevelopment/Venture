@@ -59,7 +59,13 @@ export default function Sidebar({
             </div>
             <div className="DM_Sidebar__ProfilePanel">
                 <div className="ProfilePanel__UserSection">
-                    <Image src={user.avatarUrl} alt="Profile Picture" className="UserSection__Avatar" />
+                    <Image
+                        src={user.avatarUrl}
+                        alt="Profile Picture"
+                        className="UserSection__Avatar"
+                        width={32}
+                        height={32}
+                    />
                     <div className="UserSection__USI_Info">
                         <span className="USI_Info__Username">{user.username}</span>
                         {user.status ? <span className="USI_Info__Status">{user.status}</span> : null}

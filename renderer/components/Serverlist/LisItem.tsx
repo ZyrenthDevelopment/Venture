@@ -32,14 +32,7 @@ export default function ListItem({
     return (
         <>
             <div className={`ServerList__Item${isSelected ? ' Item__Selected' : ''}`}>
-                <Image
-                    className="Item__Icon"
-                    src={iconUrl}
-                    alt="Icon" // @ts-ignore
-                    onError={(e) => (e.target.style.display = 'none')}
-                    width={48}
-                    height={48}
-                />
+                <Image className="Item__Icon" src={iconUrl} alt="Icon" width={48} height={48} />
                 <div
                     className={
                         isSelected

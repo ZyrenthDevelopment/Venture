@@ -42,16 +42,24 @@ function NextPage() {
     return <></>;
 }
 
+interface pageState {
+    user: User;
+    token: string;
+    venturePack: VenturePack;
+    websocket: DiscoSocket;
+}
+
 NextPage.getLayout = function getLayout() {
-    const router = useRouter(); // eslint-disable-next-line no-unused-vars
-    const [token, setToken] = useState<string>(null); // eslint-disable-next-line no-unused-vars
-    const [venturePack, setVP] = useState<VenturePack>(null); // eslint-disable-next-line no-unused-vars
-    const [websocket, setWS] = useState<DiscoSocket>(null);
-    const [user, setUser] = useState<User>(defaultUser);
+    const router = useRouter();
+    const [page, setPageState] = useState<pageState>({
+        user: defaultUser,
+        token: null,
+        venturePack: null,
+        websocket: null,
+    });
 
     useAsyncEffect(async () => {
         const token = window.localStorage.getItem('token');
-        setToken(token);
 
         if (!token) {
             router.push('/');
@@ -59,30 +67,29 @@ NextPage.getLayout = function getLayout() {
         }
 
         const _vp = new VenturePack(window);
-
-        setVP(_vp);
-
         const api = new Api(apiConfig, token);
 
         const _t = Date.now();
 
-        await fetchData(api, _vp);
+        const user = await fetchData(api, _vp);
 
-        Logger.log('Browser', 'rendering app');
-        Logger.warn('Browser', 'rendering app but warn');
-        Logger.error('Browser', 'rendering app but error');
-        console.log('data fetched, took:', Date.now() - _t, 'ms');
+        Logger.log('Auth', 'User profile fetched, it took:', Date.now() - _t, 'ms');
 
         const ws = new DiscoSocket(_vp, token);
 
-        setWS(ws);
+        setPageState({
+            user,
+            token,
+            venturePack: _vp,
+            websocket: ws,
+        });
     }, []);
 
     const fetchData = async (api, venturePack) => {
-        if (user.id !== '-1') return;
+        if (page.user.id !== '-1') return;
         if (!api.token) return;
 
-        if (venturePack.searchPack('currentUser')) return setUser(venturePack.searchPack('currentUser')[3]);
+        if (venturePack.searchPack('currentUser')) return venturePack.searchPack('currentUser')[3];
 
         const res = await api.get(`/users/${atob(localStorage.getItem('token').split('.')[0])}/profile`);
 
@@ -94,8 +101,9 @@ NextPage.getLayout = function getLayout() {
             premium_type: response?.premium_type,
         });
 
-        setUser(usrdata);
         venturePack.createPackItem('currentUser', usrdata);
+
+        return usrdata;
     };
 
     return (
@@ -119,9 +127,9 @@ NextPage.getLayout = function getLayout() {
                 <div className="App__BodyContainer">
                     <Sidebar
                         user={{
-                            username: user.global_name,
-                            avatarUrl: user.avatar
-                                ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`
+                            username: page.user.global_name,
+                            avatarUrl: page.user.avatar
+                                ? `https://cdn.discordapp.com/avatars/${page.user.id}/${page.user.avatar}.png`
                                 : '/images/logo.png',
                             status: 'really, its unreal real',
                         }}
@@ -131,6 +139,7 @@ NextPage.getLayout = function getLayout() {
                                 <DMTab name="Friends" icon="groups" notificationCount={6} isSelected />
                                 <DMTab name="Marketplace" icon="store" />
                                 <DMTab name="Discover" icon="explore" />
+                                <DMTab name="Design items" icon="code" href="/dev-designs" />
                             </>
                         }
                         pinnedDMs={[

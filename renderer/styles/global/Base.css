@@ -19,6 +19,9 @@
 @tailwind base;
 @tailwind components;
 
+@import url(./Base/Button.css);
+@import url(./Base/InputField.css);
+
 @layer base {
     /* Variables */
 
@@ -31,7 +34,7 @@
     /* Focus border */
 
     * {
-        @apply outline-none focus:outline-[#4e5fd4] focus:outline-offset-0 focus:rounded;
+        @apply outline-none focus:outline-[#4154BF] focus:-outline-offset-1 focus:rounded select-none;
     }
 
     /* Body background and fonts */

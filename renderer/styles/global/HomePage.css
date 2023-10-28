@@ -82,7 +82,7 @@
     }
 
     .NavTab__NotificationCount {
-        @apply flex flex-row items-center justify-center ml-2 px-2 py-2 w-4 h-4 rounded-full text-center text-xs text-white font-bold bg-[#EB4245];
+        @apply flex flex-row items-center justify-center ml-2 px-2 py-2 w-4 h-4 rounded-full text-center text-xs text-white font-bold bg-[#9B1717];
     }
 
     /* Navbar - Navbar buttons */
@@ -113,5 +113,11 @@
 
     .Separator__Dropshadow {
         @apply w-full h-[1px] bg-[#000] bg-opacity-10;
+    }
+
+    /* Body */
+
+    .Home_Page__Body {
+        @apply flex flex-col w-full h-full px-2 items-start overflow-x-hidden overflow-y-auto;
     }
 }

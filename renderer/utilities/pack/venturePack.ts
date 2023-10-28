@@ -79,4 +79,37 @@ export default class VenturePack {
     updatePackItemByPackId(packId: number, data: Object): void {
         this.getWindowPack()[this.getWindowPack().findIndex((p: [number, string, string, Object]) => p[0] === packId)][3] = data;
     }
+
+    async waitForPack(pack: string): Promise<Object> {
+        return new Promise((resolve) => {
+            const interval = setInterval(() => {
+                if (this.searchPack(pack)) {
+                    clearInterval(interval);
+                    resolve(this.searchPack(pack));
+                }
+            }, 100);
+        });
+    }
+
+    async waitForPackChunkId(packChunkId: string): Promise<Object> {
+        return new Promise((resolve) => {
+            const interval = setInterval(() => {
+                if (this.searchPackChunkId(packChunkId)) {
+                    clearInterval(interval);
+                    resolve(this.searchPackChunkId(packChunkId));
+                }
+            }, 100);
+        });
+    }
+
+    async waitForPackId(packId: number): Promise<Object> {
+        return new Promise((resolve) => {
+            const interval = setInterval(() => {
+                if (this.searchPackkId(packId)) {
+                    clearInterval(interval);
+                    resolve(this.searchPackkId(packId));
+                }
+            }, 100);
+        });
+    }
 }

@@ -16,8 +16,6 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-'use client';
-
 import Image from 'next/image';
 import { useState } from 'react';
 import useAsyncEffect from 'use-async-effect';
@@ -33,32 +31,13 @@ export default function LoadingScreen() {
     }, 10000);
 
     useAsyncEffect(async () => {
-        await new Promise<void>((resolve) => {
-            const interval = setInterval(() => {
-                const pack = new VenturePack(window);
-                if (pack.searchPack('_ws')) {
-                    clearInterval(interval);
-                    resolve();
-                }
-            }, 100);
-        });
-        await new Promise<void>((resolve) => {
-            const interval = setInterval(() => {
-                const pack = new VenturePack(window);
-                if (pack.searchPack('_dispatch')) {
-                    clearInterval(interval);
-                    resolve();
-                }
-            }, 100);
-        });
-
         const pack = new VenturePack(window);
 
-        pack.searchPack('_ws')[3][0].onclose(() => {
+        (await pack.waitForPack('_ws'))[3][0].onclose(() => {
             setLoading(true);
         });
 
-        pack.searchPack('_ws')[3][0].onopen(() => {
+        (await pack.waitForPack('_ws'))[3][0].onopen(() => {
             setLoading(false);
         });
     }, []);

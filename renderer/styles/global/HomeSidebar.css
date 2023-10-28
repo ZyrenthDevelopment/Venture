@@ -83,7 +83,7 @@
     }
 
     .Tab__NotificationCount {
-        @apply flex flex-row items-center justify-center ml-2 px-2 py-2 w-4 h-4 rounded-full text-center text-xs text-white font-bold bg-[#EB4245];
+        @apply flex flex-row items-center justify-center ml-2 px-2 py-2 w-4 h-4 rounded-full text-center text-xs text-white font-bold bg-[#9b1717];
     }
 
     /* DM Heading */

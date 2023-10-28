@@ -21,6 +21,8 @@ import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import useAsyncEffect from 'use-async-effect';
 
+import Button from '../components/Base/Elements/Button';
+import InputField from '../components/Base/Elements/InputField';
 import LoadingScreen from '../components/Base/Loading/Screen';
 import DMTab from '../components/Home/DMTab';
 import Page from '../components/Home/Page';
@@ -134,11 +136,11 @@ NextPage.getLayout = function getLayout() {
                         }}
                         tabs={
                             <>
-                                <DMTab name="Home" icon="home" isSelected />
+                                <DMTab name="Home" icon="home" href="/home" />
                                 <DMTab name="Friends" icon="groups" notificationCount={6} href="/app" />
                                 <DMTab name="Marketplace" icon="store" />
                                 <DMTab name="Discover" icon="explore" />
-                                <DMTab name="Design items" icon="code" href="/dev-designs" />
+                                <DMTab name="Design items" icon="code" isSelected />
                             </>
                         }
                         pinnedDMs={[
@@ -241,11 +243,15 @@ NextPage.getLayout = function getLayout() {
                     </Sidebar>
 
                     <Page
-                        name="Home"
-                        icon="home"
-                        tabs={[<span key={0}>Catch up on the things that happened recently.</span>]}
+                        name="Design items"
+                        icon="code"
+                        tabs={[<span key={0}>This page is to test new design items.</span>]}
                     >
-                        real
+                        <Button type="primary">Primary</Button>
+                        <Button type="success">Success</Button>
+                        <Button type="danger">Danger</Button>
+                        <InputField type="text" placeholder="Text input" />
+                        <span>real</span>
                     </Page>
                 </div>
             </div>

@@ -23,6 +23,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 
+import Button from '../components/Base/Elements/Button';
 import apiConfig from '../utilities/config/apiConfig';
 import VenturePack from '../utilities/pack/venturePack';
 
@@ -106,8 +107,8 @@ export default function HomePage() {
                             className="TL_Inputs__Input"
                         />
                         <p className="TL_Inputs__Error hidden"></p>
-                        <button
-                            className="TL_Inputs__Button"
+                        <Button
+                            type="primary"
                             onClick={() => {
                                 const email = document.getElementById('email') as HTMLInputElement;
                                 const password = document.getElementById('password') as HTMLInputElement;
@@ -116,7 +117,7 @@ export default function HomePage() {
                             }}
                         >
                             Login
-                        </button>
+                        </Button>
                     </div>
                     <div className="TextLogin__TL_Footer">
                         <span className="TL_Footer__Text">Don&apos;t have an account?</span>
@@ -132,7 +133,7 @@ export default function HomePage() {
                 </div>
 
                 <div className="Authentication__QRLogin">
-                    <Image src="/images/qrcode.png" alt="QRCode" className="QRLogin__QRCode" width={160} />
+                    <Image src="/images/qrcode.png" alt="QRCode" className="QRLogin__QRCode" width={160} height={160} />
                     <span className="QRLogin__Title">QRCode login</span>
                     <span className="QRLogin__SubTitle">QR Login is currently not supported.</span>
                 </div>

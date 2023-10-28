@@ -61,12 +61,8 @@
         @apply bg-[#000] bg-opacity-50 text-white py-2 px-4 rounded-md outline-none focus:outline-[#4e5fd4] focus:outline-offset-0 transition-all duration-150 ease-in-out;
     }
 
-    .TL_Inputs__Button {
-        @apply text-white font-bold px-4 py-2 rounded-md bg-[#374ace] hover:bg-[#606fd8] outline-none focus:outline-[#4e5fd4] focus:outline-offset-0 transition-all duration-150 ease-in-out;
-    }
-
     .TL_Inputs__Error {
-        @apply text-[#EB4245] text-sm font-bold;
+        @apply text-[#9B1717] text-sm font-bold;
     }
 
     .TextLogin__TL_Footer {

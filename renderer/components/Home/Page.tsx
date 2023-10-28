@@ -61,7 +61,7 @@ export default function Page({
                 <div className="Separator__Border"></div>
                 <div className="Separator__Dropshadow"></div>
             </div>
-            {children}
+            <div className="Home_Page__Body">{children}</div>
         </div>
     );
 }

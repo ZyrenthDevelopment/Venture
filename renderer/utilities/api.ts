@@ -1,5 +1,24 @@
-import axios, { AxiosHeaders } from "axios";
-import ApiConfig from "./types/ApiConfig";
+/*
+ * Venture, an open-source Discord client focused on speed and convenience.
+ * Copyright (c) 2023 Zyrenth
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+import axios, { AxiosHeaders } from 'axios';
+
+import ApiConfig from './types/ApiConfig';
 
 export default class Api {
     apiConfig: ApiConfig;
@@ -7,7 +26,7 @@ export default class Api {
     uId: string;
     private baseUrl: string;
 
-    constructor (apiConfig: ApiConfig, token?: string) {
+    constructor(apiConfig: ApiConfig, token?: string) {
         this.apiConfig = apiConfig;
 
         if (token) {
@@ -18,7 +37,7 @@ export default class Api {
         this.baseUrl = `${apiConfig.baseUrl}v${apiConfig.version}/`;
     }
 
-    private async request (method: 'GET' | 'POST' | 'PATCH' | 'PUT' | 'OPTIONS' | 'DELETE', endpoint: string[], headers: AxiosHeaders = new AxiosHeaders(), body?: Object) {
+    private async request(method: 'GET' | 'POST' | 'PATCH' | 'PUT' | 'OPTIONS' | 'DELETE', endpoint: string[], headers: AxiosHeaders = new AxiosHeaders(), body?: Object) {
         const url = `${this.baseUrl}${endpoint.filter(x => x.replaceAll(' ', '') !== '').join('/')}`;
 
         headers.set('Content-Type', 'application/json');
@@ -33,29 +52,29 @@ export default class Api {
         });
 
         return response;
-    };
+    }
 
-    async get (endpoint: string, headers?: AxiosHeaders) {
+    async get(endpoint: string, headers?: AxiosHeaders) {
         return await this.request('GET', endpoint.split('/'), headers);
     }
 
-    async post (endpoint: string, body?: Object, headers?: AxiosHeaders) {
+    async post(endpoint: string, body?: Object, headers?: AxiosHeaders) {
         return await this.request('POST', endpoint.split('/'), headers, body);
     }
 
-    async patch (endpoint: string, body?: Object, headers?: AxiosHeaders) {
+    async patch(endpoint: string, body?: Object, headers?: AxiosHeaders) {
         return await this.request('PATCH', endpoint.split('/'), headers, body);
     }
 
-    async put (endpoint: string, body?: Object, headers?: AxiosHeaders) {
+    async put(endpoint: string, body?: Object, headers?: AxiosHeaders) {
         return await this.request('PUT', endpoint.split('/'), headers, body);
     }
 
-    async options (endpoint: string, headers?: AxiosHeaders) {
+    async options(endpoint: string, headers?: AxiosHeaders) {
         return await this.request('OPTIONS', endpoint.split('/'), headers);
     }
 
-    async delete (endpoint: string, headers?: AxiosHeaders) {
+    async delete(endpoint: string, headers?: AxiosHeaders) {
         return await this.request('DELETE', endpoint.split('/'), headers);
     }
 }

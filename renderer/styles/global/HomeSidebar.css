@@ -1,9 +1,26 @@
+/*
+ * Venture, an open-source Discord client focused on speed and convenience.
+ * Copyright (c) 2023 Zyrenth
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 @tailwind components;
 
 @layer components {
     .App__DM_Sidebar {
-        @apply flex flex-col flex-shrink-0 gap-2 w-60 h-full overflow-hidden
-               bg-[#000] bg-opacity-40;
+        @apply flex flex-col flex-shrink-0 gap-2 w-60 h-full overflow-hidden bg-[#000] bg-opacity-40;
     }
 
     /* Header */
@@ -13,9 +30,7 @@
     }
 
     .Header__TextInput {
-        @apply w-full py-1 px-1.5 rounded-md cursor-pointer
-               text-white text-opacity-30 text-sm
-               bg-[#000] bg-opacity-30;
+        @apply w-full py-1 px-1.5 rounded-md cursor-pointer text-white text-opacity-30 text-sm bg-[#000] bg-opacity-30;
     }
 
     .DM_Sidebar__Separator {
@@ -25,13 +40,11 @@
     /* Bottom Shadow */
 
     .Separator__Border {
-        @apply w-full h-[1px]
-               bg-[#000] bg-opacity-20;
+        @apply w-full h-[1px] bg-[#000] bg-opacity-20;
     }
 
     .Separator__Dropshadow {
-        @apply w-full h-[1px]
-               bg-[#000] bg-opacity-10;
+        @apply w-full h-[1px] bg-[#000] bg-opacity-10;
     }
 
     /* Scrollable */
@@ -47,9 +60,7 @@
     }
 
     .DMTabs__Tab {
-        @apply flex flex-row flex-shrink-0 gap-3 items-center justify-start w-full h-11 px-3
-               rounded-md hover:bg-white hover:bg-opacity-10
-               transition-all duration-150 ease-linear;
+        @apply flex flex-row flex-shrink-0 gap-3 items-center justify-start w-full h-11 px-3 rounded-md hover:bg-white hover:bg-opacity-10 transition-all duration-150 ease-linear;
     }
 
     .Tab__Selected {
@@ -57,9 +68,7 @@
     }
 
     .Tab__Text {
-        @apply w-full flex-nowrap opacity-50 overflow-hidden
-               text-white text-ellipsis whitespace-nowrap
-               transition-all duration-150 ease-linear;
+        @apply w-full flex-nowrap opacity-50 overflow-hidden text-white text-ellipsis whitespace-nowrap transition-all duration-150 ease-linear;
     }
 
     .Tab__Icon {
@@ -74,9 +83,7 @@
     }
 
     .Tab__NotificationCount {
-        @apply flex flex-row items-center justify-center ml-2 px-2 py-2 w-4 h-4 rounded-full
-               text-center text-xs text-white font-bold
-               bg-[#EB4245];
+        @apply flex flex-row items-center justify-center ml-2 px-2 py-2 w-4 h-4 rounded-full text-center text-xs text-white font-bold bg-[#EB4245];
     }
 
     /* DM Heading */
@@ -86,13 +93,11 @@
     }
 
     .Heading__Text {
-        @apply text-white opacity-50 text-xs font-semibold uppercase leading-none
-               transition-all duration-150 ease-linear;
+        @apply text-white opacity-50 text-xs font-semibold uppercase leading-none transition-all duration-150 ease-linear;
     }
 
     .Heading__Icon {
-        @apply opacity-50 hover:opacity-100 cursor-pointer
-               transition-all duration-150 ease-linear;
+        @apply opacity-50 hover:opacity-100 cursor-pointer transition-all duration-150 ease-linear;
     }
 
     .DM_Sidebar__Heading:hover .Heading__Text {
@@ -106,9 +111,7 @@
     }
 
     .DMUsers__DMUser {
-        @apply flex flex-row flex-shrink-0 gap-2 items-center justify-start w-full h-11 px-2 cursor-pointer
-               rounded-md hover:bg-white hover:bg-opacity-10
-               transition-all duration-150 ease-linear;
+        @apply flex flex-row flex-shrink-0 gap-2 items-center justify-start w-full h-11 px-2 cursor-pointer rounded-md hover:bg-white hover:bg-opacity-10 transition-all duration-150 ease-linear;
     }
 
     .DMUser__Selected {
@@ -124,15 +127,11 @@
     }
 
     .DMUserInfo__Username {
-        @apply flex flex-row items-center justify-start w-full h-4
-               text-white opacity-50 leading-none
-               transition-all duration-150 ease-linear;
+        @apply flex flex-row items-center justify-start w-full h-4 text-white opacity-50 leading-none transition-all duration-150 ease-linear;
     }
 
     .DMUserInfo__DMUI_Status {
-        @apply flex flex-row items-center justify-start w-full h-3
-               text-white text-xs opacity-50 leading-none
-               transition-all duration-150 ease-linear;
+        @apply flex flex-row items-center justify-start w-full h-3 text-white text-xs opacity-50 leading-none transition-all duration-150 ease-linear;
     }
 
     .DMUserInfo__DMUI_RPC {
@@ -140,20 +139,15 @@
     }
 
     .DMUI_RPC__Type {
-        @apply flex flex-row items-center justify-start h-3
-               text-white text-xs opacity-50 leading-none
-               transition-all duration-150 ease-linear;
+        @apply flex flex-row items-center justify-start h-3 text-white text-xs opacity-50 leading-none transition-all duration-150 ease-linear;
     }
 
     .DMUI_RPC__Name {
-        @apply flex flex-row items-center justify-start h-3
-               text-white text-xs opacity-50 font-medium leading-none
-               transition-all duration-150 ease-linear;
+        @apply flex flex-row items-center justify-start h-3 text-white text-xs opacity-50 font-medium leading-none transition-all duration-150 ease-linear;
     }
 
     .DMUI_RPC__Icon {
-        @apply flex-shrink-0 w-3 h-3 opacity-50
-        transition-all duration-150 ease-linear;
+        @apply flex-shrink-0 w-3 h-3 opacity-50 transition-all duration-150 ease-linear;
     }
 
     .DMUsers__DMUser:hover .DMUserInfo__Username,
@@ -172,14 +166,11 @@
     /* Profile Panel */
 
     .DM_Sidebar__ProfilePanel {
-        @apply flex flex-row flex-shrink-0 items-center justify-between w-full h-14 px-2.5
-               bg-[#000] bg-opacity-30;
+        @apply flex flex-row flex-shrink-0 items-center justify-between w-full h-14 px-2.5 bg-[#000] bg-opacity-30;
     }
 
     .ProfilePanel__UserSection {
-        @apply flex flex-row items-center justify-start gap-2 overflow-hidden cursor-pointer py-1 px-1 rounded-md
-               hover:bg-white hover:bg-opacity-10
-               transition-all duration-150 ease-linear;
+        @apply flex flex-row items-center justify-start gap-2 overflow-hidden cursor-pointer py-1 px-1 rounded-md hover:bg-white hover:bg-opacity-10 transition-all duration-150 ease-linear;
     }
 
     .UserSection__Avatar {
@@ -187,8 +178,7 @@
     }
 
     .UserSection__USI_Info {
-        @apply flex flex-col flex-grow items-start justify-center gap-1 w-full
-               flex-nowrap overflow-hidden whitespace-nowrap text-ellipsis;
+        @apply flex flex-col flex-grow items-start justify-center gap-1 w-full flex-nowrap overflow-hidden whitespace-nowrap text-ellipsis;
     }
 
     .USI_Info__Username {
@@ -196,8 +186,7 @@
     }
 
     .USI_Info__Status {
-        @apply text-white text-xs opacity-70 leading-none w-full
-               flex-nowrap overflow-hidden whitespace-nowrap text-ellipsis;
+        @apply text-white text-xs opacity-70 leading-none w-full flex-nowrap overflow-hidden whitespace-nowrap text-ellipsis;
     }
 
     .ProfilePanel__UActionButtons {
@@ -205,8 +194,6 @@
     }
 
     .UActionButtons__UAIconButton {
-        @apply flex flex-shrink-0 w-8 h-8 rounded-md items-center justify-center cursor-pointer
-               opacity-50 hover:opacity-100 hover:bg-white hover:bg-opacity-10
-               transition-all duration-150 ease-linear;
+        @apply flex flex-shrink-0 w-8 h-8 rounded-md items-center justify-center cursor-pointer opacity-50 hover:opacity-100 hover:bg-white hover:bg-opacity-10 transition-all duration-150 ease-linear;
     }
 }

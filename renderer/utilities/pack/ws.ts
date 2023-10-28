@@ -1,23 +1,43 @@
+/*
+ * Venture, an open-source Discord client focused on speed and convenience.
+ * Copyright (c) 2023 Zyrenth
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 import EventEmitter from 'events';
-import VenturePack from "./venturePack";
+
 import apiConfig from '../config/apiConfig';
+import fxWebsocket from './fxWs';
+import VenturePack from './venturePack';
 import { Opcode } from './ws/OpCodes';
 
 export default class DiscoSocket {
-    ws: WebSocket;
+    ws: fxWebsocket;
     seq: number = null;
 
-    constructor(venturePack: VenturePack, token: string, userAgent: string) {
+    constructor(venturePack: VenturePack, token: string) {
         if (!venturePack.searchPack('_dispatch')) venturePack.createPackItem('_dispatch', new EventEmitter());
 
         if (venturePack.searchPack('_ws')) this.ws = venturePack.searchPack('_ws')[3][0];
         else {
-            this.ws = new WebSocket(apiConfig.gatewayUrl + '?v=' + apiConfig.version + '&encoding=json');
+            this.ws = new fxWebsocket(apiConfig.gatewayUrl + '?v=' + apiConfig.version + '&encoding=json');
             venturePack.createPackItem('_ws', [this.ws, this.seq]);
 
-            this.ws.onclose = (e) => console.log(`closed`, e);
+            this.ws.onclose((e) => console.log('closed', e));
 
-            this.ws.onmessage = (event: MessageEvent) => {
+            this.ws.onmessage((event: MessageEvent) => {
                 const data = JSON.parse(event.data);
 
                 if (data.s) this.seq = data.s;
@@ -66,8 +86,8 @@ export default class DiscoSocket {
 
                         break;
                 }
-            }
-        };
+            });
+        }
     }
 
     send(Opcode: Opcode, data: any) {
@@ -76,7 +96,7 @@ export default class DiscoSocket {
         const payload = {
             op: Opcode,
             d: data
-        }
+        };
 
         this.ws.send(JSON.stringify(payload));
     }

@@ -1,9 +1,26 @@
+/*
+ * Venture, an open-source Discord client focused on speed and convenience.
+ * Copyright (c) 2023 Zyrenth
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 @tailwind components;
 
 @layer components {
     .App__Home_Page {
-        @apply flex flex-col gap-2 w-full h-full overflow-hidden
-               bg-[#000] bg-opacity-20;
+        @apply flex flex-col gap-2 w-full h-full overflow-hidden bg-[#000] bg-opacity-20;
     }
 
     /* Navbar */
@@ -11,7 +28,7 @@
     .Home_Page__Navbar {
         @apply flex flex-row items-center w-full h-8 pt-2 my-0.5 px-4;
     }
-    
+
     /* Navbar - Navbar title */
 
     .Navbar__NavTitle {
@@ -29,21 +46,17 @@
     /* Navbar - Navbar separator */
 
     .NavTitle__Separator {
-        @apply flex-shrink-0 h-full w-[1.5px] rounded-sm
-               bg-white bg-opacity-10;
+        @apply flex-shrink-0 h-full w-[1.5px] rounded-sm bg-white bg-opacity-10;
     }
 
     /* Navbar - Navbar buttons */
 
     .NavTitle__NavTabs {
-        @apply flex flex-row items-center gap-2 h-full
-               text-white text-opacity-50;
+        @apply flex flex-row items-center gap-2 h-full text-white text-opacity-50;
     }
 
     .NavTabs__NavTab {
-        @apply flex flex-row items-center justify-center h-6 px-2 rounded-md cursor-pointer
-               hover:bg-white hover:bg-opacity-10
-               transition-all duration-150 ease-linear;
+        @apply flex flex-row items-center justify-center h-6 px-2 rounded-md cursor-pointer hover:bg-white hover:bg-opacity-10 transition-all duration-150 ease-linear;
     }
 
     .NavTab__Filled {
@@ -55,8 +68,7 @@
     }
 
     .NavTab__Name {
-        @apply text-white text-opacity-50
-        transition-all duration-150 ease-linear;
+        @apply text-white text-opacity-50 transition-all duration-150 ease-linear;
     }
 
     .NavTab__Active .NavTab__Name,
@@ -70,9 +82,7 @@
     }
 
     .NavTab__NotificationCount {
-        @apply flex flex-row items-center justify-center ml-2 px-2 py-2 w-4 h-4 rounded-full
-               text-center text-xs text-white font-bold
-               bg-[#EB4245];
+        @apply flex flex-row items-center justify-center ml-2 px-2 py-2 w-4 h-4 rounded-full text-center text-xs text-white font-bold bg-[#EB4245];
     }
 
     /* Navbar - Navbar buttons */
@@ -82,14 +92,11 @@
     }
 
     .NavButtons__NavButton {
-        @apply flex flex-row items-center justify-center h-6 px-1 rounded-md cursor-pointer
-               hover:opacity-100 opacity-50
-               transition-all duration-150 ease-linear;
+        @apply flex flex-row items-center justify-center h-6 px-1 rounded-md cursor-pointer hover:opacity-100 opacity-50 transition-all duration-150 ease-linear;
     }
 
     .NavButtons__Separator {
-        @apply flex-shrink-0 h-full w-[1.5px] rounded-sm
-               bg-white bg-opacity-10;
+        @apply flex-shrink-0 h-full w-[1.5px] rounded-sm bg-white bg-opacity-10;
     }
 
     /* Separator */
@@ -101,12 +108,10 @@
     /* Bottom Shadow */
 
     .Separator__Border {
-        @apply w-full h-[1px]
-               bg-[#000] bg-opacity-20;
+        @apply w-full h-[1px] bg-[#000] bg-opacity-20;
     }
 
     .Separator__Dropshadow {
-        @apply w-full h-[1px]
-               bg-[#000] bg-opacity-10;
+        @apply w-full h-[1px] bg-[#000] bg-opacity-10;
     }
 }

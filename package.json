@@ -11,11 +11,19 @@
     "postinstall": "electron-builder install-app-deps"
   },
   "dependencies": {
+    "@next/eslint-plugin-next": "^14.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.9.0",
     "axios": "^1.5.1",
     "custom-electron-titlebar": "^4.2.7",
     "electron-serve": "^1.1.0",
     "electron-store": "^8.1.0",
     "erlpack": "^0.1.4",
+    "eslint-config-next": "^14.0.0",
+    "eslint-plugin-header": "^3.1.1",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-simple-header": "^1.0.2",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "eslint-plugin-unused-imports": "^3.0.0",
     "events": "^3.3.0",
     "use-async-effect": "^2.2.7",
     "zlib": "^1.0.5"
@@ -26,6 +34,8 @@
     "autoprefixer": "^10.4.16",
     "electron": "^26.2.2",
     "electron-builder": "^24.6.4",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-license-header": "^0.6.0",
     "next": "^14.0.0",
     "nextron": "^8.12.0",
     "postcss": "^8.4.30",

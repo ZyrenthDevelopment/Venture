@@ -1,7 +1,34 @@
-import Icon from "../Icons/icon";
-import NavTab from "./NavTab";
+/*
+ * Venture, an open-source Discord client focused on speed and convenience.
+ * Copyright (c) 2023 Zyrenth
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
 
-export default function Page({ name, icon, tabs, children }: { name: string, icon: string, tabs?: JSX.Element[], children: React.ReactNode }) {
+import Icon from '../Icons/icon';
+
+export default function Page({
+    name,
+    icon,
+    tabs,
+    children,
+}: {
+    name: string;
+    icon: string; // eslint-disable-next-line no-undef
+    tabs?: JSX.Element[]; // eslint-disable-next-line no-undef
+    children: React.ReactNode;
+}) {
     return (
         <div className="App__Home_Page">
             <div className="Home_Page__Navbar">
@@ -10,12 +37,12 @@ export default function Page({ name, icon, tabs, children }: { name: string, ico
                     <div className="NavTitle__Name">
                         <span>{name}</span>
                     </div>
-                    {tabs ? <>
-                        <div className="NavTitle__Separator"></div>
-                        <div className="NavTitle__NavTabs">
-                            {tabs}
-                        </div>
-                    </> : null}
+                    {tabs ? (
+                        <>
+                            <div className="NavTitle__Separator"></div>
+                            <div className="NavTitle__NavTabs">{tabs}</div>
+                        </>
+                    ) : null}
                 </div>
                 <div className="Navbar__NavButtons">
                     <div className="NavButtons__NavButton">

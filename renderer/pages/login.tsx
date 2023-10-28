@@ -1,9 +1,28 @@
-import React, { useEffect } from 'react';
-import Head from 'next/head';
-import Link from 'next/link';
-import Image from 'next/image';
+/*
+ * Venture, an open-source Discord client focused on speed and convenience.
+ * Copyright (c) 2023 Zyrenth
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 import axios from 'axios';
-import { NextRouter, Router, useRouter } from 'next/router';
+import Head from 'next/head';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import React, { useEffect } from 'react';
+
 import apiConfig from '../utilities/config/apiConfig';
 import VenturePack from '../utilities/pack/venturePack';
 
@@ -26,7 +45,7 @@ export default function HomePage() {
                     // @ts-ignore
                     'X-Captcha-Key': document.querySelector('[name=h-captcha-response]')?.value,
                 },
-                validateStatus: (status) => true,
+                validateStatus: () => true,
             },
         );
 
@@ -38,6 +57,7 @@ export default function HomePage() {
             document.getElementById('captcha')?.appendChild(element);
 
             // @ts-ignore
+            // eslint-disable-next-line no-undef
             hcaptcha.render(document.getElementsByClassName('h-captcha')[0], {
                 sitekey: response.data.captcha_sitekey,
                 theme: 'dark',
@@ -55,12 +75,12 @@ export default function HomePage() {
     }
 
     useEffect(() => {
-        const _vp = new VenturePack(window);
+        new VenturePack(window);
 
         const token = window.localStorage.getItem('token');
 
         if (token) {
-            //router.push('/app');
+            // router.push('/app');
             return;
         }
     }, []);
@@ -99,11 +119,11 @@ export default function HomePage() {
                         </button>
                     </div>
                     <div className="TextLogin__TL_Footer">
-                        <span className="TL_Footer__Text">Don't have an account?</span>
+                        <span className="TL_Footer__Text">Don&apos;t have an account?</span>
                         <Link
                             href="#"
-                            className="TL_Footer__Link"
-                            onClick={(e) => (e.target['innerHTML'] = 'skill issue (not finished yet)')}
+                            className="TL_Footer__Link" // @ts-ignore
+                            onClick={(e) => (e.target.innerHTML = 'skill issue (not finished yet)')}
                         >
                             Register
                         </Link>
@@ -112,7 +132,7 @@ export default function HomePage() {
                 </div>
 
                 <div className="Authentication__QRLogin">
-                    <img src="/images/qrcode.png" alt="QRCode" className="QRLogin__QRCode" />
+                    <Image src="/images/qrcode.png" alt="QRCode" className="QRLogin__QRCode" />
                     <span className="QRLogin__Title">QRCode login</span>
                     <span className="QRLogin__SubTitle">QR Login is currently not supported.</span>
                 </div>

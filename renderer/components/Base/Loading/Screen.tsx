@@ -17,6 +17,15 @@ export default function LoadingScreen({}) {
         await new Promise<void>((resolve) => {
             const interval = setInterval(() => {
                 const pack = new VenturePack(window);
+                if (pack.searchPack('_ws')) {
+                    clearInterval(interval);
+                    resolve();
+                }
+            }, 100);
+        });
+        await new Promise<void>((resolve) => {
+            const interval = setInterval(() => {
+                const pack = new VenturePack(window);
                 if (pack.searchPack('_dispatch')) {
                     clearInterval(interval);
                     resolve();
@@ -26,30 +35,30 @@ export default function LoadingScreen({}) {
 
         const pack = new VenturePack(window);
 
-        pack.searchPack('_dispatch')[3].on('READY', () => {
+        pack.searchPack('_ws')[3][0].onclose(() => {
+            setLoading(true);
+        });
+
+        pack.searchPack('_ws')[3][0].onopen(() => {
             setLoading(false);
         });
     }, []);
 
     return (
         <>
-            {isLoading ? (
-                <div className="VentureApp__LoadingScreen">
-                    <img src="/images/Loading.svg" className="LoadingScreen__VSVGVector" width={56.71} height={50} />
-                    <span className="LoadingScreen__LoadingDYK">Did you know?</span>
-                    <span className="LoadingScreen__LoadingDescription">
-                        Venture is an open-source, free software :3
-                    </span>
-                    {hasConnectionIssues ? (
-                        <div className="LoadingScreen__LSLoadingIssues">
-                            <span className="LSLoadingIssues__LoadingQ">Connection issues?</span>
-                            <span className="LSLoadingIssues__LoadingDescription">
-                                Check <a href="#">Discord's Status</a> or check our <a href="#">server status</a>.
-                            </span>
-                        </div>
-                    ) : null}
-                </div>
-            ) : null}
+            <div className={`VentureApp__LoadingScreen${isLoading ? `` : ` opacity-0`}`}>
+                <img src="/images/Loading.svg" className="LoadingScreen__VSVGVector" width={56.71} height={50} />
+                <span className="LoadingScreen__LoadingDYK">Did you know?</span>
+                <span className="LoadingScreen__LoadingDescription">Venture is an open-source, free software :3</span>
+                {hasConnectionIssues ? (
+                    <div className="LoadingScreen__LSLoadingIssues">
+                        <span className="LSLoadingIssues__LoadingQ">Connection issues?</span>
+                        <span className="LSLoadingIssues__LoadingDescription">
+                            Check <a href="#">Discord's Status</a> or check our <a href="#">server status</a>.
+                        </span>
+                    </div>
+                ) : null}
+            </div>
         </>
     );
 }

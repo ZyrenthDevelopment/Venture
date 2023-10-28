@@ -3,33 +3,16 @@
     "extends": ["eslint:recommended", "next", "prettier"],
     "parser": "@typescript-eslint/parser",
     "ignorePatterns": ["dist", "app", "node_modules"],
-    "plugins": ["@typescript-eslint", "simple-header", "simple-import-sort", "unused-imports", "path-alias"],
+    "plugins": ["@typescript-eslint", "simple-import-sort", "unused-imports", "license-header" /*, "path-alias"*/],
     "rules": {
         "react/react-in-jsx-scope": "off",
-        "prettier/prettier": [
-            "error",
-            {
-                "trailingComma": "all",
-                "tabWidth": 12,
-                "semi": false,
-                "singleQuote": true,
-                "bracketSpacing": true,
-                "eslintIntegration": true,
-                "printWidth": 120
-            }
-        ],
-        "simple-header/header": [
-            "error",
-            {
-                "files": ["scripts/header.txt"],
-                "templates": { "author": [".*", "Zyrenth"] }
-            }
-        ],
-        "quotes": ["error", "double", { "avoidEscape": true }],
+        "react-hooks/rules-of-hooks": "off",
+        "license-header/header": ["error", "scripts/header.js"],
+        "simple-import-sort/imports": "error",
+        "quotes": ["error", "single", { "avoidEscape": true }],
         "jsx-quotes": ["error", "prefer-double"],
         "no-mixed-spaces-and-tabs": "error",
         "indent": ["error", 4, { "SwitchCase": 1 }],
-        "arrow-parens": ["error", "as-needed"],
         "eol-last": ["error", "always"],
         "@typescript-eslint/func-call-spacing": ["error", "never"],
         "no-multi-spaces": "error",
@@ -58,12 +41,6 @@
         "no-duplicate-imports": "error",
         "no-extra-semi": "error",
         "dot-notation": "error",
-        "no-useless-escape": [
-            "error",
-            {
-                "extra": "i"
-            }
-        ],
         "no-fallthrough": "error",
         "for-direction": "error",
         "no-async-promise-executor": "error",
@@ -83,11 +60,9 @@
         "prefer-const": "error",
         "prefer-spread": "error",
 
-        "simple-import-sort/imports": "error",
+        /* "simple-import-sort/imports": "error", */
         "simple-import-sort/exports": "error",
 
-        "unused-imports/no-unused-imports": "error",
-
-        "path-alias/no-relative": "error"
+        "unused-imports/no-unused-imports": "error"
     }
 }

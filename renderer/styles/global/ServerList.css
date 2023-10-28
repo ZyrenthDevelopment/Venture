@@ -1,51 +1,70 @@
+/*
+ * Venture, an open-source Discord client focused on speed and convenience.
+ * Copyright (c) 2023 Zyrenth
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 @tailwind components;
 
 @layer components {
     .App__ServerList {
-        @apply flex flex-col items-center gap-[8px] self-stretch w-[72px] h-full overflow-y-auto; /* TODO: Fix server item overflow + indicators dont move on scroll */
+        @apply flex flex-col items-center gap-[8px] self-stretch w-[72px] h-full overflow-y-auto;
+        /* TODO: Fix server item overflow + indicators dont move on scroll */
     }
 
-    .App__ServerList > .ServerList__Home {
+    .App__ServerList>.ServerList__Home {
         @apply flex w-12 h-12 p-3 justify-center items-center gap-3 cursor-pointer hover:rounded-xl rounded-3xl hover:bg-opacity-70 bg-opacity-10 hover:bg-[#2A3FAE] bg-white transition-all duration-[150ms] ease-linear;
     }
 
-    .App__ServerList > .ServerList__Home.Home__Selected {
+    .App__ServerList>.ServerList__Home.Home__Selected {
         @apply rounded-xl bg-opacity-70 bg-[#2A3FAE];
     }
 
-    .App__ServerList > .ServerList__Home > .Home__UnreadIndicator {
+    .App__ServerList>.ServerList__Home>.Home__UnreadIndicator {
         @apply absolute w-2 h-2 rounded-full bg-white bg-opacity-50 left-[-3px];
     }
 
-    .App__ServerList > .ServerList__Home > .Home__UnreadIndicator.UnreadIndicator__SelectedItem {
+    .App__ServerList>.ServerList__Home>.Home__UnreadIndicator.UnreadIndicator__SelectedItem {
         @apply h-8;
     }
 
-    .App__ServerList > .ServerList__Item {
+    .App__ServerList>.ServerList__Item {
         @apply flex w-12 h-12 p-3 flex-shrink-0 justify-center items-center gap-3 cursor-pointer hover:rounded-xl rounded-3xl overflow-hidden transition-all duration-[150ms] ease-linear;
     }
 
-    .App__ServerList > .ServerList__Item.Item__Selected {
+    .App__ServerList>.ServerList__Item.Item__Selected {
         @apply rounded-xl;
     }
 
-    .App__ServerList > .ServerList__Item > .Item__Icon {
+    .App__ServerList>.ServerList__Item>.Item__Icon {
         @apply w-12 h-12 max-w-none;
     }
 
-    .App__ServerList > .ServerList__Item > .Item__UnreadIdicator {
+    .App__ServerList>.ServerList__Item>.Item__UnreadIdicator {
         @apply absolute w-2 h-2 rounded-full bg-white bg-opacity-50 left-[-3px];
     }
 
-    .App__ServerList > .ServerList__Item > .Item__UnreadIdicator.UnreadIdicator__SelectedItem {
+    .App__ServerList>.ServerList__Item>.Item__UnreadIdicator.UnreadIdicator__SelectedItem {
         @apply h-8;
     }
 
-    .App__ServerList > .ServerList__Separator {
+    .App__ServerList>.ServerList__Separator {
         @apply flex-shrink-0 w-8 h-0.5 rounded-[1px] bg-opacity-10 bg-white;
     }
 
-    .App__ServerList > .ServerList__ExtraItem {
+    .App__ServerList>.ServerList__ExtraItem {
         @apply flex w-12 h-12 p-3 justify-center items-center gap-3 cursor-pointer hover:rounded-xl rounded-3xl hover:bg-opacity-30 bg-opacity-10 hover:bg-[#000] bg-white transition-all duration-[150ms] ease-linear;
     }
 }

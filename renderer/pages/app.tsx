@@ -1,32 +1,50 @@
-import React, { useEffect, useState } from 'react';
+/*
+ * Venture, an open-source Discord client focused on speed and convenience.
+ * Copyright (c) 2023 Zyrenth
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 import Head from 'next/head';
-import { NextRouter, Router, useRouter } from 'next/router';
-import axios from 'axios';
-import User from '../utilities/types/User';
-import defaultUser from '../utilities/config/defaultUser';
-import apiConfig from '../utilities/config/apiConfig';
-import ServerListItem from '../components/Serverlist/LisItem';
-import VenturePack from '../utilities/pack/venturePack';
-import Sidebar from '../components/Home/Sidebar';
-import ServerList from '../components/Serverlist/list';
-import mergeObjects from '../utilities/objectMerger';
-import Api from '../utilities/api';
-import DMTab from '../components/Home/DMTab';
-import DMUser from '../components/Home/User';
-import Page from '../components/Home/Page';
-import NavTab from '../components/Home/NavTab';
-import LoadingScreen from '../components/Base/Loading/Screen';
-import DiscoSocket from '../utilities/pack/ws';
+import { useRouter } from 'next/router';
+import React, { useState } from 'react';
 import useAsyncEffect from 'use-async-effect';
 
-function NextPage({}) {
+import LoadingScreen from '../components/Base/Loading/Screen';
+import DMTab from '../components/Home/DMTab';
+import NavTab from '../components/Home/NavTab';
+import Page from '../components/Home/Page';
+import Sidebar from '../components/Home/Sidebar';
+import DMUser from '../components/Home/User';
+import ServerListItem from '../components/Serverlist/LisItem';
+import ServerList from '../components/Serverlist/list';
+import Api from '../utilities/api';
+import apiConfig from '../utilities/config/apiConfig';
+import defaultUser from '../utilities/config/defaultUser';
+import mergeObjects from '../utilities/objectMerger';
+import VenturePack from '../utilities/pack/venturePack';
+import DiscoSocket from '../utilities/pack/ws';
+import User from '../utilities/types/User';
+
+function NextPage() {
     return <></>;
 }
 
-NextPage.getLayout = function getLayout(page) {
-    const router = useRouter();
-    const [token, setToken] = useState<string>(null);
-    const [venturePack, setVP] = useState<VenturePack>(null);
+NextPage.getLayout = function getLayout() {
+    const router = useRouter(); // eslint-disable-next-line no-unused-vars
+    const [token, setToken] = useState<string>(null); // eslint-disable-next-line no-unused-vars
+    const [venturePack, setVP] = useState<VenturePack>(null); // eslint-disable-next-line no-unused-vars
     const [websocket, setWS] = useState<DiscoSocket>(null);
     const [user, setUser] = useState<User>(defaultUser);
 
@@ -51,7 +69,7 @@ NextPage.getLayout = function getLayout(page) {
 
         console.log('data fetched, took:', Date.now() - _t, 'ms');
 
-        const ws = new DiscoSocket(_vp, token, window.navigator.userAgent);
+        const ws = new DiscoSocket(_vp, token);
 
         setWS(ws);
     }, []);
@@ -113,6 +131,7 @@ NextPage.getLayout = function getLayout(page) {
                         }
                         pinnedDMs={[
                             <DMUser
+                                key={0}
                                 user={{
                                     username: 'Venture Music',
                                     avatarUrl: '/images/logo.png',
@@ -123,6 +142,7 @@ NextPage.getLayout = function getLayout(page) {
                                 }}
                             />,
                             <DMUser
+                                key={1}
                                 user={{
                                     username: 'Pinned DM',
                                     avatarUrl: '/images/logo.png',
@@ -212,11 +232,11 @@ NextPage.getLayout = function getLayout(page) {
                         name="Friends"
                         icon="groups"
                         tabs={[
-                            <NavTab name="Online" active />,
-                            <NavTab name="All" />,
-                            <NavTab name="Pending" notificationCount={6} />,
-                            <NavTab name="Blocked" />,
-                            <NavTab name="Add Friend" filled />,
+                            <NavTab key={0} name="Online" active />,
+                            <NavTab key={1} name="All" />,
+                            <NavTab key={2} name="Pending" notificationCount={6} />,
+                            <NavTab key={3} name="Blocked" />,
+                            <NavTab key={4} name="Add Friend" filled />,
                         ]}
                     >
                         <>unreal</>
@@ -226,25 +246,5 @@ NextPage.getLayout = function getLayout(page) {
         </React.Fragment>
     );
 };
-
-async function logout(token: string, router: NextRouter) {
-    const response = await axios.post(
-        `${apiConfig.baseUrl}v${apiConfig.version}/auth/logout`,
-        {},
-        {
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: token,
-            },
-            validateStatus: (status) => true,
-        },
-    );
-
-    if (!response.request.status.toString().startsWith('2')) return console.log(response.data);
-
-    window.localStorage.removeItem('token');
-
-    router.push('/');
-}
 
 export default NextPage;

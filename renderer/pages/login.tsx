@@ -108,7 +108,7 @@ export default function HomePage() {
                         />
                         <p className="TL_Inputs__Error hidden"></p>
                         <Button
-                            type="primary"
+                            color="primary"
                             onClick={() => {
                                 const email = document.getElementById('email') as HTMLInputElement;
                                 const password = document.getElementById('password') as HTMLInputElement;

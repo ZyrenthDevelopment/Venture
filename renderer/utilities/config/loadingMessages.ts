@@ -16,13 +16,10 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export default function ModifyHeader(headers, keyToChange, value) {
-    const keyToChangeLower = keyToChange.toLowerCase();
-    for (const key of Object.keys(headers)) {
-        if (key.toLowerCase() === keyToChangeLower) {
-            headers[key] = value;
-            return;
-        }
+export default class loadingMessages {
+    static messages = ['loading...', 'wait, please', 'hold on...', 'almost there...', 'just a second...'];
+
+    static getRandomMessage() {
+        return this.messages[Math.floor(Math.random() * this.messages.length)];
     }
-    headers[keyToChange] = value;
 }

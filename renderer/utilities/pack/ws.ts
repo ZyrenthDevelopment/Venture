@@ -19,6 +19,7 @@
 import EventEmitter from 'events';
 
 import apiConfig from '../config/apiConfig';
+import Logger from '../logs/logger';
 import fxWebsocket from './fxWs';
 import VenturePack from './venturePack';
 import { Opcode } from './ws/OpCodes';
@@ -32,10 +33,26 @@ export default class DiscoSocket {
 
         if (venturePack.searchPack('_ws')) this.ws = venturePack.searchPack('_ws')[3][0];
         else {
+            let _t = Date.now();
+            Logger.log('Gateway', `Connecting to ${apiConfig.gatewayUrl}?v=${apiConfig.version}&encoding=json`);
+
             this.ws = new fxWebsocket(apiConfig.gatewayUrl + '?v=' + apiConfig.version + '&encoding=json');
             venturePack.createPackItem('_ws', [this.ws, this.seq]);
 
-            this.ws.onclose((e) => console.log('closed', e));
+            this.ws.onopen(() => {
+                Logger.log('Gateway', 'Connected, took:', Date.now() - _t, 'ms');
+            });
+
+            this.ws.onclose((e) => {
+                Logger.log('Gateway', 'Disconnected, reconnecting...');
+                Logger.log('Debug', 'Gateway close event:', e);
+
+                setInterval(() => _t = Date.now(), 5000);
+            });
+
+            venturePack.searchPack('_dispatch')[3].on('READY', () => {
+                Logger.log('Gateway', 'Identifying succeeded, took:', Date.now() - _t, 'ms');
+            });
 
             this.ws.onmessage((event: MessageEvent) => {
                 const data = JSON.parse(event.data);
@@ -75,7 +92,7 @@ export default class DiscoSocket {
                         });
                         break;
                     case Opcode.HEARTBEAT_ACK:
-                        console.log('Heartbeat acknowledged.');
+                        Logger.log('Debug', 'Gateway heartbeat acknowledged.');
                         break;
                     case Opcode.DISPATCH:
                         if (data.t) venturePack.searchPack('_dispatch')[3].emit(data.t, data.d);

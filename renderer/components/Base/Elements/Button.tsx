@@ -17,29 +17,25 @@
  */
 
 import clsx from 'clsx';
-import type { JSX } from 'react';
+import * as React from 'react';
 
-export default function Button({
-    children,
-    type = 'primary',
-    className,
-    onClick,
-}: {
-    children: JSX.Element[] | JSX.Element | string;
-    type?: 'primary' | 'success' | 'danger';
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+    color?: 'primary' | 'success' | 'danger';
+    children: React.ReactNode;
     className?: string;
-    onClick?: () => void;
-}) {
+};
+
+export default function Button({ children, color = 'primary', className, ...props }: ButtonProps) {
     return (
         <button
             className={clsx(
                 'Base__Button',
-                type === 'primary' && 'Button__primary',
-                type === 'success' && 'Button__success',
-                type === 'danger' && 'Button__danger',
+                color === 'primary' && 'Button__primary',
+                color === 'success' && 'Button__success',
+                color === 'danger' && 'Button__danger',
                 className,
             )}
-            onClick={onClick}
+            {...props}
         >
             {children}
         </button>

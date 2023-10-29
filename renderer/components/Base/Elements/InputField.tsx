@@ -17,27 +17,19 @@
  */
 
 import clsx from 'clsx';
+import * as React from 'react';
 
-export default function InputField({
-    placeholder,
-    value,
-    type,
-    className,
-    onChange,
-}: {
-    placeholder?: string;
-    value?: string;
-    type?: 'text' | 'password' | 'email' | 'number' | 'date' | 'time' | 'datetime-local' | 'search' | 'url';
-    className?: string;
-    onChange?: () => void;
-}) {
-    return (
-        <input
-            type={type ?? 'text'}
-            placeholder={placeholder}
-            value={value}
-            className={clsx('Base__InputField', className)}
-            onChange={onChange}
-        />
+type InputFieldProps = React.InputHTMLAttributes<HTMLInputElement> &
+    React.TextareaHTMLAttributes<HTMLTextAreaElement> & {
+        className?: string;
+        type?: 'text' | 'password' | 'email' | 'number' | 'date' | 'time' | 'datetime-local' | 'search' | 'url';
+        isTextArea?: boolean;
+    };
+
+export default function InputField({ className, type, isTextArea, ...props }: InputFieldProps) {
+    return !isTextArea ? (
+        <input type={type ?? 'text'} className={clsx('Base__InputField', className)} {...props} />
+    ) : (
+        <textarea className={clsx('Base__InputField', className)} {...props} />
     );
 }

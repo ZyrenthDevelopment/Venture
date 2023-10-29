@@ -59,6 +59,8 @@ NextPage.getLayout = function getLayout() {
         websocket: null,
     });
 
+    const [txt, setTxt] = useState<string>('real');
+
     useAsyncEffect(async () => {
         const token = window.localStorage.getItem('token');
 
@@ -247,11 +249,12 @@ NextPage.getLayout = function getLayout() {
                         icon="code"
                         tabs={[<span key={0}>This page is to test new design items.</span>]}
                     >
-                        <Button type="primary">Primary</Button>
-                        <Button type="success">Success</Button>
-                        <Button type="danger">Danger</Button>
+                        <Button color="primary">Primary</Button>
+                        <Button color="success">Success</Button>
+                        <Button color="danger">Danger</Button>
                         <InputField type="text" placeholder="Text input" />
-                        <span>real</span>
+                        <InputField placeholder="Text input" isTextArea onChange={(e) => setTxt(e.target.value)} />
+                        <span>{txt}</span>
                     </Page>
                 </div>
             </div>

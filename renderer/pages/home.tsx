@@ -245,7 +245,7 @@ NextPage.getLayout = function getLayout() {
                         icon="home"
                         tabs={[<span key={0}>Catch up on the things that happened recently.</span>]}
                     >
-                        real
+                        real home
                     </Page>
                 </div>
             </div>

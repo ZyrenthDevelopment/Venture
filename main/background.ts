@@ -1,11 +1,30 @@
-import { Menu, Tray, app, ipcMain, nativeImage, shell, session, Notification } from 'electron';
+/*
+ * Venture, an open-source Discord client focused on speed and convenience.
+ * Copyright (c) 2023 Zyrenth
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+import { attachTitlebarToWindow, setupTitlebar } from 'custom-electron-titlebar/main';
+import { app, ipcMain, Menu, nativeImage, Notification, session, shell, Tray } from 'electron';
 import serve from 'electron-serve';
-import { setupTitlebar, attachTitlebarToWindow } from 'custom-electron-titlebar/main';
 import path from 'path';
-import { createWindow } from './helpers';
-import Store from './utilities/Store';
-import ModifyHeader from './utilities/ModifyHeader';
 import { URL } from 'url';
+
+import { createWindow } from './helpers';
+import ModifyHeader from './utilities/ModifyHeader';
+import Store from './utilities/Store';
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -39,7 +58,7 @@ const filter = {
 
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
-            //webSecurity: false // TODO: finish proper web-security
+            // webSecurity: false // TODO: finish proper web-security
         }
     });
 
@@ -92,7 +111,7 @@ const filter = {
         ModifyHeader(requestHeaders, 'Referer', 'https://discord.com/');
         ModifyHeader(requestHeaders, 'Origin', null);
 
-        delete details.requestHeaders['Origin'];
+        delete details.requestHeaders.Origin;
 
         callback({ requestHeaders });
     });
@@ -102,7 +121,7 @@ const filter = {
 
         const domain = new URL(details.url).hostname.split('.').slice(-2).join('.');
         const isHcaptcha = domain === 'hcaptcha.com';
-        
+
         delete details.responseHeaders['Access-Control-Allow-Origin'];
         delete details.responseHeaders['Access-Control-Allow-Headers'];
 

@@ -1,10 +1,28 @@
+/*
+ * Venture, an open-source Discord client focused on speed and convenience.
+ * Copyright (c) 2023 Zyrenth
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 import {
-    screen,
     BrowserWindow,
     BrowserWindowConstructorOptions,
-    Rectangle,
     Menu,
     MenuItem,
+    Rectangle,
+    screen,
 } from 'electron';
 import Store from 'electron-store';
 
@@ -47,7 +65,7 @@ export const createWindow = (
     };
 
     const resetToDefaults = () => {
-        const bounds = screen.getPrimaryDisplay().bounds;
+        const { bounds } = screen.getPrimaryDisplay();
 
         return Object.assign({}, defaultSize, {
             x: (bounds.width - defaultSize.width) / 2,
@@ -57,9 +75,9 @@ export const createWindow = (
 
     const ensureVisibleOnSomeDisplay = (windowState) => {
         const visible = screen.getAllDisplays().some((display) => {
-            return windowWithinBounds(windowState, display.bounds)
+            return windowWithinBounds(windowState, display.bounds);
         });
-        
+
         if (!visible) return resetToDefaults();
 
         return windowState;
@@ -69,7 +87,7 @@ export const createWindow = (
         if (!win.isMinimized() && !win.isMaximized()) Object.assign(state, getCurrentPosition());
 
         store.set(key, state);
-    }
+    };
 
     state = ensureVisibleOnSomeDisplay(restore());
 

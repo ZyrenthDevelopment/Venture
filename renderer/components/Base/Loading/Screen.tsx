@@ -20,24 +20,29 @@ import Image from 'next/image';
 import { useState } from 'react';
 import useAsyncEffect from 'use-async-effect';
 
+import loadingMessages from '../../../utilities/config/loadingMessages';
 import VenturePack from '../../../utilities/pack/venturePack';
 
 export default function LoadingScreen() {
     const [hasConnectionIssues, setConnectionIssues] = useState<boolean>(false);
     const [isLoading, setLoading] = useState<boolean>(true);
+    const [loadingMessage, setLoadingMessage] = useState<string>(' ');
 
     setInterval(() => {
         setConnectionIssues(true);
     }, 10000);
 
     useAsyncEffect(async () => {
+        setLoadingMessage(loadingMessages.getRandomMessage());
+
         const pack = new VenturePack(window);
 
         (await pack.waitForPack('_ws'))[3][0].onclose(() => {
             setLoading(true);
+            setLoadingMessage(loadingMessages.getRandomMessage());
         });
 
-        (await pack.waitForPack('_ws'))[3][0].onopen(() => {
+        (await pack.waitForPack('_dispatch'))[3].on('READY', () => {
             setLoading(false);
         });
     }, []);
@@ -53,7 +58,7 @@ export default function LoadingScreen() {
                     height={50}
                 />
                 <span className="LoadingScreen__LoadingDYK">Did you know?</span>
-                <span className="LoadingScreen__LoadingDescription">Venture is an open-source, free software :3</span>
+                <span className="LoadingScreen__LoadingDescription">{loadingMessage}</span>
                 {hasConnectionIssues ? (
                     <div className="LoadingScreen__LSLoadingIssues">
                         <span className="LSLoadingIssues__LoadingQ">Connection issues?</span>

@@ -18,7 +18,7 @@
 
 import React from 'react';
 
-import Logger from '../../../utilities/logs/logger';
+import Logger from '../../../utilities/logger/logger';
 
 export default class ErrorBoundary extends React.Component {
     state: { hasError: boolean };

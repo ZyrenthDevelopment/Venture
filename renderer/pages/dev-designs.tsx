@@ -33,7 +33,7 @@ import ServerList from '../components/Serverlist/list';
 import Api from '../utilities/api/api';
 import apiConfig from '../utilities/config/apiConfig';
 import defaultUser from '../utilities/config/defaultUser';
-import Logger from '../utilities/logs/logger';
+import Logger from '../utilities/logger/logger';
 import mergeObjects from '../utilities/objectMerger';
 import VenturePack from '../utilities/pack/venturePack';
 import DiscoSocket from '../utilities/pack/ws';

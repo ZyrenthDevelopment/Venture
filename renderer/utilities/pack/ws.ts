@@ -19,7 +19,7 @@
 import EventEmitter from 'events';
 
 import apiConfig from '../config/apiConfig';
-import Logger from '../logs/logger';
+import Logger from '../logger/logger';
 import fxWebsocket from './fxWs';
 import VenturePack from './venturePack';
 import { Opcode } from './ws/OpCodes';

@@ -135,3 +135,4 @@ node_modules
 .next
 app
 dist
+next.config.js

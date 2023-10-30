@@ -19,11 +19,13 @@
 import { Titlebar, TitlebarColor } from 'custom-electron-titlebar';
 import { contextBridge, ipcRenderer, IpcRendererEvent } from 'electron';
 
-window.addEventListener('DOMContentLoaded', () => new Titlebar({
-    backgroundColor: TitlebarColor.fromHex('#00000000'),
-    icon: '/images/LogoText.svg',
-    shadow: true,
-}));
+declare global {
+    interface Window {
+        __vp_VentureNative: {
+            messaging: typeof handler;
+        };
+    }
+}
 
 const handler = {
     send: (channel: string, value: unknown) => ipcRenderer.send(channel, value),
@@ -35,6 +37,21 @@ const handler = {
     },
 };
 
+contextBridge.exposeInMainWorld('__vp_VentureNative', {
+    messaging: handler
+});
+
 contextBridge.exposeInMainWorld('ipc', handler);
+
+window.addEventListener('DOMContentLoaded', () => {
+    new Titlebar({
+        backgroundColor: TitlebarColor.fromHex('#00000000'),
+        icon: '/images/LogoText.svg',
+        shadow: true,
+    });
+    window.__vp_VentureNative = {
+        messaging: handler
+    };
+});
 
 export type IpcHandler = typeof handler;

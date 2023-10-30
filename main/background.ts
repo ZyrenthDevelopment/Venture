@@ -18,7 +18,7 @@
 
 import { watch } from 'chokidar';
 import { attachTitlebarToWindow, setupTitlebar } from 'custom-electron-titlebar/main';
-import { app, ipcMain, Menu, nativeImage, Notification, session, shell, Tray } from 'electron';
+import { app, ipcMain, Menu, nativeImage, Notification, powerSaveBlocker, session, shell, Tray } from 'electron';
 import serve from 'electron-serve';
 import path from 'path';
 import { URL } from 'url';
@@ -51,6 +51,11 @@ const filter = {
 
 (async () => {
     await app.whenReady();
+
+    const PSBid = powerSaveBlocker.start('prevent-display-sleep');
+    console.log(`PowerSaveBlocker started with ID ${PSBid} ${powerSaveBlocker.isStarted(PSBid) ? 'successfully' : 'unsuccessfully'}`);
+
+    app.on('before-quit', () => powerSaveBlocker.stop(PSBid));
 
     // app.commandLine.appendSwitch('disable-features', 'OutOfBlinkCors');
 

@@ -16,6 +16,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { watch } from 'chokidar';
 import { attachTitlebarToWindow, setupTitlebar } from 'custom-electron-titlebar/main';
 import { app, ipcMain, Menu, nativeImage, Notification, session, shell, Tray } from 'electron';
 import serve from 'electron-serve';
@@ -27,6 +28,19 @@ import ModifyHeader from './utilities/ModifyHeader';
 import Store from './utilities/Store';
 
 const isProd = process.env.NODE_ENV === 'production';
+
+if (!isProd) {
+    let firstCompile = true;
+
+    watch(path.join(__dirname, '..'), { depth: 0 }).on('addDir', (e) => {
+        if (path.basename(e) !== 'app') return;
+
+        if (!firstCompile) {
+            app.relaunch();
+            app.exit();
+        } else firstCompile = false;
+    });
+}
 
 if (isProd) serve({ directory: 'app' });
 else app.setPath('userData', `${app.getPath('userData')}-development`);
@@ -89,9 +103,11 @@ const filter = {
         { label: `Venture${isProd ? '' : ' (Development)'}`, type: 'normal', enabled: !isProd, icon: icon.resize({ width: 16, height: 16 }), click: () => !isProd ? mainWindow.webContents.openDevTools({ mode: 'detach' }) : null },
         { label: 'Zyrenth.dev :3', type: 'normal', click: () => shell.openExternal('https://zyrenth.dev') },
         { type: 'separator' },
-        { label: 'About', type: 'normal' },
+        { label: 'About Venture', type: 'normal' },
         { label: 'GitHub', type: 'normal', click: () => shell.openExternal('https://github.com/ZyrenthDev/Venture') },
-        { label: 'Contributors <3', type: 'normal', click: () => shell.openExternal('https://github.com/ZyrenthDev/Venture/graphs/contributors') },
+        { label: 'Contributors', type: 'normal', click: () => shell.openExternal('https://github.com/ZyrenthDev/Venture/graphs/contributors') },
+        { label: 'Support this project <3', type: 'normal', click: () => shell.openExternal('https://github.com/ZyrenthDev/Venture/') },
+        { type: 'separator' },
         { label: 'Quit', type: 'normal', click: () => app.exit() },
     ]);
 

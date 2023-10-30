@@ -16,16 +16,19 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import '../styles/globals.css';
+'use client';
 
-import React from 'react';
+import { useEffect } from 'react';
 
-import ErrorFallback from '../components/Base/ErrorBoundaries/_base';
-import ErrorBoundary from '../components/Base/ErrorBoundaries/_react';
+export default function ErrorFallback({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
+    useEffect(() => {
+        console.error(error);
+    }, [error]);
 
-export default function MyApp({ Component, pageProps }) {
-    const getLayout = Component.getLayout ?? ((page) => page);
-
-    // @ts-ignore
-    return <ErrorBoundary fallback={<ErrorFallback />}>{getLayout(<Component {...pageProps} />)}</ErrorBoundary>;
+    return (
+        <div>
+            <h2>Something went wrong!</h2>
+            <button onClick={() => reset()}>Try again</button>
+        </div>
+    );
 }

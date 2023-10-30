@@ -1,4 +1,22 @@
-import EventEmitter from "events";
+/*
+ * Venture, an open-source Discord client focused on speed and convenience.
+ * Copyright (c) 2023 Zyrenth
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+import EventEmitter from 'events';
 
 export default class fxWebsocket {
     ws: WebSocket;
@@ -18,10 +36,10 @@ export default class fxWebsocket {
     private __init(url) {
         this.ws = new WebSocket(url);
 
-        this.ws.onopen = (e) => this.events.emit('open', e);
-        this.ws.onclose = (e) => this.events.emit('close', e);
-        this.ws.onerror = (e) => this.events.emit('error', e);
-        this.ws.onmessage = (e) => this.events.emit('message', e);
+        this.ws.onopen = (e: Event) => this.events.emit('open', e);
+        this.ws.onclose = (e: CloseEvent) => this.events.emit('close', e);
+        this.ws.onerror = (e: Event) => this.events.emit('wserror', e);
+        this.ws.onmessage = (e: MessageEvent) => this.events.emit('message', e);
     }
 
     send(data: any) {

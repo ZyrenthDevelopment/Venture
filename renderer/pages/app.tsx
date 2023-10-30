@@ -252,7 +252,7 @@ NextPage.getLayout = function getLayout() {
                             <NavTab key={4} name="Add Friend" filled />,
                         ]}
                     >
-                        <>unreal</>
+                        unreal
                     </Page>
                 </div>
             </div>

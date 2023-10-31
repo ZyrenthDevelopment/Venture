@@ -81,6 +81,15 @@ const filter = {
         }
     });
 
+    app.on('browser-window-blur', () => {
+        mainWindow.webContents.send('unfocused');
+        console.log('blur');
+    });
+    app.on('browser-window-focus', () => {
+        mainWindow.webContents.send('focused');
+        console.log('focus');
+    });
+
     mainWindow.on('close', (event) => {
         event.preventDefault();
         mainWindow.hide();

@@ -28,7 +28,20 @@ export default class fxWebsocket {
         this.events = new EventEmitter();
 
         // Auto reconnect;
-        this.events.on('close', () => setTimeout(() => this.__init(url), 5000));
+        this.events.on('close', async () => {
+            await new Promise((resolve) => setTimeout(resolve, 5000));
+            await new Promise((resolve) => {
+                const interval = setInterval(() => { // @ts-ignore
+                    // eslint-disable-next-line no-undef
+                    if (__vp_VentureNative?.get()?.focused) {
+                        clearInterval(interval);
+                        resolve(null);
+                    }
+                });
+            });
+
+            this.__init(url);
+        });
 
         this.__init(url);
     }

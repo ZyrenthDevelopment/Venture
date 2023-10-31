@@ -37,9 +37,17 @@ const handler = {
     },
 };
 
+let focused = true;
+
 contextBridge.exposeInMainWorld('__vp_VentureNative', {
-    messaging: handler
+    get: () => ({
+        messaging: handler,
+        focused
+    })
 });
+
+handler.on('focused', () => focused = true);
+handler.on('unfocused', () => focused = false);
 
 contextBridge.exposeInMainWorld('ipc', handler);
 

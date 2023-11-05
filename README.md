@@ -1,4 +1,7 @@
 # Venture
+![MadeWithLove](https://img.shields.io/badge/made_with-%E2%9D%A4-red?style=for-the-badge&labelColor=orange)
+[![License](https://img.shields.io/github/license/ZyrenthDev/Venture?style=for-the-badge)](https://github.com/ZyrenthDev/Venture/blob/main/LICENSE)
+[![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/dr6dkkbvtt)
 
 Venture is an open-source Discord client focused on speed and convenience through performance optimizations and feature streamlining.
 

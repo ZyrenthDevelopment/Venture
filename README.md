@@ -22,10 +22,6 @@ Venture is an open-source Discord client focused on speed and convenience throug
 -   Axios for API
 -   TailwindCSS for UI
 
-# Note for NextJS and Electron
-
-I'm going to use nextron to merge Electron and NextJS for an easier workflow and setup.
-
 # Roadmap
 
 -   [x] Electron setup

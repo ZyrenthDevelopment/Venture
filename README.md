@@ -14,6 +14,8 @@ Venture is an open-source Discord client focused on speed and convenience throug
 
 > This is a side-project made by [@Zyrenth](https://github.com/Zyrenth).
 
+<a href="https://github.com/Zyrenth"><img src="https://raw.githubusercontent.com/Zyrenth/Zyrenth/main/GitHub%20Projects%20Profile%20Link.png" /></a>
+
 # Resources
 
 -   Electron & NodeJS 20.x

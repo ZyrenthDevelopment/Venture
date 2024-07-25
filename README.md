@@ -1,9 +1,5 @@
-> <picture>
->   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/light-theme/warning.svg">
->   <img alt="Warning" src="https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/dark-theme/warning.svg">
-> </picture><br>
->
-> The development of Venture is currently paused because I've been working on my other projects. I might come back to this project after Christmas.
+> [!IMPORTANT]  
+> Since this project has been abandoned for almost a year and I have no interest in returning to it, I'm archiving this repo. (Not to mention that the code is terrible as I remember.)
 
 # Venture
 ![MadeWithLove](https://img.shields.io/badge/made_with-%E2%9D%A4-red?style=for-the-badge&labelColor=orange)
